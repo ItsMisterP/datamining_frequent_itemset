@@ -24,13 +24,13 @@ import dataframePrint as ownPrint
 #pd.set_option('display.max_colwidth', None)
 
 #Variables
-show_rules = 2
-kluc_threshold = 0.8
+show_rules = 3
+kluc_threshold = 0.55
 kluc_range_max = 0.6
 kluc_range_min = 0.5
-imb_ratio_threshold = 0.5
-association_rules_threshold = 0.4
-min_sup_threshold = 0.0003
+imb_ratio_threshold = 0.25
+association_rules_threshold = 0.6
+min_sup_threshold = 0.0005
 
 print("Start")
 df = pd.read_csv("crimes_e_columns_ficken.csv", low_memory=False)
@@ -69,7 +69,8 @@ df2 = result
 print("Interesiting Kluc created")
 df2["antecedent_len"] = df2["antecedents"].apply(lambda x: len(x))
 kluc = df2[ (df2['antecedent_len'] >= show_rules) &
-            (df2['kluc'] >= kluc_threshold )]
+            (df2['kluc'] >= kluc_threshold )& 
+            (df2['imb ratio'] >= imb_ratio_threshold)]
 kluc.to_csv('kluc.csv', index=False)
 #print(kluc)
 ownPrint.print_full(kluc)
