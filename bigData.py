@@ -47,8 +47,9 @@ df['Location Description'].replace(r', ', ' - ', inplace=True, regex=True)
 print("(7/9) some more date things")
 df["time"] = df.apply((lambda x: format(datetime.strptime(x.time, '%H:%M:%S') + timedelta(hours=12),'%H') if "PM" in x.t else format(datetime.strptime(x.time, '%H:%M:%S'), '%H')), axis=1)
 
-columns = ['time', 'Block', 'Primary Type', 'Description', 'Location Description', 'Year', 'month', 'weekday', 't']
+columns = ['time', 'Block', 'Primary Type', 'Description', 'Location Description', 'year', 'month', 'weekday', 't']
 df = pd.DataFrame(df, columns=columns)
+df.dropna()
 print("(8/9) start preparing for printing")
 print(df)
 

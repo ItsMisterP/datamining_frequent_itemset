@@ -32,10 +32,13 @@ imb_ratio_threshold = 0.25
 association_rules_threshold = 0.6
 min_sup_threshold = 0.0005
 
+
 print("Start")
-df = pd.read_csv("crimes_e_columns_ficken.csv", low_memory=False)
+df = pd.read_csv("7mioCrimes.csv", low_memory=False)
 #print(df)
 
+df["time"] = df["time"].astype(str)
+df["Year"] = df["time"].astype(str)
 
 #extrahiert die monate! 
 #df['DATE'] = df ['DATE'].str.extract("(\w*)/")
@@ -43,17 +46,17 @@ df = pd.read_csv("crimes_e_columns_ficken.csv", low_memory=False)
 
 df = df.dropna()
 
-df2 = df.to_numpy()
+df = df.to_numpy()
 #print(df)
 #print(df[df['IUCR'].str.contains('8')])
 
 
 te = TransactionEncoder()
-te_ary = te.fit(df2).transform(df2)
-df1 = pd.DataFrame(te_ary, columns=te.columns_)
+te_ary = te.fit(df).transform(df)
+df2 = pd.DataFrame(te_ary, columns=te.columns_)
 
 #frequent_itemsets = apriori(df1, min_support=0.0001, use_colnames=True, low_memory=True)
-frequent_itemsets = fpgrowth(df1, min_support=min_sup_threshold, use_colnames=True)
+frequent_itemsets = fpgrowth(df2, min_support=min_sup_threshold, use_colnames=True)
 print("Frequent_Itemsets created")
 print(len(frequent_itemsets))
 
@@ -64,13 +67,13 @@ result.to_csv('out.csv', index=False)
 print("Association Rules saved as csv") 
 
 print("Filter Rules")
-df2 = result
+df = result
 #Füge eine neue Spalte mit der Länge dem Dataframe hinzu
 print("Interesiting Kluc created")
-df2["antecedent_len"] = df2["antecedents"].apply(lambda x: len(x))
-kluc = df2[ (df2['antecedent_len'] >= show_rules) &
-            (df2['kluc'] >= kluc_threshold )& 
-            (df2['imb ratio'] >= imb_ratio_threshold)]
+df["antecedent_len"] = df["antecedents"].apply(lambda x: len(x))
+kluc = df[ (df['antecedent_len'] >= show_rules) &
+            (df['kluc'] >= kluc_threshold )& 
+            (df['imb ratio'] >= imb_ratio_threshold)]
 kluc.to_csv('kluc.csv', index=False)
 #print(kluc)
 ownPrint.print_full(kluc)
@@ -78,9 +81,9 @@ ownPrint.print_full(kluc)
 #print(df2[df2['antecedents'].astype(str).str.contains(',')]) 
 #print(df2)
 print("interisting imb_ratio created")
-imb = df2[ (df2['antecedent_len'] >= show_rules)  & 
-            ( (df2['kluc'] < kluc_range_max) & (df2['kluc'] >= kluc_range_min) )  & 
-            (df2['imb ratio'] >= imb_ratio_threshold)]
+imb = df[ (df['antecedent_len'] >= show_rules)  & 
+            ( (df['kluc'] < kluc_range_max) & (df['kluc'] >= kluc_range_min) )  & 
+            (df['imb ratio'] >= imb_ratio_threshold)]
 imb.to_csv('imb.csv', index=False)
 #print(imb)
 #ownPrint.print_full(imb)
