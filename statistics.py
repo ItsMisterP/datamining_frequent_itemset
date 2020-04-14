@@ -18,8 +18,16 @@ df = pd.read_csv("crimes_e_columns_ficken.csv", low_memory=False)
 df.columns = ['PRIMARY DESCRIPTION', 'LOCATION DESCRIPTION', 'BLOCK', 'DAY', 'AM/PM', 'SECONDARY DESCRIPTION', 'TIME'] 
 
 
-
-
+def statisticsPrint(dataframe):
+    #print("Unique Werte:")
+    #print(dataframe.unique())
+    #print("Anzahl unique Werte:")
+    print(len(dataframe.unique()))
+    print("Häufigkeit der Werte:")
+    print(dataframe.value_counts())
+    print()
+    #print(dataframe.value_counts().to_json())
+    
 print("Hier sind alle Spalten:")
 print(df.columns)
 #print(df.isnull())
@@ -30,127 +38,54 @@ print()
 
 print("--------------PRIMARY DESCRIPTION:---------------")
 primary_description = df['PRIMARY DESCRIPTION']
-#print("Unique Werte:")
-#print(primary_description.unique())
-#print("Anzahl unique Werte:")
-print(len(primary_description.unique()))
-print("Häufigkeit der Werte:")
-print(primary_description.value_counts())
-
-print()
+statisticsPrint(primary_description)
 print("--------------SECONDARY DESCRIPTION:---------------")
 secondary_description = df['SECONDARY DESCRIPTION']
-#print("Unique Werte:")
-#print(secondary_description.unique())
-print("Anzahl unique Werte:")
-print(len(secondary_description.unique()))
-print("Häufigkeit der Werte:")
-print(secondary_description.value_counts())
-
-print()
+statisticsPrint(secondary_description)
 print("--------------BLOCK:---------------")
 block = df['BLOCK']
-#print("Unique Werte:")
-#print(block.unique())
-print("Anzahl unique Werte:")
-print(len(block.unique()))
-print("Häufigkeit der Werte:")
-print(block.value_counts())
-
-print()
+statisticsPrint(block)
 print("--------------LOCATION DESCRIPTION:---------------")
 location_description = df['LOCATION DESCRIPTION']
-#print("Unique Werte:")
-#print(location_description.unique())
-print("Anzahl unique Werte:")
-print(len(location_description.unique()))
-print("Häufigkeit der Werte:")
-print(location_description.value_counts())
-
-print()
+statisticsPrint(location_description)
 print("--------------DAY---------------")
 day = df['DAY']
-#print("Unique Werte:")
-#print(day.unique())
-print("Anzahl unique Werte:")
-print(len(day.unique()))
-print("Häufigkeit der Werte:")
-print(day.value_counts())
-
-print()
+statisticsPrint(day)
 print("--------------AM/PM---------------")
 ampm = df['AM/PM']
-#print("Unique Werte:")
-#print(ampm.unique())
-print("Anzahl unique Werte:")
-print(len(ampm.unique()))
-print("Häufigkeit der Werte:")
-print(ampm.value_counts())
-
-print()
+statisticsPrint(ampm)
 print("--------------TIME---------------")
 time = df['TIME']
-#print("Unique Werte:")
-#print(ampm.unique())
-print("Anzahl unique Werte:")
-print(len(time.unique()))
-print("Häufigkeit der Werte:")
-print(time.value_counts())
+statisticsPrint(time)
 
 
 #Diagramme START 
 
-def diagrammedrucken():
-    #Balkendiagramm
-    plt.figure()
-    primary_description.value_counts().plot(kind = "bar")
-    plt.savefig('Diagramme/primary_description.value_counts.png', dpi=1200, bbox_inches = "tight")
-    #ax.set_xticks([])       # Alternatively, you can manually adjust the ticks
-    #x.set_xticklabels([])   # or their labels
-    #plt.axis([0, 6, 0, 20])
-    #plt.locator_params(axis='x', nbins=100)
-    
-    plt.figure()
-    secondary_description.value_counts().plot(kind = "bar")
-    plt.savefig('Diagramme/secondary_description.value_counts.png', dpi=1200, bbox_inches = "tight")
-    
-    
-    plt.figure()
-    block.value_counts().plot(kind = "bar")
-    plt.savefig('Diagramme/block.value_counts.png', dpi=1200, bbox_inches = "tight")
-        
-    plt.figure()
-    location_description.value_counts().plot(kind = "bar")
-    plt.savefig('Diagramme/location_description.value_counts.png', dpi=1200, bbox_inches = "tight")
-
-    plt.figure()
-    day.value_counts().plot(kind = "bar")
-    plt.savefig('Diagramme/day.value_counts.png', dpi=1200, bbox_inches = "tight")
-    
-    plt.figure()
-    ampm.value_counts().plot(kind = "bar")
-    plt.savefig('Diagramme/ampm.value_counts.png', dpi=1200, bbox_inches = "tight")
-
-    plt.figure()
-    time.value_counts().plot(kind = "bar")
-    plt.savefig('Diagramme/time.value_counts.png', dpi=1200, bbox_inches = "tight")
-
-diagrammedrucken()
+def printBarChart(dataframe, title, w=6.4 , h=4.8):
+    plt.figure(figsize=(w,h))
+    dataframe.value_counts().plot(kind = "bar")
+    plt.savefig('Diagramme/_' + title + '_barChart.png', dpi=120, bbox_inches = 'tight')
 
 
-# iterating over rows using iterrows() function 
+#printBarChart(time, "time")
+#printBarChart(primary_description, "primary_description")
+#printBarChart(secondary_description, "secondary_description")
+#printBarChart(ampm, "ampm")
+#printBarChart(block,"block")
+#printBarChart(day, "day")
+#printBarChart(location_description, "location_description", 25, 10)
 
-'''
-for i, j in df.iterrows():
-    print(i, j)
-    print()
-'''    
-'''
-# creating a list of dataframe columns
-columns = list(df)
- 
-for i in columns:
-    # printing the third element of the column
-    print (df[i][0])
-#print(df)
-'''
+#plt.figure()
+
+
+#location_description.value_counts().sort_values(ascending=False)[:40].plot(kind="barh", rot=20, x='anzahl', y='Streets')
+#plt.savefig('Diagramme/_' + 'test' + '_barChart.png', dpi=120, bbox_inches = 'tight')
+
+x = df['PRIMARY DESCRIPTION']
+y = df['DAY']
+plt.scatter(x,y)
+plt.show()
+
+#df.tail(10).plot.barh()
+
+print(location_description)
