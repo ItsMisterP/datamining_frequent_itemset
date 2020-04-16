@@ -17,8 +17,8 @@ df = pd.read_csv("crimes_e_columns_ficken.csv", low_memory=False)
 #Damit verlieren wir die erstezeile im datensatz
 df.columns = ['PRIMARY DESCRIPTION', 'LOCATION DESCRIPTION', 'BLOCK', 'DAY', 'AM/PM', 'SECONDARY DESCRIPTION', 'TIME'] 
 
-
 def statisticsPrint(dataframe):
+
     #print("Unique Werte:")
     #print(dataframe.unique())
     #print("Anzahl unique Werte:")
@@ -27,7 +27,8 @@ def statisticsPrint(dataframe):
     print(dataframe.value_counts())
     print()
     #print(dataframe.value_counts().to_json())
-    
+    dataframe.value_counts().to_json(r'Counts_json\DataframeValueCounts' + dataframe[0] + '.json')
+
 print("Hier sind alle Spalten:")
 print(df.columns)
 #print(df.isnull())

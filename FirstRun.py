@@ -38,7 +38,7 @@ df = pd.read_csv("7mioCrimes.csv", low_memory=False)
 #print(df)
 
 df["time"] = df["time"].astype(str)
-df["Year"] = df["time"].astype(str)
+df["year"] = df["year"].astype(str)
 
 #extrahiert die monate! 
 #df['DATE'] = df ['DATE'].str.extract("(\w*)/")
