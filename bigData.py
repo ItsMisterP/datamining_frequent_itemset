@@ -15,8 +15,8 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
     
 print('(1/9) start importing the csv')
-df = pd.read_csv("C:/Users/phili/Downloads/Crimes_-_2001_to_present.csv", low_memory=False)
-df = df.dropna()
+df = pd.read_csv("Crimes_-_2001_to_present_19042020.csv", low_memory=False)
+
 
 #Filtere für die passenden Spalten
 print('(2/9) filter Columns')
