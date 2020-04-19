@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>Säulendiagramm</h1>
         <svg :id="id" ></svg>
     </div>
 </template>
@@ -14,7 +13,8 @@ import { selectAll } from "d3-selection";
 export default {
     name: "Column Chart",
     props:{
-        data: Array
+        data: Object,
+        id: String
     },
     data(){
         return{
@@ -22,14 +22,13 @@ export default {
                 "AM" : 500000,
                 "PM" :400000,
             },
-            id: 6000,
             height: 600,
             heightSVG: 0,
             widthSVG: 0,
             width: 600,
             margin: {top: 20, right: 30, bottom: 30, left: 70},
             margin_top : 10,
-            margin_left: 30,
+            margin_left: 70,
             keys : [],
             values: [],
             x0: Object,
@@ -48,6 +47,8 @@ export default {
     },
     methods:{
         init(){
+            this.testdata = this.data;
+
             this.svg = d3.select(document.getElementById(this.id));
             this.svg.attr("preserveAspectRatio", "xMinYMin meet")
                     .attr("viewBox", "0 0 " + this.width + " " + this.height);
@@ -58,6 +59,13 @@ export default {
             this.keys = Object.keys(this.testdata);
             this.values = Object.values(this.testdata);
 
+            if(this.keys.length >= 30){
+                console.log("in");
+                this.keys = this.keys.slice(0,30);
+                console.log(this.keys);
+                this.values = this.values.slice(0,30);
+            }
+
             this.x0 = d3.scaleLinear().range([0, this.widthSVG]);
             this.x0.domain([0, d3.max(this.values)]);
 
@@ -65,8 +73,18 @@ export default {
             this.y.domain(this.keys).padding(0.1);
 
             this.color = d3.scaleOrdinal(d3.schemeCategory10);
+
+            
         },
         draw(){
+            var tooltip = d3.select("body")
+                .append("div")
+                .attr("class", "tooltip")
+                .style("position", "absolute")
+                .style("z-index", "10")
+                .style("visibility", "hidden")
+                .html("<div> </div> <div> </div>")
+
             this.container = this.svg.append("g")
                                     .attr("class", "svgcontainer")
                                     .attr("id", "c")
@@ -99,15 +117,32 @@ export default {
                                         .attr("y", function(d,i) { return y(keys[i]); })
                                         .attr("width", function(d) { 
                                             return x(d);
-                                        });
+                                        })
+                                        .on("mouseover", function(d,l){
+                                            console.log(d);
+                                            console.log(l)
+                                            
+                                            return tooltip.style("visibility", "visible");
+                                        })
+                                        .on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
+                                        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});;
         },
         update(){
 
+        },
+        scroll(){
+
+        },
+        zoom(){
+            
         }
     }
 }
 </script>
 
-<style scoped>
-
+<style >
+    .tooltip{
+        background-color: green;
+        
+    }
 </style>

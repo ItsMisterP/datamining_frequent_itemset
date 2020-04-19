@@ -16,6 +16,7 @@ export default {
     name: "Test-Chart",
     props: {
         data : Object,
+        id: String
     },
     data() {
         return{
@@ -25,7 +26,6 @@ export default {
                 "AM2" : 43333,
                 "PM2" : 433333,
             },
-            id: 7000,
             height: 600,
             svgHeight: 0,
             svgWidth: 0,
@@ -56,6 +56,8 @@ export default {
     },
     methods: {
         init(){
+            this.testdata = this.data;
+
             this.svg = d3.select(document.getElementById(this.id));
 
             this.widthSVG = this.width - this.margin.left - this.margin.right;
@@ -141,4 +143,6 @@ export default {
 </script>
 
 <style scoped>
+.linechart{
+}
 </style>

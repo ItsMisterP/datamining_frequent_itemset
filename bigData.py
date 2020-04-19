@@ -15,7 +15,7 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
     
 print('(1/9) start importing the csv')
-df = pd.read_csv(".\Crimes_-_2001_to_present.csv", low_memory=False)
+df = pd.read_csv("C:/Users/phili/Downloads/Crimes_-_2001_to_present.csv", low_memory=False)
 df = df.dropna()
 
 #Filtere für die passenden Spalten

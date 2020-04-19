@@ -30,7 +30,7 @@ kluc_range_max = 0.6
 kluc_range_min = 0.5
 imb_ratio_threshold = 0.25
 association_rules_threshold = 0.6
-min_sup_threshold = 0.0005
+min_sup_threshold = 0.0001
 
 
 print("Start")

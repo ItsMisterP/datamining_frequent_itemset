@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>Bar-Chart</h1>
         <svg class="barchart"  :id="id">
         </svg>
     </div>
@@ -15,22 +14,18 @@ import { selectAll } from "d3-selection";
 export default {
     name: "Test-Chart",
     props: {
-        data : Object,
+        dataString : Object,
+        id: String
     },
     data() {
         return{
-            testdata: {
-                "AM" : 500000,
-                "PM" :400000,
-            },
-            id: 5000,
             height: 600,
             svgHeight: 0,
             svgWidth: 0,
             width: 600,
             margin: {top: 30, right: 30, bottom: 30, left: 70},
             margin_top : 20,
-            margin_left: 50,
+            margin_left: 70,
             keys : [],
             values: [],
             x0: Object,
@@ -50,10 +45,11 @@ export default {
         this.draw();
     },
     created(){
-        console.log("created")
     },
     methods: {
         init(){
+            this.testdata = this.dataString;
+
             this.svg = d3.select(document.getElementById(this.id));
 
             this.widthSVG = this.width - this.margin.left - this.margin.right;
@@ -71,7 +67,6 @@ export default {
             this.color = d3.scaleOrdinal(d3.schemeCategory10);
         },
         draw(){
-            console.log("Start drawing")
             this.svg.attr("viewBox", "0 0 " + this.width + " " + this.height);
 
             this.container = this.svg.append("g")
@@ -117,13 +112,13 @@ export default {
                 .attr('fill',function(d,i){
                     return color(i);
                 });
-
+/*
             //Die Labels über den Balken erstellen
             this.bars.append("text").text(function(d){ return d3.format(",")(d)})
                 .attr("x", function(d,i) { return x0(keys[i])+x0.bandwidth()/2; })
                 .attr("y", function(d) { return y(d)-5; })
                 .attr("text-anchor", "middle");
-
+*/
         },
         update(){
 
