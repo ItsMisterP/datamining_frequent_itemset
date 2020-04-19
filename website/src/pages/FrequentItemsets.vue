@@ -40,6 +40,8 @@
     </div>
 </template>
 <script>
+import * as d3 from 'd3'
+
 const toLower = text => {
     return text.toString().toLowerCase()
   }
@@ -53,6 +55,10 @@ const searchByName = (items, term) => {
 }
 
 export default {
+    
+    props:{
+        id: String,
+    },
     data: () => ({
       search: null,
       searched: [],
@@ -197,18 +203,38 @@ export default {
           gender: "Male",
           title: "Actuary"
         }
-      ]
+      ],
+      data: null,
+      fileinput: Object
     }),
+    created () {
+      this.searched = this.users
+      
+    },
+    mounted(){
+    },
     methods: {
       newUser () {
         window.alert('Noop')
       },
       searchOnTable () {
         this.searched = searchByName(this.users, this.search)
-      }
-    },
-    created () {
-      this.searched = this.users
+      },
+      onFileChange(e) {
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length)
+                return;
+            this.createInput(files[0]);
+        },
+        createInput(file) {
+            var reader = new FileReader();
+            var vm = this;
+            reader.onload = (e) => {
+                console.log("converting")
+                console.log(d3.csv(vm.fileinput))           
+            }
+            reader.readAsText(file);
+        }
     }
 }
 </script>

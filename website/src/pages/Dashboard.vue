@@ -7,8 +7,8 @@
       >
         <md-card>
           <md-card-header data-background-color="gray">
-            <h4 class="title">Verbrechen je nach Tageszeit (grob)</h4>
-            <p class="category">Zeigt die absolute Anzahl nach AM und PM an.</p>
+            <h4 class="title">Verbrechen nach den Wochentagen</h4>
+            <p class="category">Zeigt die absolute Anzahl nach Wochentag an.</p>
           </md-card-header>
           <md-card-content>
             <chart :dataString="this.jsonFiles.crimesByWeekday" id="9"></chart>
@@ -21,8 +21,8 @@
       >
         <md-card>
           <md-card-header data-background-color="gray">
-            <h4 class="title">Items und ihre relative/absolute Anzahl</h4>
-            <p class="category">Gibt das Aufkommen der Items an.</p>
+            <h4 class="title">Vebrechen nach der Uhrzeit</h4>
+            <p class="category">Zeigt die absolute Anzahl nach der Uhrzeit an.</p>
           </md-card-header>
           <md-card-content>
             <column :data="this.jsonFiles.crimesByTime" id="8"></column>
@@ -36,8 +36,8 @@
       >
         <md-card>
           <md-card-header data-background-color="gray">
-            <h4 class="title">Items und ihre relative/absolute Anzahl</h4>
-            <p class="category">Gibt das Aufkommen der Items an.</p>
+            <h4 class="title">Verbrechen pro Block (Top 30)</h4>
+            <p class="category">Zeigt die absolute Anzahl pro Block an.</p>
           </md-card-header>
           <md-card-content>
             <column :data="this.jsonFiles.crimesPerBlock" id="7"></column>
@@ -51,8 +51,8 @@
       >
         <md-card>
           <md-card-header data-background-color="gray">
-            <h4 class="title">Items und ihre relative/absolute Anzahl</h4>
-            <p class="category">Gibt das Aufkommen der Items an.</p>
+            <h4 class="title">Verbechen pro Location (Top 30)</h4>
+            <p class="category">Zeigt die absolute Anzahl nach der Location an.</p>
           </md-card-header>
           <md-card-content>
             <column :data="this.jsonFiles.crimesByLocation" id="6"></column>
@@ -66,8 +66,8 @@
       >
         <md-card>
           <md-card-header data-background-color="gray">
-            <h4 class="title">Items und ihre relative/absolute Anzahl</h4>
-            <p class="category">Gibt das Aufkommen der Items an.</p>
+            <h4 class="title">Verbrechen pro "Primary Description"</h4>
+            <p class="category">Zeigt die absolute Anzahl der "Primary Description" an.</p>
           </md-card-header>
           <md-card-content>
             <column :data="this.jsonFiles.crimesByPrimaryDescription" id="5"></column>
@@ -81,8 +81,8 @@
       >
         <md-card>
           <md-card-header data-background-color="gray">
-            <h4 class="title">Items und ihre relative/absolute Anzahl</h4>
-            <p class="category">Gibt das Aufkommen der Items an.</p>
+            <h4 class="title">Verbrechen pro "Secondary Description"</h4>
+            <p class="category">Zeigt die absolute Anzahl der "Secondary Description" an.</p>
           </md-card-header>
           <md-card-content>
             <column :data="this.jsonFiles.crimesBySecondaryDescription" id="3"></column>
@@ -109,8 +109,8 @@
       >
         <md-card>
           <md-card-header data-background-color="gray">
-            <h4 class="title">Items und ihre relative/absolute Anzahl</h4>
-            <p class="category">Gibt das Aufkommen der Items an.</p>
+            <h4 class="title">Vebrechen pro Monat</h4>
+            <p class="category">Zeigt die absolute Anzahl der Verbrachen pro Monat an.</p>
           </md-card-header>
           <md-card-content>
             <column :data="this.jsonFiles.crimesByMonth" id="2"></column>
@@ -124,8 +124,8 @@
       >
         <md-card>
           <md-card-header data-background-color="gray">
-            <h4 class="title">Unterschiedliche Attribute</h4>
-            <p class="category">Alle Attribute, welche für die Bestimmung der Frequent Itemsets benötigt werden.</p>
+            <h4 class="title">Zeitliche Entwicklung der Verbrechen</h4>
+            <p class="category">Zeigt die zeitliche Entwicklung der absoluten Anzahl der Verbrachen.</p>
           </md-card-header>
           <md-card-content>
             <linechart :data="this.jsonFiles.crimesPerYear" id="4"></linechart>
