@@ -56,7 +56,7 @@ Let us know what you think and what we can improve below. And good luck with dev
 
 
 ## Quick start
-
+`npm run serve`
 ## :cloud: Build Setup
 
 ### install dependencies
