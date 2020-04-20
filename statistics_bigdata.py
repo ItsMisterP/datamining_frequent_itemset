@@ -31,7 +31,7 @@ def statisticsPrint(dataframe):
     print()
     #print(dataframe.value_counts().to_json())
     #dataframe.value_counts().to_json(r'Counts_json\DataframeValueCounts' + dataframe[0] + '.json')
-'''
+
 print("Hier sind alle Spalten:")
 print(df.columns)
 #print(df.isnull())
@@ -76,4 +76,3 @@ print("--------------TIME---------------")
 time3 = df['t']
 statisticsPrint(time)
 time3.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'T' + '.json')
-'''
