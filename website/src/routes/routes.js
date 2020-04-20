@@ -2,6 +2,7 @@ import DashboardLayout from "@/pages/Layout/DashboardLayout.vue";
 
 import Dashboard from "@/pages/Dashboard.vue";
 import Itemsets from "@/pages/FrequentItemsets.vue";
+import AssoTable from "@/pages/AssociationRulesTable.vue";
 
 
 const routes = [
@@ -23,7 +24,7 @@ const routes = [
       {
         path: "rules",
         name: "Association Rules - Table",
-        component: Dashboard
+        component: AssoTable
       },
       {
         path: "graph",

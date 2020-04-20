@@ -15,7 +15,6 @@ import numpy as np
 import csv
 import re
 import association_rules as own
-import dataframePrint as ownPrint
 
 
 #pd.set_option('display.max_rows', 50000)
@@ -58,6 +57,7 @@ df2 = pd.DataFrame(te_ary, columns=te.columns_)
 #frequent_itemsets = apriori(df1, min_support=0.0001, use_colnames=True, low_memory=True)
 frequent_itemsets = fpgrowth(df2, min_support=min_sup_threshold, use_colnames=True)
 print("Frequent_Itemsets created")
+frequent_itemsets.to_json("frequent_itemsets.json", orient='records')
 print(len(frequent_itemsets))
 
 result = own.association_rules(frequent_itemsets, min_threshold=association_rules_threshold)
@@ -65,6 +65,7 @@ print("Association Rules created")
 
 result.to_csv('out.csv', index=False)
 print("Association Rules saved as csv") 
+result.to_json("association_rules.json", orient='records')
 
 print("Filter Rules")
 df = result
@@ -76,8 +77,7 @@ kluc = df[ (df['antecedent_len'] >= show_rules) &
             (df['imb ratio'] >= imb_ratio_threshold)]
 kluc.to_csv('kluc.csv', index=False)
 #print(kluc)
-ownPrint.print_full(kluc)
-#hier ist ein Dataframe, welches frozensets enthält -> deswegen inhalt zu string convertieren und dann contains prüfen können
+#Hier ist ein Dataframe, welches frozensets enthält -> deswegen Inhalt zu string konvertieren und dann contains prüfen können
 #print(df2[df2['antecedents'].astype(str).str.contains(',')]) 
 #print(df2)
 print("interisting imb_ratio created")
