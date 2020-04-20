@@ -10,6 +10,59 @@
             <p class="category">Tabelle mit den Frequent-Itemsets</p>
           </md-card-header>
           <md-card-content>
+
+            <div class="md-layout">
+                <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50">
+                    <md-field>
+                        <label>Number of entries</label>
+                        <md-input @input="searchOnTable" v-model="filter.numberOfEntries" type="number"></md-input>
+                    </md-field>
+                </div>
+
+                <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50">
+                    <md-field>
+                        <label>min-support</label>
+                        <md-input @input="searchOnTable" v-model="filter.minsup" type="number"></md-input>
+                    </md-field>
+                </div>
+
+                <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50">
+                    <md-field>
+                        <label>Number of antecedents elements</label>
+                        <md-input @input="searchOnTable" v-model="filter.numberOfAntecedents" type="number"></md-input>
+                    </md-field>
+                </div>
+
+                <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50">
+                    <md-field>
+                        <label>Number of consequents elements</label>
+                        <md-input @input="searchOnTable" v-model="filter.numberOfCosequents" type="number"></md-input>
+                    </md-field>
+                </div>
+                
+                <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50">
+                    <md-field>
+                        <label>min-confidence</label>
+                        <md-input @input="searchOnTable" v-model="filter.minconf" type="number"></md-input>
+                    </md-field>
+                </div>
+
+                <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50">
+                    <md-field>
+                        <label>min-kluc</label>
+                        <md-input @input="searchOnTable" v-model="filter.minkluc" type="number"></md-input>
+                    </md-field>
+                </div>
+
+                <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50">
+                    <md-field>
+                        <label>min-imb_ratio</label>
+                        <md-input @input="searchOnTable" v-model="filter.minimb" type="number"></md-input>
+                    </md-field>
+                </div>
+            </div>
+            
+
             <md-table
               v-model="searched"
               md-sort="support"
@@ -26,16 +79,16 @@
                 <md-field md-clearable class="md-toolbar-section-end">
                   <md-input
                     placeholder="Search by Item..."
-                    v-model="search"
+                    v-model.lazy="filter.search"
                     @input="searchOnTable"
                   />
                 </md-field>
               </md-table-toolbar>
 
               <md-table-empty-state
-                md-label="No Itemsets found"
+                md-label="No Rules found"
                 :md-description="
-                  `No Rule found for this '${search}' query. Try a different search term.`
+                  `No Rule found for this '${filter.search}' query. Try a different search term.`
                 "
               >
                 
@@ -76,24 +129,40 @@ const toLower = (text) => {
   return text.toString().toLowerCase();
 };
 
-const searchByName = (items, term) => {
-  if (term) {
-    return items.filter((item) => toLower(item.antecedents).includes(toLower(term))).slice(0,500);
-  }
-
-  return items.slice(0,500);
+const searchByName = (items, filter) => {
+    items = items.filter((item) => { 
+                return toLower(item.antecedents).includes(toLower(filter.search)) 
+                        && parseFloat(item.support) >= filter.minsup
+                        && parseFloat(item.confidence) >= filter.minconf
+                        && parseFloat(item.kluc) >= filter.minkluc
+                        && parseFloat(item.imbratio) >= filter.minimb 
+                        && item.antecedents.length >= filter.numberOfAntecedents
+                        && item.consequents.length >= filter.numberOfCosequents;
+            }).slice(0,filter.numberOfEntries);
+    console.log("filtered")
+    return items;
 };
 
 export default {
     
     data: () => ({
-    search: " ",
+    
     searched: [],
     assoRules: [
       
     ],
     data: null,
     fileinput: Object,
+    filter: {
+        numberOfEntries: 500,
+        numberOfCosequents: 1,
+        numberOfAntecedents: 2,
+        minsup: 0.001,
+        minconf: 0.6,
+        minkluc: 0.5,
+        minimb: 0.5,
+        search: " ",
+    }
   }),
   mounted() {
     this.init();
@@ -107,7 +176,9 @@ export default {
       window.alert("Noop");
     },
     searchOnTable() {
-      this.searched = searchByName(this.assoRules, this.search);
+        console.log("filter changed")
+        console.log(this.filter.minsup)
+      this.searched = searchByName(this.assoRules, this.filter);
     },
   },
 }
