@@ -49,7 +49,15 @@ print("Frequent Itemsets saved as csv")
 jsonFileName = "Frequent_Itemsets" + method + "TH_" + min_support_str_final +".json"
 frequent_itemsets.to_json(jsonFileName, orient='records')
 print("Frequent Itemsets saved as json") 
-
+txtFileName = "Frequent_Itemsets" + method + "TH_" + min_support_str_final +".txt"
+file = open(txtFileName,"w") 
+ 
+file.write("MinSup: " + min_support_str) 
+file.write("Method: " + method) 
+file.write("Vorbereitungszeit: "+ str(Vorbereitungszeit) ) 
+file.write("Laufzeit: " + str(Laufzeit)) 
+ 
+file.close() 
 
 
 
