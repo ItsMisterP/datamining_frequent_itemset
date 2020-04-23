@@ -177,7 +177,7 @@ export default {
         search: " ",
         searched: [],
         itemsets: [],
-        searchItems: " ",
+        searchItems: "test",
         searchedItems: [],
         items: [],
         data: null,
@@ -197,7 +197,6 @@ export default {
             
             this.items = require("../assets/json/UniqueValuesGESAMT.json");
             this.itemsets = require("../assets/json/frequent_itemsets.json");
-            console.log(this.items);
             this.searched = this.searchOnTable();
             this.searchedItems = this.searchOnItemTable();
         },

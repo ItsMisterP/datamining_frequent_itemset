@@ -239,15 +239,15 @@ export default {
     },
     methods: {
         init() {
-            this.jsonFiles.crimesPerYear = require("../assets/json/DataframeValueCounts2019.json");
-            this.jsonFiles.crimesPerBlock = require("../assets/json/DataframeValueCounts VERNON AVE.json");
-            this.jsonFiles.crimesBySecondaryDescription = require("../assets/json/DataframeValueCountsAGG CRIMINAL SEXUAL ABUSE.json");
-            this.jsonFiles.crimesByMonth = require("../assets/json/DataframeValueCountsApril.json");
-            this.jsonFiles.crimesByWeekday = require("../assets/json/DataframeValueCountsMittwoch.json");
-            this.jsonFiles.crimesByTime = require("../assets/json/DataframeValueCounts16.json");
-            this.jsonFiles.crimesByDaytime = require("../assets/json/DataframeValueCountsPM.json");
-            this.jsonFiles.crimesByLocation = require("../assets/json/DataframeValueCountsSCHOOL - PUBLIC - BUILDING.json");
-            this.jsonFiles.crimesByPrimaryDescription = require("../assets/json/DataframeValueCountsSEX OFFENSE.json");
+            this.jsonFiles.crimesPerYear = require("../assets/json/DataframeValueCountsYEAR.json");
+            this.jsonFiles.crimesPerBlock = require("../assets/json/DataframeValueCountsBLOCK.json");
+            this.jsonFiles.crimesBySecondaryDescription = require("../assets/json/DataframeValueCountsDESCRIPTION.json");
+            this.jsonFiles.crimesByMonth = require("../assets/json/DataframeValueCountsMONTH.json");
+            this.jsonFiles.crimesByWeekday = require("../assets/json/DataframeValueCountsWEEKDAY.json");
+            this.jsonFiles.crimesByTime = require("../assets/json/DataframeValueCountsTIME.json");
+            this.jsonFiles.crimesByDaytime = require("../assets/json/DataframeValueCountsT.json");
+            this.jsonFiles.crimesByLocation = require("../assets/json/DataframeValueCountsLOCATIONDESCRIPTION.json");
+            this.jsonFiles.crimesByPrimaryDescription = require("../assets/json/DataframeValueCountsPRIMARYTYPE.json");
 
             console.log(this.jsonFiles.crimesPerBlock);
         },
