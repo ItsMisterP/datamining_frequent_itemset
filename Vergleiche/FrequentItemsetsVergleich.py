@@ -59,6 +59,6 @@ file.write("Laufzeit: " + str(Laufzeit))
  
 file.close() 
 
-
+##Anzahl der unique werde und die unique werte
 
 print("Finished")

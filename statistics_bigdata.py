@@ -11,6 +11,8 @@ import pandas as pd
 import matplotlib as mlp
 import matplotlib.pyplot as plt
 import json
+from  jsonmerge import merge
+#https://pypi.org/project/jsonmerge/#description
 
 print("Start")
 df = pd.read_csv("7mioCrimes.csv", low_memory=False)
@@ -43,85 +45,91 @@ print("--------------time:---------------")
 time = df['time']
 statisticsPrint(time)
 valueCountsTime = time.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'TIME'+ '.json')
-uniqueTime = time.unique()
-uniqueTimeList = uniqueTime.tolist()
-with open(r'Unique_json\UniqueValuesTIME.json', 'w', encoding='utf-8') as f:
-    json.dump(uniqueTimeList, f, ensure_ascii=False, indent=4)
+uniqueTime = pd.DataFrame(time.unique())
+uniqueTime.columns = ["id"]
+uniqueTime.to_json(r'Unique_json\UniqueValuesTIME.json', orient='records', lines=True)
+timeJSON = uniqueTime.to_json(orient='records', lines=True)
 
 print("--------------Block:---------------")
 block = df['Block']
 statisticsPrint(block)
 valueCountsBlock = block.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'BLOCK' + '.json')
-uniqueBlock = block.unique()
-uniqueBlockList = uniqueBlock.tolist()
-with open(r'Unique_json\UniqueValuesBLOCK.json', 'w', encoding='utf-8') as f:
-    json.dump(uniqueBlockList, f, ensure_ascii=False, indent=4)
-
+uniqueBlock = pd.DataFrame(block.unique())
+uniqueBlock.columns = ["id"]
+uniqueBlock.to_json(r'Unique_json\UniqueValuesBLOCK.json', orient='records', lines=True)
+blockJSON = uniqueBlock.to_json(orient='records', lines=True)
 
 print("--------------Primary Type:---------------")
 primary_type = df['Primary Type']
 statisticsPrint(primary_type)
 valueCountsPrimary_type = primary_type.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'PRIMARYTYPE' + '.json')
-uniquePrimary_type  = primary_type.unique()
-uniquePrimary_typeList = uniquePrimary_type.tolist()
-with open(r'Unique_json\UniqueValuesPRIMARYTYPE.json', 'w', encoding='utf-8') as f:
-    json.dump(uniquePrimary_typeList, f, ensure_ascii=False, indent=4)
+uniquePrimary_type  = pd.DataFrame(primary_type.unique())
+uniquePrimary_type.columns = ["id"]
+uniquePrimary_type.to_json(r'Unique_json\UniqueValuesPRIMARYTYPE.json', orient='records', lines=True)
+primary_typeJSON = uniquePrimary_type.to_json(orient='records', lines=True)
 
 print("--------------Description:---------------")
 description = df['Description']
 statisticsPrint(description)
 valueCountsDescription = description.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'DESCRIPTION' + '.json')
-uniqueDescription = description.unique()
-uniqueDescriptionList = uniqueDescription.tolist()
-with open(r'Unique_json\UniqueValuesDESCRIPTION.json', 'w', encoding='utf-8') as f:
-    json.dump(uniqueDescriptionList, f, ensure_ascii=False, indent=4)
+uniqueDescription = pd.DataFrame(description.unique())
+uniqueDescription.columns = ["id"]
+uniqueDescription.to_json(r'Unique_json\UniqueValuesDESCRIPTION.json', orient='records', lines=True)
+descriptionJSON = uniqueDescription.to_json(orient='records', lines=True)
     
 print("--------------Location Description---------------")
 location_description = df['Location Description']
 statisticsPrint(location_description)
 valueCountsLocation_description = location_description.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'LOCATIONDESCRIPTION' + '.json')
-uniqueLocation_description = location_description.unique()
-uniqueLocation_descriptionList = uniqueLocation_description.tolist()
-with open(r'Unique_json\UniqueValuesLOCATIONDESCRIPTION.json', 'w', encoding='utf-8') as f:
-    json.dump(uniqueLocation_descriptionList, f, ensure_ascii=False, indent=4)
+uniqueLocation_description = pd.DataFrame(location_description.unique())
+uniqueLocation_description.columns = ["id"]
+uniqueLocation_description.to_json(r'Unique_json\UniqueValuesLOCATIONDESCRIPTION.json', orient='records', lines=True)
+locationJSON = uniqueLocation_description.to_json(orient='records', lines=True)
 
 print("--------------year---------------")
 year = df['year']
 statisticsPrint(year)
 valueCountsYear = year.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'YEAR' + '.json')
-uniqueYear = year.unique()
-uniqueYearList = uniqueYear.tolist()
-with open(r'Unique_json\UniqueValuesYEAR.json', 'w', encoding='utf-8') as f:
-    json.dump(uniqueYearList, f, ensure_ascii=False, indent=4)
-    
+uniqueYear = pd.DataFrame(year.unique())
+uniqueYear.columns = ["id"]
+uniqueYear.to_json(r'Unique_json\UniqueValuesYEAR.json', orient='records', lines=True)
+yearJSON = uniqueYear.to_json(orient='records', lines=True)
+  
 print("--------------month---------------")
 month = df['month']
 statisticsPrint(month)
 valueCountsMonth = month.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'MONTH' + '.json')
-uniqueMonth = month.unique()
-uniqueMonthList = uniqueMonth.tolist()
-with open(r'Unique_json\UniqueValuesMONTH.json', 'w', encoding='utf-8') as f:
-    json.dump(uniqueMonthList, f, ensure_ascii=False, indent=4)
+uniqueMonth = pd.DataFrame(month.unique())
+uniqueMonth.columns = ["id"]
+uniqueMonth.to_json(r'Unique_json\UniqueValuesMONTH.json', orient='records', lines=True)
+monthJSON = uniqueMonth.to_json(orient='records', lines=True)
 
 print("--------------weekday---------------")
 weekday = df['weekday']
 statisticsPrint(weekday)
 valueCountsWeekday = weekday.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'WEEKDAY' + '.json')
-uniqueWeekday = weekday.unique()
-uniqueWeekdayList = uniqueWeekday.tolist()
-with open(r'Unique_json\UniqueValuesWEEKDAY.json', 'w', encoding='utf-8') as f:
-    json.dump(uniqueWeekdayList, f, ensure_ascii=False, indent=4)
+uniqueWeekday = pd.DataFrame(weekday.unique())
+uniqueWeekday.columns = ["id"]
+uniqueWeekday.to_json(r'Unique_json\UniqueValuesWEEKDAY.json', orient='records', lines=True)
+weekdayJSON = uniqueWeekday.to_json(orient='records', lines=True)
 
 print("--------------t---------------")
 t = df['t']
 statisticsPrint(t)
 valueCountsT = t.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'T' + '.json')
-uniqueT = t.unique()
-uniqueTList = uniqueT.tolist()
-with open(r'Unique_json\UniqueValuesT.json', 'w', encoding='utf-8') as f:
-    json.dump(uniqueTList, f, ensure_ascii=False, indent=4)
+uniqueT = pd.DataFrame(t.unique())
+uniqueT.columns = ["id"]
+uniqueT.to_json(r'Unique_json\UniqueValuesT.json', orient='records', lines=True)
+tJSON = uniqueT.to_json(orient='records', lines=True)
+
 
 print("--------------Gesamt---------------")
-UniqueWerteGESAMT = uniqueTimeList + uniqueBlockList + uniquePrimary_typeList + uniqueDescriptionList + uniqueLocation_descriptionList + uniqueYearList + uniqueMonthList + uniqueWeekdayList + uniqueTList
-with open(r'Unique_json\UniqueValuesGESAMT.json', 'w', encoding='utf-8') as f:
-    json.dump(UniqueWerteGESAMT, f, ensure_ascii=False, indent=4)
+
+result = timeJSON + blockJSON + primary_typeJSON + descriptionJSON + locationJSON + yearJSON + monthJSON + weekdayJSON + tJSON
+
+with open(r'Unique_json\UniqueValuesGESAMT.json', 'w', encoding='utf-8') as outfile:
+    json.dump(result, outfile)
+    
+print(result)
+
+print("--------------Finished---------------")

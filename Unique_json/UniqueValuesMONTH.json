@@ -1,14 +1,12 @@
-[
-    "Januar",
-    "Oktober",
-    "März",
-    "September",
-    "August",
-    "Februar",
-    "Juli",
-    "Dezember",
-    "November",
-    "Mai",
-    "April",
-    "Juni"
-]
+{"id":"Januar"}
+{"id":"Oktober"}
+{"id":"M\u00e4rz"}
+{"id":"September"}
+{"id":"August"}
+{"id":"Februar"}
+{"id":"Juli"}
+{"id":"Dezember"}
+{"id":"November"}
+{"id":"Mai"}
+{"id":"April"}
+{"id":"Juni"}
