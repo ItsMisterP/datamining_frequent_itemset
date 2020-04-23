@@ -12,7 +12,8 @@ import matplotlib as mlp
 import matplotlib.pyplot as plt
 import json
 from  jsonmerge import merge
-#https://pypi.org/project/jsonmerge/#description
+import io
+
 
 print("Start")
 df = pd.read_csv("7mioCrimes.csv", low_memory=False)
@@ -125,11 +126,12 @@ tJSON = uniqueT.to_json(orient='records', lines=True)
 
 print("--------------Gesamt---------------")
 
-result = timeJSON + blockJSON + primary_typeJSON + descriptionJSON + locationJSON + yearJSON + monthJSON + weekdayJSON + tJSON
-
-with open(r'Unique_json\UniqueValuesGESAMT.json', 'w', encoding='utf-8') as outfile:
-    outfile.write(result)
+result = timeJSON + "\r\n" + blockJSON + "\r\n" + primary_typeJSON + "\r\n" + descriptionJSON + "\r\n" + locationJSON +"\r\n" + yearJSON + "\r\n"+ monthJSON + "\r\n" + weekdayJSON + "\r\n"+ tJSON
+resultTmp = result.replace("}", "},")
+resultFormatted = "[ " + resultTmp + " ]"
+with io.open(r'Unique_json\UniqueValuesGESAMT.json', 'w', encoding='utf-8') as outfile:
+    outfile.write(resultFormatted)
     
-print(result)
+print(resultFormatted)
 
 print("--------------Finished---------------")

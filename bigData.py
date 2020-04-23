@@ -34,7 +34,7 @@ df['Block'].replace(r'^\d\d\d\w\w\s\w\s', ' ', inplace=True, regex=True)
 #Passe die Datumspalte an
 print("(5/9) customize the date")
 day_name= ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag','Sonntag']
-month_name= ['Januar', 'Februar', 'März', 'April', 'Mai','Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+month_name= ['Januar', 'Februar', 'Maerz', 'April', 'Mai','Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
 df["weekday"] = df["Date"].apply(lambda x: day_name[datetime.strptime(x, '%m/%d/%Y').weekday()])
 df[['month', 'day', 'year']] = df['Date'].str.split('/',expand=True)
 df["month"] = df["month"].apply(lambda x: month_name[int(x)-1])
