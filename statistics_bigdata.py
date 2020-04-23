@@ -126,9 +126,9 @@ tJSON = uniqueT.to_json(orient='records', lines=True)
 
 print("--------------Gesamt---------------")
 
-result = timeJSON + "\r\n" + blockJSON + "\r\n" + primary_typeJSON + "\r\n" + descriptionJSON + "\r\n" + locationJSON +"\r\n" + yearJSON + "\r\n"+ monthJSON + "\r\n" + weekdayJSON + "\r\n"+ tJSON
+result = timeJSON + "\r" + blockJSON + "\r" + primary_typeJSON + "\r" + descriptionJSON + "\r" + locationJSON +"\r" + yearJSON + "\r"+ monthJSON + "\r" + weekdayJSON + "\r"+ tJSON
 resultTmp = result.replace("}", "},")
-resultFormatted = "[\r\n " + resultTmp + "\r\n]"
+resultFormatted = "[\r" + resultTmp + "\r]"
 with io.open(r'Unique_json\UniqueValuesGESAMT.json', 'w', encoding='utf-8') as outfile:
     outfile.write(resultFormatted)
     
