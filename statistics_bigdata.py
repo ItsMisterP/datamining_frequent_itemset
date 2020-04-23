@@ -128,7 +128,7 @@ print("--------------Gesamt---------------")
 result = timeJSON + blockJSON + primary_typeJSON + descriptionJSON + locationJSON + yearJSON + monthJSON + weekdayJSON + tJSON
 
 with open(r'Unique_json\UniqueValuesGESAMT.json', 'w', encoding='utf-8') as outfile:
-    json.dump(result, outfile)
+    outfile.write(result)
     
 print(result)
 
