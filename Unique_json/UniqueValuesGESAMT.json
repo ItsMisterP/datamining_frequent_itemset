@@ -1,4 +1,5 @@
-[ {"id":11},
+[
+ {"id":11},
 {"id":3},
 {"id":14},
 {"id":20},
@@ -5011,7 +5012,7 @@
 {"id":2020},
 {"id":"Januar"},
 {"id":"Oktober"},
-{"id":"M\u00e4rz"},
+{"id":"Maerz"},
 {"id":"September"},
 {"id":"August"},
 {"id":"Februar"},
@@ -5029,4 +5030,5 @@
 {"id":"Freitag"},
 {"id":"Mittwoch"},
 {"id":"AM"},
-{"id":"PM"}, ]
+{"id":"PM"},
+]
