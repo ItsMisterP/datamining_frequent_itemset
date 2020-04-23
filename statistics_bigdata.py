@@ -128,10 +128,9 @@ print("--------------Gesamt---------------")
 
 result = timeJSON + "\r" + blockJSON + "\r" + primary_typeJSON + "\r" + descriptionJSON + "\r" + locationJSON +"\r" + yearJSON + "\r"+ monthJSON + "\r" + weekdayJSON + "\r"+ tJSON
 resultTmp = result.replace("}", "},")
-resultFormatted = "[\r" + resultTmp + "\r]"
+resultFormatted = "[" + resultTmp + "]"
+resultFormatted2 = resultFormatted.replace(",]", "]")
 with io.open(r'Unique_json\UniqueValuesGESAMT.json', 'w', encoding='utf-8') as outfile:
-    outfile.write(resultFormatted)
+    outfile.write(resultFormatted2)
     
-print(resultFormatted)
-
 print("--------------Finished---------------")
