@@ -41,7 +41,7 @@ export default {
             
 
             let filteredRules = rules.filter(item => {
-                return item.support > 0.05 && item.kluc > 0.5;
+                return item.support > 0.005 && item.kluc > 0.5;
             });
 
             console.log(filteredRules.length)
