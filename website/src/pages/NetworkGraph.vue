@@ -45,19 +45,22 @@ export default {
             });
 
             console.log(filteredRules.length)
-            
+           
             filteredRules.forEach(element => {
-                console.log(element.antecedents.join(","))
+                let value = 100.0 * parseFloat(element.support);
+ 
                 this.graph.nodes.push({
-                    id: "Rule_"+element.antecedents.join(","),
+                    id: "{" +element.antecedents.join(",") + "}",
                     type: "rule",
-                    col: "red"
+                    col: "#FF6B66"
                 });
                 
                 let inputs = element.antecedents;
                 inputs.forEach(input => {
                     if (
-                        !this.graph.nodes.includes(input)
+                        this.graph.nodes.filter(node => (
+                            node.id == input
+                        )).length == 0
                     ) {
                         this.graph.nodes.push({
                             id: input,
@@ -67,7 +70,7 @@ export default {
 
                     this.graph.links.push({
                         source: input,
-                        target: "Rule_"+element.antecedents.join(","),
+                        target: "{" +element.antecedents.join(",") + "}",
                         col: "blue"
                     });
                 });
@@ -75,21 +78,19 @@ export default {
                 let outputs = element.consequents;
                 outputs.forEach(output => {
                     if (
-                        !this.graph.nodes.includes({
-                            id: output,
-                            col: "blue"
-                        })
+                        this.graph.nodes.filter(node => (
+                            node.id == output
+                        )).length == 0
                     ) {
                         this.graph.nodes.push({
                             id: output,
-                            col: "green"
+                            col: "green",
+                            val: 2
                         });
-                    }else{
-                        console.log("found")
                     }
 
                     this.graph.links.push({
-                        source: "Rule_"+element.antecedents.join(","),
+                        source: "{" +element.antecedents.join(",") + "}",
                         target: output,
                         col: "black"
                     });
