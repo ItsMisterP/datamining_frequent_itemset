@@ -1,6 +1,73 @@
 <template>
     <div>
-        <div id="graphDiv"></div>
+        <md-layout>
+            <div
+                class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100"
+            >
+                <div id="graphDiv"></div>
+                <md-card>
+                    <md-card-header data-background-color="gray">
+                        <h4 class="title">Filter</h4>
+                    </md-card-header>
+                    <md-card-content>
+                        <label for="networkminsup">Min-Sup for Rules:</label
+                        ><br />
+                        <input
+                            id="networkminsup"
+                            @change="update"
+                            type="range"
+                            v-model.number="minsup"
+                            min="0"
+                            max="0.3"
+                            step="0.001"
+                        />
+                        {{ minsup }}
+                        <br />
+                        <label for="networkminsup">Kluc for Rules:</label><br />
+                        <input
+                            id="networkminsup"
+                            @change="update"
+                            type="range"
+                            v-model.number="kluc"
+                            min="0"
+                            max="1"
+                            step="0.01"
+                        />
+                        {{ kluc }}
+                        <br />
+                        <label for="networkminsup">Imb-Ratio for Rules:</label
+                        ><br />
+                        <input
+                            id="networkminsup"
+                            @change="update"
+                            type="range"
+                            v-model.number="imb"
+                            min="0"
+                            max="1"
+                            step="0.01"
+                        />
+                        {{ imb }}
+                        <br />
+                        <label for="networkminsup">Gravity for Rules:</label
+                        ><br />
+                        <input
+                            id="networkminsup"
+                            @change="update"
+                            type="range"
+                            v-model.number="gravity"
+                            min="-50000"
+                            max="0"
+                            step="1000"
+                        />
+                        {{ gravity }}
+                        <br />
+                        <md-checkbox :change="update" v-model="showItemsets"
+                            >Show Itemsets</md-checkbox
+                        >
+                    </md-card-content>
+                </md-card>
+            </div>
+        </md-layout>
     </div>
 </template>
 <script>
@@ -10,6 +77,11 @@ import { max, min } from "d3-array";
 import { selectAll } from "d3-selection";
 
 export default {
+    watch: {
+        showItemsets: function() {
+            this.update();
+        }
+    },
     data() {
         return {
             context: Object,
@@ -28,7 +100,12 @@ export default {
                 links: []
             },
             transform: Object,
-            radius: 10
+            radius: 10,
+            minsup: 0.005,
+            kluc: 0.5,
+            imb: 0.1,
+            gravity: -10000,
+            showItemsets: false
         };
     },
     mounted() {
@@ -36,75 +113,157 @@ export default {
         this.init();
     },
     methods: {
+        update() {
+            d3.select("canvas").remove();
+            this.graph.nodes = [];
+            this.graph.links = [];
+            this.prepareData();
+            this.init();
+        },
         prepareData() {
             let rules = require("../assets/json/association_rules.json");
-            
 
             let filteredRules = rules.filter(item => {
-                return item.support > 0.005 && item.kluc > 0.5;
+                return item.support > this.minsup && item.kluc > this.kluc;
             });
 
-            console.log(filteredRules.length)
-           
-            filteredRules.forEach(element => {
-                let value = 100.0 * parseFloat(element.support);
- 
-                this.graph.nodes.push({
-                    id: "{" +element.antecedents.join(",") + "}",
-                    type: "rule",
-                    col: "#FF6B66"
-                });
-                
-                let inputs = element.antecedents;
-                inputs.forEach(input => {
-                    if (
-                        this.graph.nodes.filter(node => (
-                            node.id == input
-                        )).length == 0
-                    ) {
-                        this.graph.nodes.push({
-                            id: input,
-                            col: "green"
-                        });
-                    } 
+            if (!this.showItemsets) {
+                filteredRules.forEach(element => {
+                    let value = 1000.0 * parseFloat(element.support);
 
-                    this.graph.links.push({
-                        source: input,
-                        target: "{" +element.antecedents.join(",") + "}",
-                        col: "blue"
+                    this.graph.nodes.push({
+                        id:
+                            "{" +
+                            element.antecedents.join(",") +
+                            "}->{" +
+                            element.consequents.join(",") +
+                            "}",
+                        type: "rule",
+                        col: "#FF6B66",
+                        radius: this.radius + value
+                    });
+
+                    let inputs = element.antecedents;
+                    inputs.forEach(input => {
+                        if (
+                            this.graph.nodes.filter(node => node.id == input)
+                                .length == 0
+                        ) {
+                            this.graph.nodes.push({
+                                id: input,
+                                col: "green",
+                                radius: this.radius
+                            });
+                        }
+
+                        this.graph.links.push({
+                            source: input,
+                            target:
+                                "{" +
+                                element.antecedents.join(",") +
+                                "}->{" +
+                                element.consequents.join(",") +
+                                "}",
+                            col: "blue"
+                        });
+                    });
+
+                    let outputs = element.consequents;
+                    outputs.forEach(output => {
+                        if (
+                            this.graph.nodes.filter(node => node.id == output)
+                                .length == 0
+                        ) {
+                            this.graph.nodes.push({
+                                id: output,
+                                col: "green",
+                                val: 2,
+                                radius: this.radius
+                            });
+                        }
+
+                        this.graph.links.push({
+                            source:
+                                "{" +
+                                element.antecedents.join(",") +
+                                "}->{" +
+                                element.consequents.join(",") +
+                                "}",
+                            target: output,
+                            col: "black"
+                        });
                     });
                 });
-                
-                let outputs = element.consequents;
-                outputs.forEach(output => {
+            } else {
+                filteredRules.forEach(element => {
+                    let value = 1000.0 * parseFloat(element.support);
+                    this.graph.nodes.push({
+                        id:
+                            "{" +
+                            element.antecedents.join(",") +
+                            "}->{" +
+                            element.consequents.join(",") +
+                            "}",
+                        type: "rule",
+                        col: "#FF6B66",
+                        radius: value
+                    });
+
                     if (
-                        this.graph.nodes.filter(node => (
-                            node.id == output
-                        )).length == 0
+                        this.graph.nodes.filter(
+                            node =>
+                                node.id ==
+                                "{" + element.antecedents.join(",") + "}"
+                        ).length == 0
                     ) {
+                        let value2 = 1000.0 * parseFloat(element.as);
                         this.graph.nodes.push({
-                            id: output,
+                            id: "{" + element.antecedents.join(",") + "}",
                             col: "green",
-                            val: 2
+                            val: 2,
+                            radius: value2
                         });
                     }
-
                     this.graph.links.push({
-                        source: "{" +element.antecedents.join(",") + "}",
-                        target: output,
+                        source: "{" + element.antecedents.join(",") + "}",
+                        target:
+                            "{" +
+                            element.antecedents.join(",") +
+                            "}->{" +
+                            element.consequents.join(",") +
+                            "}",
+                        col: "blue"
+                    });
+
+                    if (
+                        this.graph.nodes.filter(
+                            node =>
+                                node.id ==
+                                "{" + element.consequents.join(",") + "}"
+                        ).length == 0
+                    ) {
+                        let value3 = 1000.0 * parseFloat(element.as);
+                        this.graph.nodes.push({
+                            id: "{" + element.consequents.join(",") + "}",
+                            col: "green",
+                            val: 2,
+                            radius: value3
+                        });
+                    }
+                    this.graph.links.push({
+                        source: "{" + element.consequents.join(",") + "}",
+                        target:
+                            "{" +
+                            element.antecedents.join(",") +
+                            "}->{" +
+                            element.consequents.join(",") +
+                            "}",
                         col: "black"
                     });
                 });
-                
-            });
-            console.log(this.graph.links)
+            }
         },
         init() {
-            var radius = 5;
-
-            var defaultNodeCol = "white",
-                highlightCol = "yellow";
-
             var height = window.innerHeight;
             var graphWidth = window.innerWidth;
 
@@ -123,12 +282,14 @@ export default {
                 .attr("class", "tooltip")
                 .style("opacity", 0);
 
+            let gravity = this.gravity;
+
             var simulation = d3
                 .forceSimulation()
                 .force("center", d3.forceCenter(graphWidth / 2, height / 2))
                 .force("x", d3.forceX(graphWidth / 2).strength(0.1))
                 .force("y", d3.forceY(height / 2).strength(0.1))
-                .force("charge", d3.forceManyBody().strength(-5000))
+                .force("charge", d3.forceManyBody().strength(gravity))
                 .force(
                     "link",
                     d3
@@ -149,7 +310,6 @@ export default {
 
             function initGraph(tempData) {
                 function zoomed() {
-                    console.log("zooming");
                     transform = d3.event.transform;
                     simulationUpdate();
                 }
@@ -181,7 +341,7 @@ export default {
                         dx = x - node.x;
                         dy = y - node.y;
 
-                        if (dx * dx + dy * dy < radius * radius) {
+                        if (dx * dx + dy * dy < node.radius * node.radius) {
                             node.x = transform.applyX(node.x);
                             node.y = transform.applyY(node.y);
 
@@ -222,7 +382,7 @@ export default {
 
                     tempData.links.forEach(function(d) {
                         context.beginPath();
-                        context.moveTo(d.source.x, d.source.y);
+                        context.moveTo(d.source.x , d.source.y );
                         context.lineTo(d.target.x, d.target.y);
                         context.strokeStyle = d.col;
                         context.stroke();
@@ -231,14 +391,13 @@ export default {
                     // Draw the nodes
                     tempData.nodes.forEach(function(d, i) {
                         context.beginPath();
-                        context.arc(d.x, d.y, radius, 0, 2 * Math.PI, true);
+                        context.arc(d.x, d.y, d.radius, 0, 2 * Math.PI, true);
                         context.fillStyle = d.col;
                         context.fill();
-                        context.fillText(d.id, d.x+10, d.y+3);
+                        context.fillText(d.id, d.x + d.radius+2, d.y + 3);
                     });
 
                     context.restore();
-                    //        transform = d3.zoomIdentity;
                 }
             }
         }
@@ -268,5 +427,8 @@ div.tooltip {
     border: 0px;
     border-radius: 8px;
     pointer-events: none;
+}
+input {
+    width: 50%;
 }
 </style>

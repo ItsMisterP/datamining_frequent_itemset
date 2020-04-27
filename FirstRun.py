@@ -65,7 +65,7 @@ print("Association Rules created")
 
 result.to_csv('out.csv', index=False)
 print("Association Rules saved as csv") 
-result.to_json("association_rules.json", orient='records')
+result[result['kluc'] >= kluc_threshold].to_json("association_rules.json", orient='records')
 
 print("Filter Rules")
 df = result
