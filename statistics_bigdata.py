@@ -132,16 +132,18 @@ resultFormatted2 = resultFormatted.replace(",]", "]")
 with io.open(r'Unique_json\UniqueValuesGESAMTohneKuerzel.json', 'w', encoding='utf-8') as outfile:
     outfile.write(resultFormatted2)
     
-print("--------------Postprocessing---------------")
-#timeJSON = timeJSON.replace(":", ":ti_")
-blockJSON = blockJSON.replace(':" ', ':"bl_') #Achtung hier wird auch ein Leerzeichen mit entfernt
-primary_typeJSON = primary_typeJSON.replace(':"', ':"pr_')
-descriptionJSON = descriptionJSON.replace(':"', ':"de_')
-locationJSON = locationJSON.replace(':"', ':"lo_')
-#yearJSON = yearJSON.replace(":", ':ye_')
-monthJSON = monthJSON.replace(':"', ':"mo_')
-weekdayJSON = weekdayJSON.replace(':"', ':"we_')
-tJSON = tJSON.replace(':"', ':"t_')
+# =============================================================================
+# print("--------------Postprocessing---------------")
+# #timeJSON = timeJSON.replace(":", ":ti_")
+# blockJSON = blockJSON.replace(':" ', ':"bl_') #Achtung hier wird auch ein Leerzeichen mit entfernt
+# primary_typeJSON = primary_typeJSON.replace(':"', ':"pr_')
+# descriptionJSON = descriptionJSON.replace(':"', ':"de_')
+# locationJSON = locationJSON.replace(':"', ':"lo_')
+# #yearJSON = yearJSON.replace(":", ':ye_')
+# monthJSON = monthJSON.replace(':"', ':"mo_')
+# weekdayJSON = weekdayJSON.replace(':"', ':"we_')
+# tJSON = tJSON.replace(':"', ':"t_')
+# =============================================================================
 
 result = timeJSON + "\r" + blockJSON + "\r" + primary_typeJSON + "\r" + descriptionJSON + "\r" + locationJSON +"\r" + yearJSON + "\r"+ monthJSON + "\r" + weekdayJSON + "\r"+ tJSON
 resultTmp = result.replace("}", "},")
