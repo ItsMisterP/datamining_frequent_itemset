@@ -43,6 +43,9 @@ print("Eingelesen", time.time() - start_time)
 df["time"] = df["time"].astype(str)
 df["year"] = df["year"].astype(str)
 df = df.drop(["Primary Type"], axis=1)
+#df = df.drop(["t"], axis=1)
+df = df.drop(["time"], axis=1)
+
 #df['IUCR'] = df['IUCR'].astype(str)
 
 #extrahiert die monate! 
