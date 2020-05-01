@@ -1,6 +1,6 @@
-Anzahl Frequent Itemsets: 4862
-Anzahl Association Rules: 1341
-Zeit: 309.550772190094
+Anzahl Frequent Itemsets: 54661
+Anzahl Association Rules: 16008
+Zeit: 375.564950466156
 Parameter: 
 show_rules: 3
 kluc_threshold: 0.35
@@ -8,4 +8,4 @@ kluc_range_max: 0.6
 kluc_range_min: 0.5
 imb_ratio_threshold: 0.25
 association_rules_threshold: 0.6
-min_sup_threshold: 0.001
+min_sup_threshold: 0.0001
