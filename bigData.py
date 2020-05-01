@@ -23,7 +23,7 @@ df = pd.read_csv("Crimes_-_2001_to_present_19042020.csv", low_memory=False)
 
 #Filtere für die passenden Spalten
 print('(2/9) filter Columns | Time previous Step: ', time.time() - start_time)
-columns = ['Date', 'Block', 'Primary Type', 'Description', 'Location Description', 'Year']
+columns = ['Date', 'Block', 'IUCR', 'Primary Type', 'Location Description', 'Year']
 df = pd.DataFrame(df, columns=columns)
 
 #Teile das Datum in eigene Spalten ein
@@ -52,15 +52,31 @@ df["time"] = df.apply((lambda x: format(datetime.strptime(x.time, '%H:%M:%S') + 
 
 print("--------------Adding Prefixes--------------- | Time in Secounds: ", time.time() - start_time)
 df["Block"] = df["Block"].replace(to_replace=r'^\s', value='bl_', regex=True) #hier ist das \s dabei, weil es mit nem Leerzeichen noch anfängt
-df["Primary Type"] = df["Primary Type"].replace(to_replace=r'^', value='pr_', regex=True)
-df["Description"] = df["Description"].replace(to_replace=r'^', value='de_', regex=True)
 df["Location Description"] = df["Location Description"].replace(to_replace=r'^', value='lo_', regex=True)
+#df["IUCR"] = df["IUCR"].replace(to_replace=r'^', value='IUCR_', regex=True)
+
+print("--------------Encode IUCR--------------- | Time in Secounds: ", time.time() - start_time)
+df['IUCR'] = df['IUCR'].astype(str)
+df_iucr['IUCR'] = df_iucr['IUCR'].astype(str)
+df_iucr = pd.read_csv(r'IUCR\IUCR_CODES.csv', low_memory=False)
+df_iucr["IUCR_ENCODED"] = df_iucr['PRIMARY DESCRIPTION'] + df_iucr['SECONDARY DESCRIPTION']
+df_iucr = df_iucr.drop(columns=['PRIMARY DESCRIPTION', 'SECONDARY DESCRIPTION','INDEX CODE'])
+df_iucr["IUCR"] = df_iucr["IUCR"].replace(to_replace=r'^0', value='', regex=True)
+df["IUCR"] = df["IUCR"].replace(to_replace=r'^0', value='', regex=True) 
+
+
+
+def encodeIUCR(x):
+    test = df_iucr.loc[df_iucr["IUCR"] == x]
+    return test.iloc[0]["IUCR_ENCODED"]
+
+
+df["IUCR"] = df["IUCR"].apply(lambda x: encodeIUCR(x))
+
+
+#df.loc[df["IUCR"] == "5013"]
 
 #Entferne Ähnlichkeiten
-print("--------------Remove Similarities------------- | Time in Secounds: ", time.time() - start_time)
-#df["Primary Type"] = df["Primary Type"].replace("pr_CRIM SEXUAL ASSAULT", "pr_CRIMINAL SEXUAL ASSAULT") #geprüft3004
-#df["Primary Type"] = df["Primary Type"].replace(["pr_NON - CRIMINAL", "pr_NON-CRIMINAL (SUBJECT SPECIFIED)" ], "pr_NON-CRIMINAL") #geprüft3004
-
 #Stand 3004 von 213 auf 144 bei Location Description
 print("--------------Remove Similarities------------- | Time in Secounds: ", time.time() - start_time)
 df["Location Description"] = df["Location Description"].replace(to_replace=r'^lo_AIRPORT.+', value='lo_AIRPORT', regex=True) #geprüft3004 von 213 auf 201 
@@ -101,118 +117,6 @@ df["Location Description"] = df["Location Description"].replace("lo_VACANT LOT L
 df["Location Description"] = df["Location Description"].replace("lo_CLEANERS LAUNDROMAT", "lo_CLEANING STORE") 
 print("--------------Location Description Done------------- | Time in Secounds: ", time.time() - start_time)
 
-
-
-df["Description"] = df["Description"].replace(to_replace=r'^de_AGG\s', value='de_AGGRAVATED ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_AGG.\s', value='de_AGGRAVATED ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_AGG:\s', value='de_AGGRAVATED ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_AGG:\s', value='de_AGGRAVATED ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_AGGRAVATED\s-', value='de_AGGRAVATED', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_AGGRAVATED:', value='de_AGGRAVATED ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'P.O.', value='POLICE OFFICER', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'PO:', value='POLICE OFFICER ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'\s*/\s*', value=' ', regex=True)  
-df["Description"] = df["Description"].replace(["de_ABUSE NEGLECT - CARE FACILITY","de_ABUSE NEGLECT: CARE FACILITY"], "de_ABUSE NEGLECT CARE FACILITY") 
-
-df["Description"] = df["Description"].replace(to_replace=r'-', value=' ', regex=True)  
-df["Description"] = df["Description"].replace(to_replace=r':', value=' ', regex=True)  
-df["Description"] = df["Description"].replace(to_replace=r'\.', value=' ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'\,', value=' ', regex=True)   
-df["Description"] = df["Description"].replace(to_replace=r'\s+', value=' ', regex=True)
-df["Description"] = df["Description"].replace(to_replace=r'\sOF\s', value=' ', regex=True)  
-
-df["Description"] = df["Description"].replace(to_replace=r'^de_MANU DEL\s', value='de_MANUFACTURE DELIVER ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_MANU DELIVER\s', value='de_MANUFACTURE DELIVER ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_POSS\s', value='de_POSSESSION ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_POS\s', value='de_POSSESSION ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_POSSESS\s', value='de_POSSESSION ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_UNLAWFUL POSS\s', value='de_UNLAWFUL POSSESSION ', regex=True) 
-df["Description"] = df["Description"].replace("de_AGGRAVATED FINANCIAL ID THEFT", "de_AGGRAVATED FINANCIAL IDENTITY THEFT") 
-df["Description"] = df["Description"].replace(to_replace=r'\sFIST\s', value=' FISTS ', regex=True) 
-df["Description"] = df["Description"].replace(["de_AGGRAVATED KNIFE CUT INSTR","de_AGGRAVATED KNIFE CUTTING INSTR"], "de_AGGRAVATED KNIFE CUTTING INSTRUMENT") 
-df["Description"] = df["Description"].replace(to_replace=r'\sDANG\s', value=' DANGEROUS ', regex=True)
-df["Description"] = df["Description"].replace(to_replace=r'\sWEAP\s', value=' WEAPON ', regex=True)  
-df["Description"] = df["Description"].replace(to_replace=r'\sCUT\sINSTR\s', value=' CUTTING INSTRUMENT ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'\sINJ\s', value=' INJURY ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'\sPO\s', value=' POLICE OFFICER ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_ATT\s', value='de_ATTEMPT ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'\sAGG\s', value=' AGGRAVATED ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_CRIM\s', value='de_CRIMINAL ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'\sCRIM\s', value=' CRIMINAL ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_DEL\s', value='de_DELIVER ', regex=True) 
-df["Description"] = df["Description"].replace("de_FINAN EXPOLICE OFFICERTELDERLY DISABLED", "de_FINANCIAL EXPOLICE OFFICERTATION OF AN ELDERLY OR DISABLED PERSON")
-df["Description"] = df["Description"].replace(to_replace=r'\sID\s', value=' IDENTITY ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'\sDELIVERIVER\s', value=' DELIVER ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'\sDRUG\s', value=' DRUGS ', regex=True) 
-df["Description"] = df["Description"].replace("de_NONCONSENSUAL DISSEMINATION PRIVATE SEXUAL IMAGES", "de_NONCONSENSUAL DISSEMINATION OF PRIVATE SEXUAL IMAGES")
-df["Description"] = df["Description"].replace("de_SALE DIST OBSCENE MAT TO MINOR", "de_SALE DISTRIBUTE OBSCENE MATERIAL TO MINOR")
-df["Description"] = df["Description"].replace("de_SALE TOBACCO POLICE OFFICERUCTS TO MINOR", "de_SALE OF TOBACCO POLICE OFFICERUCTS TO MINOR")
-df["Description"] = df["Description"].replace(to_replace=r'\sPOSSESSIONESSION\s', value='POSSESSION ', regex=True) 
-df["Description"] = df["Description"].replace("de_FINANCIAL IDENTITY THEFT $300 &UNDER", "de_FINANCIAL IDENTITY THEFT $300 AND UNDER")
-df["Description"] = df["Description"].replace("de_FINANCIAL IDENTITY THEFT OVER $ 300", "de_FINANCIAL IDENTITY THEFT OVER $300")
-df["Description"] = df["Description"].replace(["de_MANUFACTURE DELIVER HEROIN (BLACK TAR)", "de_MANUFACTURE DELIVER HEROIN (TAN BROWN TAR)", "de_MANUFACTURE DELIVER HEROIN (WHITE)", "de_MANUFACTURE DELIVER HEROIN(BLACK TAR)", "de_MANUFACTURE DELIVER HEROIN(BRN TAN)"], "de_MANUFACTURE DELIVER HEROIN")
-df["Description"] = df["Description"].replace("de_NON CONSENSUAL DISSEMINATION PRIVATE SEXUAL IMAGES", "de_NON CONSENSUAL DISSEMINATION OF PRIVATE SEXUAL IMAGES")
-df["Description"] = df["Description"].replace(to_replace=r'\sHEROIN(BLACK\sTAR)', value='HEROIN', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'\sHEROIN(BRN\sTAN)', value='HEROIN', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'\sHEROIN(WHITE)', value='HEROIN', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'\sHEROIN\s(BLACK\sTAR)', value='HEROIN', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'\sHEROIN\s(BRN\sTAN)', value='HEROIN', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'\sHEROIN\s(WHITE)', value='HEROIN', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'\sHEROIN\s(TAN\sBROWN\sTAR)', value='HEROIN', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_SALE DEL\s', value='de_SALE DELIVER ', regex=True) 
-df["Description"] = df["Description"].replace("de_SELL GIVE DEL LIQUOR TO MINOR", "de_SELL GIVE DELIVER LIQUOR TO MINOR")
-df["Description"] = df["Description"].replace(["de_SEX OFFENDER FAIL REG NEW ADD", "de_SEX OFFENDER FAIL TO REGISTER"], "de_SEX OFFENDER FAIL TO REGISTER NEW ADDRESS")
-df["Description"] = df["Description"].replace(to_replace=r'^de_SOLICIT\s', value='de_SOLICITING ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'PUBLICWAY', value='PUBLIC WAY', regex=True) 
-df["Description"] = df["Description"].replace("de_THEFT BY LESSEE MOTOR VEH", "de_THEFT BY LESSEE MOTOR VEHICLE")
-df["Description"] = df["Description"].replace("de_THEFT BY LESSEE NON VEH", "de_THEFT BY LESSEE NON MOTOR VEHICLE")
-df["Description"] = df["Description"].replace("de_THEFT OF LOST MISLAID POLICE OFFICER", "de_THEFT OF LOST MISLAID POLICE OFFICERERTY")
-df["Description"] = df["Description"].replace("de_THEFT RECOVERY TRUCK BUS MHOME", "de_THEFT RECOVERY TRUCK BUS MOBILE HOME")
-df["Description"] = df["Description"].replace("de_UNLAWFUL POSSESSION HANDGUN", "de_UNLAWFUL POSSESSION OF HANDGUN")
-df["Description"] = df["Description"].replace("de_UNLAWFUL USE SALE AIR RIFLE", "de_UNLAWFUL USE SALE OF AIR RIFLE")
-df["Description"] = df["Description"].replace(to_replace=r'\sREG\s', value=' REGISTRATION ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_VIO\s', value='de_VIOLATION ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_VIOL\s', value='de_VIOLATION ', regex=True) 
-df["Description"] = df["Description"].replace(to_replace=r'^de_VIOLATE\s', value='de_VIOLATION ', regex=True) 
-df["Description"] = df["Description"].replace(["de_VIOLENT OFFENDER ANNUAL REGISTRATION", "de_VIOLENT OFFENDER DUTY TO REGISTER"], "de_VIOLENT OFFENDER FAIL TO REGISTER NEW ADDRESS")
-df["Description"] = df["Description"].replace("de_AGGRAVATED CRIMINAL SEX ABUSE FAM MEMBER", "de_AGGRAVATED CRIMINAL SEXUAL ABUSE BY FAMILY MEMBER")
-df["Description"] = df["Description"].replace(["de_AGGRAVATED DOMESTIC BATTERY KNIFE CUTTING INST", "de_AGGRAVATED DOMESTIC BATTERY KNIFE CUTTING INSTRUMENT"], "de_AGGRAVATED DOMESTIC BATTERY KNIFE CUTTING INSTSTRUMENT")
-df["Description"] = df["Description"].replace("de_AGGRAVATED POLICE OFFICER HANDS ETC SERIOUS INJ", "de_AGGRAVATED POLICE OFFICER HANDS FISTS FEET SERIOUS INJURY")
-df["Description"] = df["Description"].replace("de_AGGRAVATED POLICE OFFICER KNIFE CUT INSTR", "de_AGGRAVATED POLICE OFFICER KNIFE CUTTING INSTRUMENT")
-df["Description"] = df["Description"].replace("de_AGGRAVATED POLICE OFFICER OTHER DANGEROUS WEAP", "de_AGGRAVATED POLICE OFFICER OTHER DANGEROUS WEAPON")
-df["Description"] = df["Description"].replace(["de_AGGRAVATED POLICE OFFICERECTED EMPOLICE OFFICEREE HANDGUN", "de_AGGRAVATED POLICE OFFICEREMP HANDGUN"], "de_AGGRAVATED POLICE OFFICER HANDGUN")
-df["Description"] = df["Description"].replace(["de_AGGRAVATED POLICE OFFICERECTED EMPOLICE OFFICEREE HANDS FISTS FEET SERIOUS INJURY", "de_AGGRAVATED POLICE OFFICEREMP HANDS SERIOUS INJ"], "de_AGGRAVATED POLICE OFFICER HANDS FISTS FEET SERIOUS INJURY")
-df["Description"] = df["Description"].replace(["de_AGGRAVATED POLICE OFFICERECTED EMPOLICE OFFICEREE KNIFE CUTTING INSTRUMENT", "de_AGGRAVATED POLICE OFFICEREMP KNIFE CUTTING INST"], "de_AGGRAVATED POLICE OFFICER KNIFE CUTTING INSTRUMENT")
-df["Description"] = df["Description"].replace(["de_AGGRAVATED POLICE OFFICERECTED EMPOLICE OFFICEREE OTHER DANGEROUS WEAPON", "de_AGGRAVATED POLICE OFFICEREMP OTHER DANGEROUS WEAPON"], "de_AGGRAVATED POLICE OFFICER OTHER DANGEROUS WEAPON")
-df["Description"] = df["Description"].replace(["de_AGGRAVATED POLICE OFFICERECTED EMPOLICE OFFICEREE OTHER FIREARM", "de_AGGRAVATED POLICE OFFICEREMP OTHER DANGEROUS WEAPON"], "de_AGGRAVATED POLICE OFFICEREMP OTHER FIREARM")
-df["Description"] = df["Description"].replace("de_AGGRAVATED SEX ASSLT CHILD FAM MBR", "de_AGGRAVATED SEXUAL ASSAULT CHILD BY FAMILY MEMBER")
-df["Description"] = df["Description"].replace("de_ATTEMPT STRONGARM NO WEAPON", "de_ATTEMPT STRONG ARM NO WEAPON")
-df["Description"] = df["Description"].replace("de_CONTRIBUTE TO THE CRIMINAL DELINQUENCY CHILD", "de_CONTRIBUTE TO THE DELINQUENCY CHILD")
-df["Description"] = df["Description"].replace("de_CRIMINAL SEX ABUSE BY FAM MEMBER", "de_CRIMINAL SEXUAL ABUSE BY FAMILY MEMBER")
-df["Description"] = df["Description"].replace("de_CYCLE SCOOTER BIKE W VIN", "de_CYCLE SCOOTER BIKE WITH VIN")
-df["Description"] = df["Description"].replace("de_DEFACE IDENT MARKS FIREARM", "de_DEFACE IDENTIFICATION MARKS FIREARM")
-df["Description"] = df["Description"].replace("de_FINAN EXPOLICE OFFICERT ELDERLY DISABLED", "de_FINANCIAL EXPOLICE OFFICERTATION AN ELDERLY OR DISABLED PERSON")
-df["Description"] = df["Description"].replace("de_INDECENT SOLICITATION A CHILD", "de_INDECENT SOLICITATION CHILD")
-df["Description"] = df["Description"].replace("de_KEEP PLACE JUV POLICE OFFICERTITUTION", "de_KEEP PLACE POLICE OFFICERTITUTION")
-df["Description"] = df["Description"].replace("de_MANUFACTURE DELIVER CANNABIS 10GM OR LESS", "de_MANUFACTURE DELIVER CANNABIS 10 GRAMS OR LESS")
-df["Description"] = df["Description"].replace("de_MANUFACTURE DELIVER CANNABIS OVER 10 GMS", "de_MANUFACTURE DELIVER CANNABIS OVER 10 GRAMS")
-df["Description"] = df["Description"].replace("de_POLICE OFFICERECTED EMPOLICE OFFICEREE HANDS NO MIN INJURY", "de_POLICE OFFICERECTED EMPOLICE OFFICEREE HANDS FISTS FEET NO MINOR INJURY")
-df["Description"] = df["Description"].replace("de_POLICE OFFICEREMP HANDS NO MIN INJURY", "de_POLICE OFFICERECTED EMPOLICE OFFICEREE HANDS FISTS FEET NO MINOR INJURY")
-df["Description"] = df["Description"].replace("de_POSSESSION BARBITUATES", "de_POSSESSION BARBITURATES")
-df["Description"] = df["Description"].replace("de_POSSESSION CANNABIS 30GMS OR LESS", "de_POSSESSION CANNABIS 30 GRAMS OR LESS")
-df["Description"] = df["Description"].replace("de_POSSESSION CANNABIS MORE THAN 30GMS", "de_POSSESSION CANNABIS MORE THAN 30 GRAMS")
-df["Description"] = df["Description"].replace("de_POSSESSION FIREARM AMMO NO FOID CARD", "de_POSSESSION FIREARM AMMUNITION NO FOID CARD")
-df["Description"] = df["Description"].replace(to_replace=r'\sMETHAMPHETAMINE\s', value=' METHAMPHETAMINES ', regex=True) 
-df["Description"] = df["Description"].replace("de_SEX ASSLT CHILD BY FAM MBR", "de_SEXUAL ASSAULT CHILD BY FAMILY MEMBER")
-df["Description"] = df["Description"].replace("de_SEX RELATION IN FAMILY", "de_SEXUAL RELATIONS IN FAMILY")
-df["Description"] = df["Description"].replace("de_SOLICITING FOR A POLICE OFFICERTITUTE", "de_SOLICITING FOR POLICE OFFICERTITUTE")
-df["Description"] = df["Description"].replace("de_STOLEN POLICE OFFICER BUY RECEIVE POS", "de_STOLEN POLICE OFFICERERTY BUY RECEIVE POSSESS")
-df["Description"] = df["Description"].replace("de_STRONGARM NO WEAPON", "de_STRONG ARM NO WEAPON")
-df["Description"] = df["Description"].replace("de_THEFT LOST MISLAID POLICE OFFICERERTY", "de_THEFT LOST MISLAID POLICE OFFICER")
-df["Description"] = df["Description"].replace("de_TO STATE SUPOLICE OFFICERTED POLICE OFFICERERTY", "de_TO STATE SUP POLICE OFFICER")
-df["Description"] = df["Description"].replace("de_VIOLATION BAIL BOND DOMESTIC VIOLENCE", "de_VIOLATION BAIL BOND DOM VIOLENCE")
-print("--------------Description Done------------- | Time in Secounds: ", time.time() - start_time)
-
 #von 4208 auf -3260 mit upper allein
 df["Block"] = df["Block"].str.upper()
 df["Block"] = df["Block"].replace(to_replace=r'BL_\s.', value='', regex=True) 
@@ -251,11 +155,9 @@ df["Block"] = df["Block"].replace(to_replace=r'\.', value='', regex=True)
 print("--------------Block Done------------- | Time in Secounds: ", time.time() - start_time)
 
 
-
-
-columns = ['time', 'Block', 'Primary Type', 'Description', 'Location Description', 'year', 'month', 'weekday', 't']
+columns = ['time', 'Block', 'IUCR', 'Location Description', 'year', 'month', 'weekday', 't']
 df = pd.DataFrame(df, columns=columns)
-df.dropna()
+df = df.dropna()
 print("(8/9) start preparing for printing | Time in Secounds: ", time.time() - start_time)
 print(df)
 

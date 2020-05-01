@@ -94,18 +94,18 @@ def association_rules(df, metric="confidence",
              sAC, sA, sC) - sA*sC,
         "conviction": lambda sAC, sA, sC: conviction_helper(sAC, sA, sC),
         "kluc": lambda _, sA, sC: (1/2)*( (sAC/sA) + (sAC/sC) ), 
-        "imb ratio": lambda sAC, sA, sC: np.absolute(sA - sC)/(sA+sC - sA*sC)
+        "imbratio": lambda sAC, sA, sC: np.absolute(sA - sC)/(sA+sC - sA*sC)
         }
     '''
     columns_ordered = ["antecedent support", "consequent support",
                        "support",
                        "confidence", "lift",
-                       "leverage", "conviction", "kluc", "imb ratio"]
+                       "leverage", "conviction", "kluc", "imbratio"]
     '''    
     
     columns_ordered = [ "as", "cs",
                        "confidence", "support",
-                        "kluc", "imb ratio"]
+                        "kluc", "imbratio"]
 
     # check for metric compliance
     if support_only:
