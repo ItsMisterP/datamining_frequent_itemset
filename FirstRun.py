@@ -27,7 +27,7 @@ import statistics_bigdata as statistics
 
 #Variables
 show_rules = 3
-kluc_threshold = 0.55
+kluc_threshold = 0.35
 kluc_range_max = 0.6
 kluc_range_min = 0.5
 imb_ratio_threshold = 0.25
@@ -42,6 +42,7 @@ print("Eingelesen", time.time() - start_time)
 
 df["time"] = df["time"].astype(str)
 df["year"] = df["year"].astype(str)
+df = df.drop(["Primary Type"], axis=1)
 #df['IUCR'] = df['IUCR'].astype(str)
 
 #extrahiert die monate! 
