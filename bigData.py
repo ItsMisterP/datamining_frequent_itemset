@@ -59,7 +59,7 @@ print("--------------Encode IUCR--------------- | Time in Secounds: ", time.time
 df['IUCR'] = df['IUCR'].astype(str)
 df_iucr['IUCR'] = df_iucr['IUCR'].astype(str)
 df_iucr = pd.read_csv(r'IUCR\IUCR_CODES.csv', low_memory=False)
-df_iucr["IUCR_ENCODED"] = df_iucr['PRIMARY DESCRIPTION'] + df_iucr['SECONDARY DESCRIPTION']
+df_iucr["IUCR_ENCODED"] = df_iucr['PRIMARY DESCRIPTION'] + " " + df_iucr['SECONDARY DESCRIPTION']
 df_iucr = df_iucr.drop(columns=['PRIMARY DESCRIPTION', 'SECONDARY DESCRIPTION','INDEX CODE'])
 df_iucr["IUCR"] = df_iucr["IUCR"].replace(to_replace=r'^0', value='', regex=True)
 df["IUCR"] = df["IUCR"].replace(to_replace=r'^0', value='', regex=True) 

@@ -32,7 +32,7 @@ kluc_range_max = 0.6
 kluc_range_min = 0.5
 imb_ratio_threshold = 0.25
 association_rules_threshold = 0.6
-min_sup_threshold = 0.001
+min_sup_threshold = 0.0001
 
 start_time = time.time()
 print("Start", time.time() - start_time)
@@ -45,6 +45,8 @@ df["year"] = df["year"].astype(str)
 df = df.drop(["Primary Type"], axis=1)
 #df = df.drop(["t"], axis=1)
 df = df.drop(["time"], axis=1)
+df = df.drop(["year"], axis=1)
+df["IUCR"] = df["IUCR"].replace(to_replace=r'\,', value=' ', regex=True)   
 
 #df['IUCR'] = df['IUCR'].astype(str)
 
