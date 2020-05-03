@@ -1,10 +1,14 @@
 <template>
     <div>
-        <md-layout>
+        <div class="md-layout">
             <div
                 class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100"
             >
-                <div id="graphDiv"></div>
+                <svg id="network"></svg>
+            </div>
+            <div
+                class="md-layout-item md-medium-size-100 md-xsmall-size-50 md-size-50"
+            >
                 <md-card>
                     <md-card-header data-background-color="gray">
                         <h4 class="title">Filter</h4>
@@ -17,28 +21,42 @@
                             @change="update"
                             type="range"
                             v-model.number="minsup"
-                            min="0"
+                            min="0.001"
                             max="0.3"
                             step="0.001"
                         />
                         {{ minsup }}
                         <br />
-                        <label for="networkminsup">Kluc for Rules:</label><br />
+                        <label for="klucmin">Minimum Kluc for Rules:</label
+                        ><br />
                         <input
-                            id="networkminsup"
+                            id="klucmin"
                             @change="update"
                             type="range"
-                            v-model.number="kluc"
-                            min="0"
+                            v-model.number="klucMin"
+                            min="0.0"
                             max="1"
                             step="0.01"
                         />
-                        {{ kluc }}
+                        {{ klucMin }}
                         <br />
-                        <label for="networkminsup">Imb-Ratio for Rules:</label
+                        <label for="klucmax">Maximum Kluc for Rules:</label
                         ><br />
                         <input
-                            id="networkminsup"
+                            id="klucmax"
+                            @change="update"
+                            type="range"
+                            v-model.number="klucMax"
+                            min="0.0"
+                            max="1"
+                            step="0.01"
+                        />
+                        {{ klucMax }}
+                        <br />
+                        <label for="imbratio">Imb-Ratio for Rules:</label>
+                        <br />
+                        <input
+                            id="imbratio"
                             @change="update"
                             type="range"
                             v-model.number="imb"
@@ -67,7 +85,74 @@
                     </md-card-content>
                 </md-card>
             </div>
-        </md-layout>
+            <div
+                class="md-layout-item md-medium-size-100 md-xsmall-size-50 md-size-50"
+            >
+                <md-card>
+                    <md-card-header data-background-color="gray">
+                        <h4 class="title">Association Rules</h4>
+                    </md-card-header>
+                    <md-card-content>
+                        <md-table
+                            v-model="tableRules"
+                            md-sort="support"
+                            md-sort-order="desc"
+                            md-card
+                            md-fixed-header
+                        >
+                            <md-table-empty-state
+                                md-label="No Rules found"
+                                :md-description="`No rules for the parameters`"
+                            >
+                            </md-table-empty-state>
+
+                            <md-table-row
+                                slot="md-table-row"
+                                slot-scope="{ item }"
+                            >
+                                <md-table-cell
+                                    md-label="Support"
+                                    md-sort-by="support"
+                                    md-numeric
+                                >
+                                    {{ item.support }}
+                                </md-table-cell>
+                                <md-table-cell
+                                    md-label="Antecedents"
+                                    md-sort-by="antecedents"
+                                >
+                                    {{ item.antecedents }}
+                                </md-table-cell>
+                                <md-table-cell
+                                    md-label="Consequents"
+                                    md-sort-by="consequents"
+                                >
+                                    {{ item.consequents }}
+                                </md-table-cell>
+                                <md-table-cell
+                                    md-label="Confidence"
+                                    md-sort-by="confidence"
+                                >
+                                    {{ item.confidence }}
+                                </md-table-cell>
+                                <md-table-cell
+                                    md-label="Kluc"
+                                    md-sort-by="kluc"
+                                >
+                                    {{ item.kluc }}
+                                </md-table-cell>
+                                <md-table-cell
+                                    md-label="Imbalance Ratio"
+                                    md-sort-by="imbratio"
+                                >
+                                    {{ item.imbratio }}
+                                </md-table-cell>
+                            </md-table-row>
+                        </md-table>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </div>
     </div>
 </template>
 <script>
@@ -75,6 +160,7 @@ import * as d3 from "d3";
 import { scaleLinear, scaleBand } from "d3-scale";
 import { max, min } from "d3-array";
 import { selectAll } from "d3-selection";
+import { globalStore } from "../main";
 
 export default {
     watch: {
@@ -84,52 +170,58 @@ export default {
     },
     data() {
         return {
-            context: Object,
-            width: 500,
-            height: 500,
-            items: [],
-            frame: {
-                canvas: Object,
-                context: Object,
-                width: 0,
-                height: 0
-            },
-            simulation: Object,
             graph: {
                 nodes: [],
                 links: []
             },
-            transform: Object,
             radius: 10,
             minsup: 0.005,
-            kluc: 0.5,
+            klucMin: 0.0,
+            klucMax: 0.4,
             imb: 0.1,
             gravity: -10000,
-            showItemsets: false
+            showItemsets: false,
+            filteredRules: [],
+            tableRules: [],
+            graphCanvas: Object
         };
     },
     mounted() {
-        this.prepareData();
-        this.init();
+        this.fetchData();
     },
     methods: {
+        fetchData() {
+            let graph = this;
+            d3.json(this.getURL("json/association_rules.json")).then(function(
+                data
+            ) {
+                graph.rules = data;
+                graph.prepareData();
+                graph.init();
+            });
+        },
         update() {
-            d3.select("canvas").remove();
+            d3.select(".everything").remove();
             this.graph.nodes = [];
             this.graph.links = [];
             this.prepareData();
             this.init();
         },
         prepareData() {
-            let rules = require("../assets/json/association_rules.json");
-
-            let filteredRules = rules.filter(item => {
-                return item.support > this.minsup && item.kluc > this.kluc;
+            let rules = this.rules;
+            this.filteredRules = rules.filter(item => {
+                return (
+                    item.support > this.minsup &&
+                    item.kluc >= this.klucMin &&
+                    item.kluc < this.klucMax &&
+                    item.imbratio >= this.imb
+                );
             });
+            this.tableRules = this.filteredRules;
 
             if (!this.showItemsets) {
-                filteredRules.forEach(element => {
-                    let value = 1000.0 * parseFloat(element.support);
+                this.filteredRules.forEach(element => {
+                    let value = 1;
 
                     this.graph.nodes.push({
                         id:
@@ -140,7 +232,8 @@ export default {
                             "}",
                         type: "rule",
                         col: "#FF6B66",
-                        radius: this.radius + value
+                        radius: this.radius + value,
+                        support: element.support
                     });
 
                     let inputs = element.antecedents;
@@ -195,7 +288,7 @@ export default {
                     });
                 });
             } else {
-                filteredRules.forEach(element => {
+                this.filteredRules.forEach(element => {
                     let value = 1000.0 * parseFloat(element.support);
                     this.graph.nodes.push({
                         id:
@@ -264,142 +357,157 @@ export default {
             }
         },
         init() {
-            var height = window.innerHeight;
-            var graphWidth = window.innerWidth;
+            let width = window.innerWidth;
+            let height = window.innerHeight;
 
-            var graphCanvas = d3
-                .select("#graphDiv")
-                .append("canvas")
-                .attr("width", graphWidth + "px")
-                .attr("height", height + "px")
-                .node();
+            var svg = d3
+                .select("svg")
+                .attr("viewBox", "0 0 " + width + " " + height);
 
-            var context = graphCanvas.getContext("2d");
+            var radius = 15;
 
-            var div = d3
-                .select("body")
-                .append("div")
-                .attr("class", "tooltip")
-                .style("opacity", 0);
+            var simulation = d3.forceSimulation().nodes(this.graph.nodes);
+            var link_force = d3.forceLink(this.graph.links).id(function(d) {
+                return d.id;
+            });
+            var charge_force = d3.forceManyBody().strength(this.gravity);
+            var center_force = d3.forceCenter(width / 2, height / 2);
 
-            let gravity = this.gravity;
+            simulation
+                .force("charge_force", charge_force)
+                .force("center_force", center_force)
+                .force("links", link_force);
 
-            var simulation = d3
-                .forceSimulation()
-                .force("center", d3.forceCenter(graphWidth / 2, height / 2))
-                .force("x", d3.forceX(graphWidth / 2).strength(0.1))
-                .force("y", d3.forceY(height / 2).strength(0.1))
-                .force("charge", d3.forceManyBody().strength(gravity))
-                .force(
-                    "link",
-                    d3
-                        .forceLink()
-                        .strength(1)
-                        .id(function(d) {
-                            return d.id;
-                        })
-                )
-                .alphaTarget(0)
-                .alphaDecay(0.05);
+            //add tick instructions:
+            simulation.on("tick", tickActions);
 
-            var transform = d3.zoomIdentity;
+            var g = svg.append("g").attr("class", "everything");
 
-            let data = this.graph;
+            //draw lines for the links
+            var link = g
+                .append("g")
+                .attr("class", "links")
+                .selectAll("line")
+                .data(this.graph.links)
+                .enter()
+                .append("line")
+                .attr("stroke-width", 2)
+                .style("stroke", function(d) {
+                    return d.col;
+                });
 
-            initGraph(data);
+            //draw circles for the nodes
+            var node = g
+                .append("g")
+                .attr("class", "nodes")
+                .selectAll("circle")
+                .data(this.graph.nodes)
+                .enter()
+                .append("g")
+                .classed("circles", true);
 
-            function initGraph(tempData) {
-                function zoomed() {
-                    transform = d3.event.transform;
-                    simulationUpdate();
-                }
+            let circles = node
+                .append("circle")
+                .attr("r", radius)
+                .attr("fill", function(d) {
+                    return d.col;
+                })
+                .on("click", this.nodeclicked);
 
-                d3.select(graphCanvas)
-                    .call(
-                        d3
-                            .drag()
-                            .subject(dragsubject)
-                            .on("start", dragstarted)
-                            .on("drag", dragged)
-                            .on("end", dragended)
-                    )
-                    .call(
-                        d3
-                            .zoom()
-                            .scaleExtent([1 / 10, 8])
-                            .on("zoom", zoomed)
-                    );
+            node.append("text")
+                .attr("dx", radius + 5)
+                .attr("dy", ".35em")
+                .attr("font-weight", "bold")
+                .attr("fill", function(d) {
+                    return d.col;
+                })
+                .text(function(d) {
+                    return d.id;
+                })
+                .style("pointer-events", "none");
 
-                function dragsubject() {
-                    var i,
-                        x = transform.invertX(d3.event.x),
-                        y = transform.invertY(d3.event.y),
-                        dx,
-                        dy;
-                    for (i = tempData.nodes.length - 1; i >= 0; --i) {
-                        let node = tempData.nodes[i];
-                        dx = x - node.x;
-                        dy = y - node.y;
+            //add drag capabilities
+            var drag_handler = d3
+                .drag()
+                .on("start", drag_start)
+                .on("drag", drag_drag)
+                .on("end", drag_end);
+            drag_handler(node);
 
-                        if (dx * dx + dy * dy < node.radius * node.radius) {
-                            node.x = transform.applyX(node.x);
-                            node.y = transform.applyY(node.y);
+            d3.selectAll("circle")
+                .append("svg:title")
+                .text(function(d) {
+                    return "Item: " + d.id + "\n" + "support: " + d.support;
+                });
 
-                            return node;
-                        }
-                    }
-                }
+            //add zoom capabilities
+            var zoom_handler = d3.zoom().on("zoom", zoom_actions);
+            zoom_handler(svg);
 
-                function dragstarted() {
-                    if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-                    d3.event.subject.fx = transform.invertX(d3.event.x);
-                    d3.event.subject.fy = transform.invertY(d3.event.y);
-                }
+            function tickActions() {
+                //update circle positions each tick of the simulation
+                node.attr("transform", function(d) {
+                    return "translate(" + d.x + "," + d.y + ")";
+                });
 
-                function dragged() {
-                    d3.event.subject.fx = transform.invertX(d3.event.x);
-                    d3.event.subject.fy = transform.invertY(d3.event.y);
-                }
-
-                function dragended() {
-                    if (!d3.event.active) simulation.alphaTarget(0);
-                    d3.event.subject.fx = null;
-                    d3.event.subject.fy = null;
-                }
-
-                simulation.nodes(tempData.nodes).on("tick", simulationUpdate);
-
-                simulation.force("link").links(tempData.links);
-
-                function render() {}
-
-                function simulationUpdate() {
-                    context.save();
-
-                    context.clearRect(0, 0, graphWidth, height);
-                    context.translate(transform.x, transform.y);
-                    context.scale(transform.k, transform.k);
-
-                    tempData.links.forEach(function(d) {
-                        context.beginPath();
-                        context.moveTo(d.source.x , d.source.y );
-                        context.lineTo(d.target.x, d.target.y);
-                        context.strokeStyle = d.col;
-                        context.stroke();
+                //update link positions
+                link.attr("x1", function(d) {
+                    return d.source.x;
+                })
+                    .attr("y1", function(d) {
+                        return d.source.y;
+                    })
+                    .attr("x2", function(d) {
+                        return d.target.x;
+                    })
+                    .attr("y2", function(d) {
+                        return d.target.y;
                     });
-
-                    // Draw the nodes
-                    tempData.nodes.forEach(function(d, i) {
-                        context.beginPath();
-                        context.arc(d.x, d.y, d.radius, 0, 2 * Math.PI, true);
-                        context.fillStyle = d.col;
-                        context.fill();
-                        context.fillText(d.id, d.x + d.radius+2, d.y + 3);
-                    });
-
-                    context.restore();
-                }
             }
+            //Drag functions
+            //d is the node
+            function drag_start(d) {
+                if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+
+            //make sure you can't drag the circle outside the box
+            function drag_drag(d) {
+                d.fx = d3.event.x;
+                d.fy = d3.event.y;
+            }
+
+            function drag_end(d) {
+                if (!d3.event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+
+            //Zoom functions
+            function zoom_actions() {
+                g.attr("transform", d3.event.transform);
+            }
+        },
+        getURL: function(url) {
+            return globalStore.prefix + url;
+        },
+        nodeclicked(d) {
+            this.tableRules = this.filteredRules;
+
+            this.tableRules = this.filteredRules.filter(item => {
+                return (
+                    item.antecedents.includes(d.id) ||
+                    item.consequents.includes(d.id) ||
+                    (
+                        "{" +
+                        item.antecedents.join(",") +
+                        "}->{" +
+                        item.consequents.join(",") +
+                        "}"
+                    ).includes(d.id)
+                );
+            });
         }
     }
 };

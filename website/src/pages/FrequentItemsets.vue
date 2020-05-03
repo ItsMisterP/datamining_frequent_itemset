@@ -12,30 +12,47 @@
                         </p>
                     </md-card-header>
                     <md-card-content>
-                        
                         <div class="md-layout">
-                            <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50">
+                            <div
+                                class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"
+                            >
                                 <md-field>
                                     <label>Number of entries</label>
-                                    <md-input @input="searchOnTable" v-model="filter.numberOfEntries"  type="number"></md-input>
+                                    <md-input
+                                        @input="searchOnTable"
+                                        v-model="filter.numberOfEntries"
+                                        type="number"
+                                    ></md-input>
                                 </md-field>
                             </div>
 
-                            <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50">
+                            <div
+                                class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"
+                            >
                                 <md-field>
                                     <label>min-support</label>
-                                    <md-input @input="searchOnTable" v-model="filter.minsup" type="number"></md-input>
+                                    <md-input
+                                        @input="searchOnTable"
+                                        v-model="filter.minsup"
+                                        type="number"
+                                    ></md-input>
                                 </md-field>
                             </div>
 
-                            <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50">
+                            <div
+                                class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"
+                            >
                                 <md-field>
                                     <label>number of items</label>
-                                    <md-input @input="searchOnTable" v-model="filter.numberOfItems" type="number"></md-input>
+                                    <md-input
+                                        @input="searchOnTable"
+                                        v-model="filter.numberOfItems"
+                                        type="number"
+                                    ></md-input>
                                 </md-field>
                             </div>
                         </div>
-                        
+
                         <md-table
                             v-model="searched"
                             md-sort="support"
@@ -82,7 +99,6 @@
                                 <md-table-cell
                                     md-label="Itemset"
                                     md-sort-by="itemsets"
-                                    
                                 >
                                     {{ item.itemsets }}
                                 </md-table-cell>
@@ -135,10 +151,7 @@
                                 slot="md-table-row"
                                 slot-scope="{ item }"
                             >
-                                <md-table-cell
-                                    md-label="Item"
-                                    md-sort-by="id"
-                                >
+                                <md-table-cell md-label="Item" md-sort-by="id">
                                     {{ item.id }}
                                 </md-table-cell>
                             </md-table-row>
@@ -151,22 +164,22 @@
 </template>
 <script>
 import * as d3 from "d3";
+import { globalStore } from "../main";
 
 const toLower = text => {
     return text.toString().toLowerCase();
 };
 
 const searchByName = (items, term, filter) => {
-        return items
-            .filter(item => {
-              return toLower(item.itemsets).includes(toLower(term)) 
-                            && parseFloat(item.support) >= filter.minsup
-                            && item.itemsets.length >= filter.numberOfItems;
-            })
-            .slice(0, filter.numberOfEntries);
-    
-
-    
+    return items
+        .filter(item => {
+            return (
+                toLower(item.itemsets).includes(toLower(term)) &&
+                parseFloat(item.support) >= filter.minsup &&
+                item.itemsets.length >= filter.numberOfItems
+            );
+        })
+        .slice(0, filter.numberOfEntries);
 };
 
 export default {
@@ -185,34 +198,53 @@ export default {
         filter: {
             numberOfEntries: 500,
             numberOfItems: 2,
-            minsup: 0.001,
+            minsup: 0.001
         }
     }),
     created() {},
     mounted() {
+        this.fetchData();
         this.init();
     },
     methods: {
+        fetchData() {
+            let component = this;
+            d3.json(this.getURL("json/frequent_itemsets.json")).then(function(data) {
+                component.itemsets = data;
+            });
+
+            d3.json(this.getURL("json/UniqueValuesGESAMT.json")).then(function(data) {
+                component.items = data;
+            });
+        },
         init() {
-            
-            this.items = require("../assets/json/UniqueValuesGESAMT.json");
-            this.itemsets = require("../assets/json/frequent_itemsets.json");
             this.searched = this.searchOnTable();
             this.searchedItems = this.searchOnItemTable();
         },
         searchOnTable() {
-            this.searched = searchByName(this.itemsets, this.search, this.filter);
+            this.searched = searchByName(
+                this.itemsets,
+                this.search,
+                this.filter
+            );
         },
-        searchOnItemTable(){
-            this.searchedItems = this.searchByItemName(this.items, this.searchItems);
+        searchOnItemTable() {
+            this.searchedItems = this.searchByItemName(
+                this.items,
+                this.searchItems
+            );
         },
-        searchByItemName(items, term){
+        searchByItemName(items, term) {
             if (term) {
-                return items
-                    .filter(item => toLower(item.id).includes(toLower(term)));
+                return items.filter(item =>
+                    toLower(item.id).includes(toLower(term))
+                );
             }
 
             return items;
+        },
+        getURL: function(url) {
+            return globalStore.prefix + url;
         }
     }
 };

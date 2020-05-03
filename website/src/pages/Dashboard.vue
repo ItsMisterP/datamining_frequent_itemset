@@ -13,7 +13,9 @@
                     </md-card-header>
                     <md-card-content>
                         <chart
-                            :dataString="this.jsonFiles.crimesByWeekday"
+                            :dataString="
+                                getURL('json/DataframeValueCountsWEEKDAY.json')
+                            "
                             id="9"
                         ></chart>
                     </md-card-content>
@@ -32,7 +34,9 @@
                     </md-card-header>
                     <md-card-content>
                         <column
-                            :data="this.jsonFiles.crimesByTime"
+                            :dataString="
+                                getURL('json/DataframeValueCountsTIME.json')
+                            "
                             id="8"
                         ></column>
                     </md-card-content>
@@ -51,7 +55,9 @@
                     </md-card-header>
                     <md-card-content>
                         <column
-                            :data="this.jsonFiles.crimesPerBlock"
+                            :dataString="
+                                getURL('json/DataframeValueCountsBLOCK.json')
+                            "
                             id="7"
                         ></column>
                     </md-card-content>
@@ -70,7 +76,11 @@
                     </md-card-header>
                     <md-card-content>
                         <column
-                            :data="this.jsonFiles.crimesByLocation"
+                            :dataString="
+                                getURL(
+                                    'json/DataframeValueCountsLOCATIONDESCRIPTION.json'
+                                )
+                            "
                             id="6"
                         ></column>
                     </md-card-content>
@@ -92,7 +102,11 @@
                     </md-card-header>
                     <md-card-content>
                         <column
-                            :data="this.jsonFiles.crimesByPrimaryDescription"
+                            :dataString="
+                                getURL(
+                                    'json/DataframeValueCountsPRIMARYTYPE.json'
+                                )
+                            "
                             id="5"
                         ></column>
                     </md-card-content>
@@ -114,7 +128,11 @@
                     </md-card-header>
                     <md-card-content>
                         <column
-                            :data="this.jsonFiles.crimesBySecondaryDescription"
+                            :dataString="
+                                getURL(
+                                    'json/DataframeValueCountsDESCRIPTION.json'
+                                )
+                            "
                             id="3"
                         ></column>
                     </md-card-content>
@@ -135,12 +153,15 @@
                     </md-card-header>
                     <md-card-content>
                         <chart
-                            :dataString="this.jsonFiles.crimesByDaytime"
+                            :dataString="
+                                getURL('json/DataframeValueCountsT.json')
+                            "
                             id="1"
                         ></chart>
                     </md-card-content>
                 </md-card>
             </div>
+
             <div
                 class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"
             >
@@ -154,7 +175,9 @@
                     </md-card-header>
                     <md-card-content>
                         <column
-                            :data="this.jsonFiles.crimesByMonth"
+                            :dataString="
+                                getURL('json/DataframeValueCountsMONTH.json')
+                            "
                             id="2"
                         ></column>
                     </md-card-content>
@@ -176,13 +199,15 @@
                     </md-card-header>
                     <md-card-content>
                         <linechart
-                            :data="this.jsonFiles.crimesPerYear"
+                            :dataString="
+                                getURL('json/DataframeValueCountsYEAR.json')
+                            "
                             id="4"
                         ></linechart>
                     </md-card-content>
                 </md-card>
             </div>
-
+            <!--
             <div
                 class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"
             >
@@ -198,6 +223,7 @@
                     </md-card-content>
                 </md-card>
             </div>
+            -->
         </div>
     </div>
 </template>
@@ -212,48 +238,24 @@ import MultiLineChart from "../components/diagrams/MultiLineChart";
 import PieChart from "../components/diagrams/PieChart";
 import test from "../components/diagrams/ZoomableBarChart";
 
+import { globalStore } from "../main";
+
 export default {
     components: {
         chart: Chart,
         column: ColumnChart,
-        linechart: LineChart,
-        piechart: PieChart
+        linechart: LineChart
+        //piechart: PieChart
     },
-    created() {
-        console.log("Dashboard mounted... Start importing the data");
-        this.init();
-    },
+    created() {},
     data() {
         return {
-            loadedData: {},
-            jsonFiles: {
-                crimesPerYear: Object,
-                crimesPerBlock: Object,
-                crimesBySecondaryDescription: Object,
-                crimesByTime: Object,
-                crimesByDaytime: Object,
-                crimesByLocation: Object,
-                crimesByPrimaryDescription: Object
-            }
+            loadedData: {}
         };
     },
     methods: {
-        init() {
-            this.jsonFiles.crimesPerYear = require("../assets/json/DataframeValueCountsYEAR.json");
-            this.jsonFiles.crimesPerBlock = require("../assets/json/DataframeValueCountsBLOCK.json");
-            this.jsonFiles.crimesBySecondaryDescription = require("../assets/json/DataframeValueCountsDESCRIPTION.json");
-            this.jsonFiles.crimesByMonth = require("../assets/json/DataframeValueCountsMONTH.json");
-            this.jsonFiles.crimesByWeekday = require("../assets/json/DataframeValueCountsWEEKDAY.json");
-            this.jsonFiles.crimesByTime = require("../assets/json/DataframeValueCountsTIME.json");
-            this.jsonFiles.crimesByDaytime = require("../assets/json/DataframeValueCountsT.json");
-            this.jsonFiles.crimesByLocation = require("../assets/json/DataframeValueCountsLOCATIONDESCRIPTION.json");
-            this.jsonFiles.crimesByPrimaryDescription = require("../assets/json/DataframeValueCountsPRIMARYTYPE.json");
-
-            console.log(this.jsonFiles.crimesPerBlock);
-        },
-        async fetchData() {
-            let data = d3.json("");
-            this.loadedData = data;
+        getURL: function(url) {
+            return globalStore.prefix + url;
         }
     }
 };

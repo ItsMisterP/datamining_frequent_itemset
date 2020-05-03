@@ -1,35 +1,35 @@
 <template>
     <div>
-        <svg :id="id" ></svg>
+        <svg :id="id"></svg>
     </div>
 </template>
 
 <script>
-import * as d3 from 'd3'
+import * as d3 from "d3";
 import { scaleLinear, scaleBand } from "d3-scale";
 import { max, min } from "d3-array";
 import { selectAll } from "d3-selection";
 
 export default {
     name: "Column Chart",
-    props:{
-        data: Object,
+    props: {
+        dataString: String,
         id: String
     },
-    data(){
-        return{
+    data() {
+        return {
             testdata: {
-                "AM" : 500000,
-                "PM" :400000,
+                AM: 500000,
+                PM: 400000
             },
             height: 600,
             heightSVG: 0,
             widthSVG: 0,
             width: 600,
-            margin: {top: 20, right: 30, bottom: 30, left: 70},
-            margin_top : 10,
+            margin: { top: 20, right: 30, bottom: 30, left: 70 },
+            margin_top: 10,
             margin_left: 70,
-            keys : [],
+            keys: [],
             values: [],
             x0: Object,
             y: Object,
@@ -38,20 +38,29 @@ export default {
             container: Object,
             xAxis: Object,
             yAxis: Object,
-            bars: Object
-        }
+            bars: Object,
+            data: Object
+        };
     },
-    mounted(){
-        this.init();
-        this.draw();
+    mounted() {
+        this.fetchData();
     },
-    methods:{
-        init(){
+    methods: {
+        fetchData() {
+            let diagram = this;
+            d3.json(this.dataString).then(function(data) {
+                diagram.data = data;
+                diagram.init();
+                diagram.draw();
+            });
+        },
+        init() {
             this.testdata = this.data;
 
             this.svg = d3.select(document.getElementById(this.id));
-            this.svg.attr("preserveAspectRatio", "xMinYMin meet")
-                    .attr("viewBox", "0 0 " + this.width + " " + this.height);
+            this.svg
+                .attr("preserveAspectRatio", "xMinYMin meet")
+                .attr("viewBox", "0 0 " + this.width + " " + this.height);
 
             this.widthSVG = this.width - this.margin.left - this.margin.right;
             this.heightSVG = this.height - this.margin.top - this.margin.bottom;
@@ -59,11 +68,9 @@ export default {
             this.keys = Object.keys(this.testdata);
             this.values = Object.values(this.testdata);
 
-            if(this.keys.length >= 30){
-                console.log("in");
-                this.keys = this.keys.slice(0,30);
-                console.log(this.keys);
-                this.values = this.values.slice(0,30);
+            if (this.keys.length >= 30) {
+                this.keys = this.keys.slice(0, 30);
+                this.values = this.values.slice(0, 30);
             }
 
             this.x0 = d3.scaleLinear().range([0, this.widthSVG]);
@@ -73,76 +80,85 @@ export default {
             this.y.domain(this.keys).padding(0.1);
 
             this.color = d3.scaleOrdinal(d3.schemeCategory10);
-
-            
         },
-        draw(){
-            var tooltip = d3.select("body")
+        draw() {
+            var tooltip = d3
+                .select("body")
                 .append("div")
                 .attr("class", "tooltip")
                 .style("position", "absolute")
                 .style("z-index", "10")
                 .style("visibility", "hidden")
-                .html("<div> </div> <div> </div>")
+                .html("<div> </div> <div> </div>");
 
-            this.container = this.svg.append("g")
-                                    .attr("class", "svgcontainer")
-                                    .attr("id", "c")
-                                    .attr("transform", "translate(" + this.margin_left + "," + this.margin_top + ")");
+            this.container = this.svg
+                .append("g")
+                .attr("class", "svgcontainer")
+                .attr("id", "c")
+                .attr(
+                    "transform",
+                    "translate(" +
+                        this.margin_left +
+                        "," +
+                        this.margin_top +
+                        ")"
+                );
 
-            this.xAxis = this.container.append("g")
-                            .attr("class", "axis")
-                            .attr("id", "xAxis")
-                            .attr("transform", "translate(0," + this.heightSVG + ")")
-                            .call(d3.axisBottom(this.x0));
+            this.xAxis = this.container
+                .append("g")
+                .attr("class", "axis")
+                .attr("id", "xAxis")
+                .attr("transform", "translate(0," + this.heightSVG + ")")
+                .call(d3.axisBottom(this.x0));
 
-            this.yAxis = this.container.append("g")
-                                        .attr("class", "y axis")
-                                        .call(d3.axisLeft(this.y));
+            this.yAxis = this.container
+                .append("g")
+                .attr("class", "y axis")
+                .call(d3.axisLeft(this.y));
 
             let color = this.color;
             let keys = this.keys;
             let y = this.y;
             let x = this.x0;
 
-            this.bars = this.container.selectAll(".bar")
-                                        .data(this.values)
-                                        .enter().append("rect")
-                                        .attr("class", "bar")
-                                        .attr("x", 0)
-                                        .attr("height", this.y.bandwidth())
-                                        .attr("fill", function (d,i) {
-                                            return color(i);
-                                        })
-                                        .attr("y", function(d,i) { return y(keys[i]); })
-                                        .attr("width", function(d) { 
-                                            return x(d);
-                                        })
-                                        .on("mouseover", function(d,l){
-                                            console.log(d);
-                                            console.log(l)
-                                            
-                                            return tooltip.style("visibility", "visible");
-                                        })
-                                        .on("mousemove", function(){return tooltip.style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px");})
-                                        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});;
+            this.bars = this.container
+                .selectAll(".bar")
+                .data(this.values)
+                .enter()
+                .append("rect")
+                .attr("class", "bar")
+                .attr("x", 0)
+                .attr("height", this.y.bandwidth())
+                .attr("fill", function(d, i) {
+                    return color(i);
+                })
+                .attr("y", function(d, i) {
+                    return y(keys[i]);
+                })
+                .attr("width", function(d) {
+                    return x(d);
+                })
+                .on("mouseover", function(d, l) {
+                    return tooltip.style("visibility", "visible");
+                })
+                .on("mousemove", function() {
+                    return tooltip
+                        .style("top", event.pageY - 10 + "px")
+                        .style("left", event.pageX + 10 + "px");
+                })
+                .on("mouseout", function() {
+                    return tooltip.style("visibility", "hidden");
+                });
         },
-        update(){
-
-        },
-        scroll(){
-
-        },
-        zoom(){
-            
-        }
+        update() {},
+        scroll() {},
+        zoom() {}
     }
-}
+};
 </script>
 
-<style >
-    .tooltip{
-        background-color: green;
-        
-    }
+<style>
+.tooltip {
+    background-color: green;
+}
 </style>

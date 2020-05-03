@@ -33,8 +33,8 @@ import Chartist from "chartist";
 
 // configure router
 const router = new VueRouter({
-  routes, // short for routes: routes
-  linkExactActiveClass: "nav-item active"
+    routes, // short for routes: routes
+    linkExactActiveClass: "nav-item active"
 });
 
 Vue.prototype.$Chartist = Chartist;
@@ -45,12 +45,23 @@ Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);
 Vue.use(Notifications);
 
+export const globalStore = new Vue({
+    data: {
+        prefix: "http://94.130.204.236:12000/"
+    },
+    methods: {
+        getURL: function(url) {
+            return this.prefix + url;
+        }
+    }
+});
+
 /* eslint-disable no-new */
 new Vue({
-  el: "#app",
-  render: h => h(App),
-  router,
-  data: {
-    Chartist: Chartist
-  }
+    el: "#app",
+    render: h => h(App),
+    router,
+    data: {
+        Chartist: Chartist
+    }
 });
