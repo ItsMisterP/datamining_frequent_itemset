@@ -175,7 +175,7 @@ export default {
                 links: []
             },
             radius: 10,
-            minsup: 0.005,
+            minsup: 0.1,
             klucMin: 0.0,
             klucMax: 0.4,
             imb: 0.1,
@@ -383,6 +383,8 @@ export default {
 
             var g = svg.append("g").attr("class", "everything");
 
+            //svg.on("click", this.containerclicked);
+
             //draw lines for the links
             var link = g
                 .append("g")
@@ -491,6 +493,10 @@ export default {
         },
         getURL: function(url) {
             return globalStore.prefix + url;
+        },
+        containerclicked(d){
+            console.log("tick")
+            this.tableRules = this.filteredRules;
         },
         nodeclicked(d) {
             this.tableRules = this.filteredRules;

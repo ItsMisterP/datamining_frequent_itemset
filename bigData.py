@@ -20,10 +20,9 @@ pd.set_option('display.width', 1000)
 print('(1/9) start importing the csv')
 df = pd.read_csv("Crimes_-_2001_to_present_19042020.csv", low_memory=False)
 
-
 #Filtere für die passenden Spalten
 print('(2/9) filter Columns | Time previous Step: ', time.time() - start_time)
-columns = ['Date', 'Block', 'IUCR', 'Primary Type', 'Location Description', 'Year']
+columns = ['Date', 'District', 'Primary Type', 'Location Description', 'Year','IUCR','Block', 'Description']
 df = pd.DataFrame(df, columns=columns)
 
 #Teile das Datum in eigene Spalten ein
@@ -53,11 +52,16 @@ df["time"] = df.apply((lambda x: format(datetime.strptime(x.time, '%H:%M:%S') + 
 print("--------------Adding Prefixes--------------- | Time in Secounds: ", time.time() - start_time)
 df["Block"] = df["Block"].replace(to_replace=r'^\s', value='bl_', regex=True) #hier ist das \s dabei, weil es mit nem Leerzeichen noch anfängt
 df["Location Description"] = df["Location Description"].replace(to_replace=r'^', value='lo_', regex=True)
-#df["IUCR"] = df["IUCR"].replace(to_replace=r'^', value='IUCR_', regex=True)
+df["IUCR"] = df["IUCR"].replace(to_replace=r'^', value='IUCR_', regex=True)
+df["Primary Type"] = df["Primary Type"].replace(to_replace=r'^', value='pr_', regex=True)
+
+
+df["Primary Type"] = df["Primary Type"].replace("pr_CRIM SEXUAL ASSAULT", "pr_CRIMINAL SEXUAL ASSAULT") #geprüft3004
+df["Primary Type"] = df["Primary Type"].replace(["pr_NON - CRIMINAL", "pr_NON-CRIMINAL (SUBJECT SPECIFIED)" ], "pr_NON-CRIMINAL") #geprüft3004
+
 
 print("--------------Encode IUCR--------------- | Time in Secounds: ", time.time() - start_time)
 df['IUCR'] = df['IUCR'].astype(str)
-df_iucr['IUCR'] = df_iucr['IUCR'].astype(str)
 df_iucr = pd.read_csv(r'IUCR\IUCR_CODES.csv', low_memory=False)
 df_iucr["IUCR_ENCODED"] = df_iucr['PRIMARY DESCRIPTION'] + " " + df_iucr['SECONDARY DESCRIPTION']
 df_iucr = df_iucr.drop(columns=['PRIMARY DESCRIPTION', 'SECONDARY DESCRIPTION','INDEX CODE'])
@@ -152,18 +156,22 @@ df["Block"] = df["Block"].replace(to_replace=r'\s\bPZ\b', value=' PLZ', regex=Tr
 
 df["Block"] = df["Block"].replace(to_replace=r'\.', value='', regex=True)
 
+
 print("--------------Block Done------------- | Time in Secounds: ", time.time() - start_time)
 
-
-columns = ['time', 'Block', 'IUCR', 'Location Description', 'year', 'month', 'weekday', 't']
+columns = ['time', 'District', 'year', 'Primary Type','IUCR','Block', 'Location Description', 'month', 'weekday', 't', 'Description']
 df = pd.DataFrame(df, columns=columns)
 df = df.dropna()
+
+df["District"] = df["District"].astype(int)
+df["District"] = df["District"].astype(str)
+df["District"] = df["District"].replace(to_replace=r'^', value='ds_', regex=True)
+
 print("(8/9) start preparing for printing | Time in Secounds: ", time.time() - start_time)
 print(df)
 
 print('(9/9) start saving as csv | Time previous Step: ', time.time() - start_time)
 df.to_csv('7mioCrimes.csv', index=False)
-
 
 Laufzeit = time.time() - start_time
 print("Finished, Time: ", Laufzeit)

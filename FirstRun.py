@@ -28,11 +28,11 @@ import statistics_bigdata as statistics
 #Variables
 show_rules = 3
 kluc_threshold = 0.35
-kluc_range_max = 0.0
-kluc_range_min = 0.5
+kluc_range_min = 0.0
+kluc_range_max = 1.0
 imb_ratio_threshold = 0.25
-association_rules_threshold = 0.0
-min_sup_threshold = 0.0001
+association_rules_threshold = 0.6
+min_sup_threshold = 0.001
 
 start_time = time.time()
 print("Start", time.time() - start_time)
@@ -40,13 +40,27 @@ df = pd.read_csv("7mioCrimes.csv", low_memory=False)
 #print(df)
 print("Eingelesen", time.time() - start_time)
 
+# Mögliche Spalten: 
+# ['time', 'District', 'year', 'Primary Type','IUCR','Block', 'Location Description', 'month', 'weekday', 't', 'Description']
 df["time"] = df["time"].astype(str)
 df["year"] = df["year"].astype(str)
-df = df.drop(["Primary Type"], axis=1)
-#df = df.drop(["t"], axis=1)
-df = df.drop(["time"], axis=1)
+df["District"] = df["District"].astype(str)
+#df = df.drop(["Primary Type"], axis=1)
+df = df.drop(["t"], axis=1)
+#df = df.drop(["time"], axis=1)
 df = df.drop(["year"], axis=1)
-df["IUCR"] = df["IUCR"].replace(to_replace=r'\,', value=' ', regex=True)   
+df = df.drop(["Block"], axis=1)
+
+df = df.drop(["IUCR"], axis=1)
+#df["IUCR"] = df["IUCR"].replace(to_replace=r'\,', value=' ', regex=True) 
+
+df = df.drop(["Description"], axis=1)
+
+df["time"] = df["time"].replace(["1","2","3","4","5", "6"], "Time: 1-6")
+df["time"] = df["time"].replace(["7","8","9","10","11","12"], "Time: 7-12")
+df["time"] = df["time"].replace(["13","14","15","16","17","18"], "Time: 13-18")
+df["time"] = df["time"].replace(["19","20","21","22","23","24"], "Time: 19-24")
+  
 
 #df['IUCR'] = df['IUCR'].astype(str)
 
@@ -77,7 +91,8 @@ print(len(result))
 
 result.to_csv('out.csv', index=False)
 print("Association Rules saved as csv") 
-result[result['kluc'] >= kluc_threshold].to_json("association_rules.json", orient='records')
+result[(result['kluc'] >= kluc_range_min) & 
+        (result['kluc'] >= kluc_range_max)].to_json("association_rules.json", orient='records')
 
 print("Filter Rules", time.time() - start_time)
 df = result

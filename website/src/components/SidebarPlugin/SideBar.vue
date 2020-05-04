@@ -42,7 +42,7 @@ export default {
         },
         imgLogo: {
             type: String,
-            default: require("@/assets/img/vue-logo.png")
+            default: require("@/assets/logo.png")
         },
         sidebarItemColor: {
             type: String,
