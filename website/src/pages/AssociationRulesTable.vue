@@ -200,23 +200,45 @@ const toLower = text => {
 };
 
 const searchByName = (items, filter) => {
-    items = items
-        .filter(item => {
-            return (
-                toLower(item.antecedents).includes(toLower(filter.search)) &&
-                parseFloat(item.support) >= filter.minsup &&
-                parseFloat(item.confidence) >= filter.minconf &&
-                parseFloat(item.kluc) >= filter.minkluc &&
-                parseFloat(item.imbratio) >= filter.minimb &&
-                item.antecedents.length >= filter.numberOfAntecedents &&
-                item.consequents.length >= filter.numberOfCosequents
-            );
-        })
-        .slice(0, filter.numberOfEntries);
+    if (filter.search != null) {
+        items = items
+            .filter(item => {
+                return (
+                    toLower(item.antecedents).includes(
+                        toLower(filter.search)
+                    ) &&
+                    parseFloat(item.support) >= filter.minsup &&
+                    parseFloat(item.confidence) >= filter.minconf &&
+                    parseFloat(item.kluc) >= filter.minkluc &&
+                    parseFloat(item.imbratio) >= filter.minimb &&
+                    item.antecedents.length >= filter.numberOfAntecedents &&
+                    item.consequents.length >= filter.numberOfCosequents
+                );
+            })
+            .slice(0, filter.numberOfEntries);
+    } else {
+        items = items
+            .filter(item => {
+                return (
+                    parseFloat(item.support) >= filter.minsup &&
+                    parseFloat(item.confidence) >= filter.minconf &&
+                    parseFloat(item.kluc) >= filter.minkluc &&
+                    parseFloat(item.imbratio) >= filter.minimb &&
+                    item.antecedents.length >= filter.numberOfAntecedents &&
+                    item.consequents.length >= filter.numberOfCosequents
+                );
+            })
+            .slice(0, filter.numberOfEntries);
+    }
     return items;
 };
 
 export default {
+    watch:{
+        assoRules: function(){
+            this.searchOnTable();
+        }
+    },
     data: () => ({
         searched: [],
         assoRules: [],
@@ -228,9 +250,9 @@ export default {
             numberOfAntecedents: 2,
             minsup: 0.001,
             minconf: 0.6,
-            minkluc: 0.5,
+            minkluc: 0.1,
             minimb: 0.5,
-            search: " "
+            search: null
         }
     }),
     mounted() {
@@ -240,7 +262,9 @@ export default {
     methods: {
         fetchData() {
             let component = this;
-            d3.json(this.getURL("json/association_rules.json")).then(function(data) {
+            d3.json(this.getURL("json/association_rules.json")).then(function(
+                data
+            ) {
                 component.assoRules = data;
             });
         },

@@ -45,6 +45,7 @@ Vue.use(GlobalComponents);
 Vue.use(GlobalDirectives);
 Vue.use(Notifications);
 
+//Globale Variablen
 export const globalStore = new Vue({
     data: {
         prefix: "http://94.130.204.236:12000/"

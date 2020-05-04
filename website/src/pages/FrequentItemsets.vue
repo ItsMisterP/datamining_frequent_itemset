@@ -171,26 +171,44 @@ const toLower = text => {
 };
 
 const searchByName = (items, term, filter) => {
-    return items
-        .filter(item => {
-            return (
-                toLower(item.itemsets).includes(toLower(term)) &&
-                parseFloat(item.support) >= filter.minsup &&
-                item.itemsets.length >= filter.numberOfItems
-            );
-        })
-        .slice(0, filter.numberOfEntries);
+    if(term != null)
+        return items
+            .filter(item => {
+                return (
+                    toLower(item.itemsets).includes(toLower(term)) &&
+                    parseFloat(item.support) >= filter.minsup &&
+                    item.itemsets.length >= filter.numberOfItems
+                );
+            })
+            .slice(0, filter.numberOfEntries);
+    else
+        return items
+            .filter(item => {
+                return (
+                    parseFloat(item.support) >= filter.minsup &&
+                    item.itemsets.length >= filter.numberOfItems
+                );
+            })
+            .slice(0, filter.numberOfEntries);
 };
 
 export default {
+    watch:{
+        items: function(){
+            this.searchOnItemTable();
+        },
+        itemsets: function(){
+            this.searchOnTable();
+        }
+    },
     props: {
         id: String
     },
     data: () => ({
-        search: " ",
+        search: null,
         searched: [],
         itemsets: [],
-        searchItems: "test",
+        searchItems: null,
         searchedItems: [],
         items: [],
         data: null,
