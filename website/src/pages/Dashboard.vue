@@ -13,9 +13,7 @@
                     </md-card-header>
                     <md-card-content>
                         <chart
-                            :dataString="
-                                getURL('json/DataframeValueCountsWEEKDAY.json')
-                            "
+                            :data='loadedData["weekday"]'
                             id="9"
                         ></chart>
                     </md-card-content>
@@ -34,9 +32,7 @@
                     </md-card-header>
                     <md-card-content>
                         <column
-                            :dataString="
-                                getURL('json/DataframeValueCountsTIME.json')
-                            "
+                            :data='loadedData["time"]'
                             id="8"
                         ></column>
                     </md-card-content>
@@ -55,9 +51,7 @@
                     </md-card-header>
                     <md-card-content>
                         <column
-                            :dataString="
-                                getURL('json/DataframeValueCountsBLOCK.json')
-                            "
+                            :data='loadedData["Block"]'
                             id="7"
                         ></column>
                     </md-card-content>
@@ -76,11 +70,7 @@
                     </md-card-header>
                     <md-card-content>
                         <column
-                            :dataString="
-                                getURL(
-                                    'json/DataframeValueCountsLOCATIONDESCRIPTION.json'
-                                )
-                            "
+                            :data='loadedData["LocationDescription"]'
                             id="6"
                         ></column>
                     </md-card-content>
@@ -102,11 +92,7 @@
                     </md-card-header>
                     <md-card-content>
                         <column
-                            :dataString="
-                                getURL(
-                                    'json/DataframeValueCountsPRIMARYTYPE.json'
-                                )
-                            "
+                            :data='loadedData["PrimaryType"]'
                             id="5"
                         ></column>
                     </md-card-content>
@@ -128,11 +114,7 @@
                     </md-card-header>
                     <md-card-content>
                         <column
-                            :dataString="
-                                getURL(
-                                    'json/DataframeValueCountsDESCRIPTION.json'
-                                )
-                            "
+                            :data='loadedData["Description"]'
                             id="3"
                         ></column>
                     </md-card-content>
@@ -153,9 +135,7 @@
                     </md-card-header>
                     <md-card-content>
                         <chart
-                            :dataString="
-                                getURL('json/DataframeValueCountsT.json')
-                            "
+                            :data='loadedData["t"]'
                             id="1"
                         ></chart>
                     </md-card-content>
@@ -175,9 +155,7 @@
                     </md-card-header>
                     <md-card-content>
                         <column
-                            :dataString="
-                                getURL('json/DataframeValueCountsMONTH.json')
-                            "
+                            :data='loadedData["month"]'
                             id="2"
                         ></column>
                     </md-card-content>
@@ -199,9 +177,7 @@
                     </md-card-header>
                     <md-card-content>
                         <linechart
-                            :dataString="
-                                getURL('json/DataframeValueCountsYEAR.json')
-                            "
+                            :data='loadedData["year"]'
                             id="4"
                         ></linechart>
                     </md-card-content>
@@ -247,15 +223,27 @@ export default {
         linechart: LineChart
         //piechart: PieChart
     },
-    created() {},
+    created() {
+        this.fetchData();
+    },
     data() {
         return {
-            loadedData: {}
+            loadedData: {
+                
+            }
         };
     },
     methods: {
         getURL: function(url) {
             return globalStore.prefix + url;
+        },
+        fetchData(){
+            let dashboard = this;
+            d3.json(dashboard.getURL("json/CountsAll.json")).then(function(data) {
+                dashboard.loadedData = data;
+                dashboard.$emit("dataLoaded")
+                console.log(dashboard.loadedData["weekday"])
+            });
         }
     }
 };

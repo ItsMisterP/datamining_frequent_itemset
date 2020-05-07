@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>Line-Chart</h1>
         <svg class="linechart" :id="id"></svg>
     </div>
 </template>
@@ -15,7 +14,8 @@ export default {
     name: "Test-Chart",
     props: {
         dataString: String,
-        id: String
+        id: String,
+        data: Object
     },
     data() {
         return {
@@ -44,9 +44,19 @@ export default {
             line: Object
         };
     },
-    computed: {},
+    watch:{
+        data: function(){
+            if(this.data != undefined){
+                this.init();
+                this.draw();
+            }
+        }
+    },
     mounted() {
-        this.fetchData();
+        if(this.data != undefined){
+                this.init();
+                this.draw();
+        }
     },
     created() {},
     methods: {

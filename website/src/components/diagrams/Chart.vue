@@ -14,7 +14,8 @@ export default {
     name: "Test-Chart",
     props: {
         dataString: String,
-        id: String
+        id: String,
+        data: {},
     },
     data() {
         return {
@@ -35,14 +36,22 @@ export default {
             xAxis: Object,
             yAxis: Object,
             bars: Object,
-            data: Object,
         };
     },
-    computed: {},
-    mounted() {
-        this.fetchData();
+    watch:{
+        data: function(){
+            if(this.data != undefined){
+                this.init();
+                this.draw();
+            }
+        }
     },
-    created() {},
+    mounted() {
+        if(this.data != undefined){
+                this.init();
+                this.draw();
+        }
+    },
     methods: {
         fetchData() {
             let diagram = this;

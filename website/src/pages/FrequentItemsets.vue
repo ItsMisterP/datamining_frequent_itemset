@@ -106,7 +106,7 @@
                         </md-table>
                     </md-card-content>
                 </md-card>
-
+<!--
                 <md-card>
                     <md-card-header data-background-color="gray">
                         <h4 class="title">Items</h4>
@@ -158,6 +158,7 @@
                         </md-table>
                     </md-card-content>
                 </md-card>
+                -->
             </div>
         </div>
     </div>

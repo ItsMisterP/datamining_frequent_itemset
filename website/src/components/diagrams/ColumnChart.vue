@@ -14,7 +14,8 @@ export default {
     name: "Column Chart",
     props: {
         dataString: String,
-        id: String
+        id: String,
+        data: Object
     },
     data() {
         return {
@@ -38,22 +39,24 @@ export default {
             container: Object,
             xAxis: Object,
             yAxis: Object,
-            bars: Object,
-            data: Object
+            bars: Object
         };
     },
+    watch:{
+        data: function(){
+            if(this.data != undefined){
+                this.init();
+                this.draw();
+            }
+        }
+    },
     mounted() {
-        this.fetchData();
+        if(this.data != undefined){
+                this.init();
+                this.draw();
+            }
     },
     methods: {
-        fetchData() {
-            let diagram = this;
-            d3.json(this.dataString).then(function(data) {
-                diagram.data = data;
-                diagram.init();
-                diagram.draw();
-            });
-        },
         init() {
             this.testdata = this.data;
 

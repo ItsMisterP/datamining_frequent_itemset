@@ -175,7 +175,7 @@ export default {
                 links: []
             },
             radius: 10,
-            minsup: 0.1,
+            minsup: 0.001,
             klucMin: 0.0,
             klucMax: 0.4,
             imb: 0.1,

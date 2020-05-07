@@ -41,11 +41,13 @@ def statistics():
     print()
     print()
     
+   
     print("--------------time:---------------")
     time = df['time']
     statisticsPrint(time)
-    valueCountsTime = time.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'TIME'+ '.json')
-    valueCountsTime = time.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'TIME'+ '.json')
+    time.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'TIME'+ '.json')
+    time.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'TIME'+ '.json')
+    valueCountsTime = time.value_counts().to_json()
     uniqueTime = pd.DataFrame(time.unique())
     uniqueTime.columns = ["id"]
     uniqueTime.to_json(r'Unique_json\UniqueValuesTIME.json', orient='records', lines=True)
@@ -56,8 +58,9 @@ def statistics():
     print("--------------Block:---------------")
     block = df['Block']
     statisticsPrint(block)
-    valueCountsBlock = block.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'BLOCK' + '.json')
-    valueCountsBlock = block.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'BLOCK' + '.json')
+    block.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'BLOCK' + '.json')
+    block.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'BLOCK' + '.json')
+    valueCountsBlock = block.value_counts().to_json()
     uniqueBlock = pd.DataFrame(block.unique())
     uniqueBlock.columns = ["id"]
     uniqueBlock.to_json(r'Unique_json\UniqueValuesBLOCK.json', orient='records', lines=True)
@@ -65,32 +68,23 @@ def statistics():
     blockJSON = uniqueBlock.to_json(orient='records', lines=True)
     
     print("--------------Primary Type:---------------")
-    primary_type = df['Primary Type']
+    primary_type = df["IUCR"]
     statisticsPrint(primary_type)
-    valueCountsPrimary_type = primary_type.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'PRIMARYTYPE' + '.json')
-    valueCountsPrimary_type = primary_type.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'PRIMARYTYPE' + '.json')
+    primary_type.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'PRIMARYTYPE' + '.json')
+    primary_type.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'PRIMARYTYPE' + '.json')
+    valueCountsPrimary_type = primary_type.value_counts().to_json()
     uniquePrimary_type  = pd.DataFrame(primary_type.unique())
     uniquePrimary_type.columns = ["id"]
     uniquePrimary_type.to_json(r'Unique_json\UniqueValuesPRIMARYTYPE.json', orient='records', lines=True)
     uniquePrimary_type.to_json(r'website\src\assets\json\UniqueValuesPRIMARYTYPE.json', orient='records', lines=True)
     primary_typeJSON = uniquePrimary_type.to_json(orient='records', lines=True)
-    
-    print("--------------Description:---------------")
-    description = df['Description']
-    statisticsPrint(description)
-    valueCountsDescription = description.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'DESCRIPTION' + '.json')
-    valueCountsDescription = description.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'DESCRIPTION' + '.json')
-    uniqueDescription = pd.DataFrame(description.unique())
-    uniqueDescription.columns = ["id"]
-    uniqueDescription.to_json(r'Unique_json\UniqueValuesDESCRIPTION.json', orient='records', lines=True)
-    uniqueDescription.to_json(r'website\src\assets\json\UniqueValuesDESCRIPTION.json', orient='records', lines=True)
-    descriptionJSON = uniqueDescription.to_json(orient='records', lines=True)
         
     print("--------------Location Description---------------")
     location_description = df['Location Description']
     statisticsPrint(location_description)
-    valueCountsLocation_description = location_description.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'LOCATIONDESCRIPTION' + '.json')
-    valueCountsLocation_description = location_description.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'LOCATIONDESCRIPTION' + '.json')
+    location_description.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'LOCATIONDESCRIPTION' + '.json')
+    location_description.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'LOCATIONDESCRIPTION' + '.json')
+    valueCountsLocation_description = location_description.value_counts().to_json()
     uniqueLocation_description = pd.DataFrame(location_description.unique())
     uniqueLocation_description.columns = ["id"]
     uniqueLocation_description.to_json(r'Unique_json\UniqueValuesLOCATIONDESCRIPTION.json', orient='records', lines=True)
@@ -100,8 +94,9 @@ def statistics():
     print("--------------year---------------")
     year = df['year']
     statisticsPrint(year)
-    valueCountsYear = year.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'YEAR' + '.json')
-    valueCountsYear = year.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'YEAR' + '.json')
+    year.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'YEAR' + '.json')
+    year.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'YEAR' + '.json')
+    valueCountsYear = year.value_counts().to_json()
     uniqueYear = pd.DataFrame(year.unique())
     uniqueYear.columns = ["id"]
     uniqueYear.to_json(r'Unique_json\UniqueValuesYEAR.json', orient='records', lines=True)
@@ -111,8 +106,9 @@ def statistics():
     print("--------------month---------------")
     month = df['month']
     statisticsPrint(month)
-    valueCountsMonth = month.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'MONTH' + '.json')
-    valueCountsMonth = month.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'MONTH' + '.json')
+    month.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'MONTH' + '.json')
+    month.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'MONTH' + '.json')
+    valueCountsMonth = month.value_counts().to_json()
     uniqueMonth = pd.DataFrame(month.unique())
     uniqueMonth.columns = ["id"]
     uniqueMonth.to_json(r'Unique_json\UniqueValuesMONTH.json', orient='records', lines=True)
@@ -122,8 +118,9 @@ def statistics():
     print("--------------weekday---------------")
     weekday = df['weekday']
     statisticsPrint(weekday)
-    valueCountsWeekday = weekday.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'WEEKDAY' + '.json')
-    valueCountsWeekday = weekday.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'WEEKDAY' + '.json')
+    weekday.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'WEEKDAY' + '.json')
+    weekday.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'WEEKDAY' + '.json')
+    valueCountsWeekday = weekday.value_counts().to_json()
     uniqueWeekday = pd.DataFrame(weekday.unique())
     uniqueWeekday.columns = ["id"]
     uniqueWeekday.to_json(r'Unique_json\UniqueValuesWEEKDAY.json', orient='records', lines=True)
@@ -133,39 +130,18 @@ def statistics():
     print("--------------t---------------")
     t = df['t']
     statisticsPrint(t)
-    valueCountsT = t.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'T' + '.json')
-    valueCountsT = t.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'T' + '.json')
+    t.value_counts().to_json(r'Counts_json\DataframeValueCounts' + 'T' + '.json')
+    t.value_counts().to_json(r'website\src\assets\json\DataframeValueCounts' + 'T' + '.json')
+    valueCountsT = t.value_counts().to_json()
     uniqueT = pd.DataFrame(t.unique())
     uniqueT.columns = ["id"]
     uniqueT.to_json(r'Unique_json\UniqueValuesT.json', orient='records', lines=True)
     uniqueT.to_json(r'website\src\assets\json\UniqueValuesT.json', orient='records', lines=True)
     tJSON = uniqueT.to_json(orient='records', lines=True)
-    
-    
+        
+   
     print("--------------Gesamt---------------")
-    result = timeJSON + "\r" + blockJSON + "\r" + primary_typeJSON + "\r" + descriptionJSON + "\r" + locationJSON +"\r" + yearJSON + "\r"+ monthJSON + "\r" + weekdayJSON + "\r"+ tJSON
-    resultTmp = result.replace("}", "},")
-    resultFormatted = "[" + resultTmp + "]"
-    resultFormatted2 = resultFormatted.replace(",]", "]")
-    with io.open(r'Unique_json\UniqueValuesGESAMTohneKuerzel.json', 'w', encoding='utf-8') as outfile:
-        outfile.write(resultFormatted2)
-    with io.open(r'website\src\assets\json\UniqueValuesGESAMTohneKuerzel.json', 'w', encoding='utf-8') as outfile:
-        outfile.write(resultFormatted2)    
-    
-    # =============================================================================
-    # print("--------------Postprocessing---------------")
-    # #timeJSON = timeJSON.replace(":", ":ti_")
-    # blockJSON = blockJSON.replace(':" ', ':"bl_') #Achtung hier wird auch ein Leerzeichen mit entfernt
-    # primary_typeJSON = primary_typeJSON.replace(':"', ':"pr_')
-    # descriptionJSON = descriptionJSON.replace(':"', ':"de_')
-    # locationJSON = locationJSON.replace(':"', ':"lo_')
-    # #yearJSON = yearJSON.replace(":", ':ye_')
-    # monthJSON = monthJSON.replace(':"', ':"mo_')
-    # weekdayJSON = weekdayJSON.replace(':"', ':"we_')
-    # tJSON = tJSON.replace(':"', ':"t_')
-    # =============================================================================
-    
-    result = timeJSON + "\r" + blockJSON + "\r" + primary_typeJSON + "\r" + descriptionJSON + "\r" + locationJSON +"\r" + yearJSON + "\r"+ monthJSON + "\r" + weekdayJSON + "\r"+ tJSON
+    result = timeJSON + "\r" + blockJSON + "\r" + primary_typeJSON + "\r" + locationJSON +"\r" + yearJSON + "\r"+ monthJSON + "\r" + weekdayJSON + "\r"+ tJSON
     resultTmp = result.replace("}", "},")
     resultFormatted = "[" + resultTmp + "]"
     resultFormatted2 = resultFormatted.replace(",]", "]")
@@ -173,5 +149,12 @@ def statistics():
         outfile.write(resultFormatted2)
     with io.open(r'website\src\assets\json\UniqueValuesGESAMT.json', 'w', encoding='utf-8') as outfile:
         outfile.write(resultFormatted2)   
-    print("--------------Finished---------------")
+        
+    allValueCounts = valueCountsTime + valueCountsBlock + valueCountsPrimary_type + valueCountsLocation_description + valueCountsYear + valueCountsMonth + valueCountsWeekday + valueCountsT
+    with io.open(r'Counts_json\valuesCountsGESAMT.json', 'w', encoding='utf-8') as outfile:
+        outfile.write(allValueCounts)
+    with io.open(r'website\src\assets\json\valuesCountsGESAMT.json', 'w', encoding='utf-8') as outfile:
+        outfile.write(allValueCounts)      
     
+    
+    print("--------------Finished---------------")

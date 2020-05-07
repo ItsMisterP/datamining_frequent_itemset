@@ -52,13 +52,11 @@ df["time"] = df.apply((lambda x: format(datetime.strptime(x.time, '%H:%M:%S') + 
 print("--------------Adding Prefixes--------------- | Time in Secounds: ", time.time() - start_time)
 df["Block"] = df["Block"].replace(to_replace=r'^\s', value='bl_', regex=True) #hier ist das \s dabei, weil es mit nem Leerzeichen noch anfängt
 df["Location Description"] = df["Location Description"].replace(to_replace=r'^', value='lo_', regex=True)
-df["IUCR"] = df["IUCR"].replace(to_replace=r'^', value='IUCR_', regex=True)
+#df["IUCR"] = df["IUCR"].replace(to_replace=r'^', value='IUCR_', regex=True)
 df["Primary Type"] = df["Primary Type"].replace(to_replace=r'^', value='pr_', regex=True)
-
 
 df["Primary Type"] = df["Primary Type"].replace("pr_CRIM SEXUAL ASSAULT", "pr_CRIMINAL SEXUAL ASSAULT") #geprüft3004
 df["Primary Type"] = df["Primary Type"].replace(["pr_NON - CRIMINAL", "pr_NON-CRIMINAL (SUBJECT SPECIFIED)" ], "pr_NON-CRIMINAL") #geprüft3004
-
 
 print("--------------Encode IUCR--------------- | Time in Secounds: ", time.time() - start_time)
 df['IUCR'] = df['IUCR'].astype(str)
@@ -67,8 +65,6 @@ df_iucr["IUCR_ENCODED"] = df_iucr['PRIMARY DESCRIPTION'] + " " + df_iucr['SECOND
 df_iucr = df_iucr.drop(columns=['PRIMARY DESCRIPTION', 'SECONDARY DESCRIPTION','INDEX CODE'])
 df_iucr["IUCR"] = df_iucr["IUCR"].replace(to_replace=r'^0', value='', regex=True)
 df["IUCR"] = df["IUCR"].replace(to_replace=r'^0', value='', regex=True) 
-
-
 
 def encodeIUCR(x):
     test = df_iucr.loc[df_iucr["IUCR"] == x]
@@ -167,11 +163,13 @@ df["District"] = df["District"].astype(int)
 df["District"] = df["District"].astype(str)
 df["District"] = df["District"].replace(to_replace=r'^', value='ds_', regex=True)
 
+df["LocationDescription"] = df["Location Description"]
+
 print("(8/9) start preparing for printing | Time in Secounds: ", time.time() - start_time)
 print(df)
 
 print('(9/9) start saving as csv | Time previous Step: ', time.time() - start_time)
 df.to_csv('7mioCrimes.csv', index=False)
 
-Laufzeit = time.time() - start_time
-print("Finished, Time: ", Laufzeit)
+laufzeit = time.time() - start_time
+print("Finished, Time: ", laufzeit)
