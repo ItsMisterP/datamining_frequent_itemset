@@ -1,1 +1,0 @@
-MinSup: 0.6Method: fpgrowthVorbereitungszeit: 8.184998035430908Laufzeit: 32.78000211715698

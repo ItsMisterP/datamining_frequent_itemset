@@ -18,13 +18,27 @@ import association_rules as own
 import io
 import time
 import statistics_bigdata as statistics
+import logging
 
+#um die FirstRunStatistics zu speichern
+timestr = time.strftime("%Y%m%d-%H%M%S")
+def step_log(message, *args, **kwargs):
+    timeee = (time.time() - start_time)/60
+    print("Step %d" % step_log.counter + "/%d: " % step_log.stepCount + message + " | time(m): ", "%.2f" % round(timeee, 2), *args, **kwargs)
+    step_log.counter += 1
+    step_log.stepCount = 10
+step_log.counter = 1
+step_log.stepCount = 10
+start_time = time.time()
 
-#pd.set_option('display.max_rows', 50000)
-#pd.set_option('display.width', 10000)
-#pd.set_option('display.max_columns', None)
-#pd.set_option('display.max_colwidth', None)
+# =============================================================================
+# pd.set_option('display.max_rows', 50000)
+# pd.set_option('display.width', 10000)
+# pd.set_option('display.max_columns', None)
+# pd.set_option('display.max_colwidth', None)
+# =============================================================================
 
+# =============================================================================
 #Variables
 show_rules = 3
 kluc_range_min = 0.0
@@ -33,23 +47,17 @@ imb_ratio_threshold = 0.25
 association_rules_threshold = 0.6
 min_sup_threshold = 0.001
 metric = "confidence"
+# =============================================================================
 
-start_time = time.time()
-print("Start", time.time() - start_time)
+
+# =============================================================================
+step_log("start")
 df = pd.read_csv("7mioCrimes.csv", low_memory=False)
-#print(df)
-print()
-print("#################################################")
-print("Datensatz eingelesen", time.time() - start_time)
-
-print()
-print("#################################################")
-print("Statisitken erstellen", time.time() - start_time)
+# =============================================================================
+step_log("create statistics")
 statistics.statistics(df)
-
-print()
-print("#################################################")
-print("Tempoären Filter anwenden")
+# =============================================================================
+step_log("apply temporary filter")
 # Mögliche Spalten: 
 # ['time', 'District', 'year', 'Primary Type','IUCR','Block', 'Location Description', 'month', 'weekday', 't', 'Description']
 df["time"] = df["time"].astype(str)
@@ -80,36 +88,38 @@ df["time"] = df["time"].replace(["19","20","21","22","23","24"], "Time: 19-24")
 
 df = df.dropna()
 
+#Speiche die Columns, damit sie später in der Statistik auftauchen
+usedColums = str(df.columns)
+
 df = df.to_numpy()
 #print(df)
 #print(df[df['IUCR'].str.contains('8')])
-print()
-print("#################################################")
-print("Frequent Itemsets erstellen. Min-Sup: ", min_sup_threshold)
+# =============================================================================
+step_log("create Frequent Itemsets. Min-Sup: " + str(min_sup_threshold))
 te = TransactionEncoder()
 te_ary = te.fit(df).transform(df)
 df2 = pd.DataFrame(te_ary, columns=te.columns_)
-
 #frequent_itemsets = apriori(df1, min_support=0.0001, use_colnames=True, low_memory=True)
 frequent_itemsets = fpgrowth(df2, min_support=min_sup_threshold, use_colnames=True)
-print("Frequent_Itemsets erstelle. Speichere...", time.time() - start_time)
+# =============================================================================
+step_log("save Frequent Itemsets")
 frequent_itemsets.to_json("frequent_itemsets.json", orient='records')
 
-print()
-print("#################################################")
-print("Assoziationsregeln erstellen. Metrik:", metric, " Threshold:", association_rules_threshold)
+# =============================================================================
+step_log("create Association Rules. Metrik" + metric + " Threshold:" + str(association_rules_threshold))
 result = own.association_rules(frequent_itemsets, min_threshold=association_rules_threshold, metric=metric)
-print("Assoziationsregeln erstellt. Speichere...")
+# =============================================================================
+step_log("save Association Rules")
 
-result.to_csv('out.csv', index=False)
 result[(result['kluc'] >= kluc_range_min) & 
         (result['kluc'] >= kluc_range_max)].to_json("association_rules.json", orient='records')
 
-print()
-print("#################################################")
-print("Statistik zum Run abspeichern...")
-with io.open(r'StatisticsFirstRun.json', 'w', encoding='utf-8') as outfile:
-    outfile.write("Anzahl Frequent Itemsets: ")
+# =============================================================================
+step_log("save statistics for this Run")
+with io.open(r'StatisticsFirstRun\StatisticsFirstRun'+timestr+'.json', 'w', encoding='utf-8') as outfile:
+    outfile.write("Benutzte Spalten:")
+    outfile.write(usedColums)
+    outfile.write("\nAnzahl Frequent Itemsets: ")
     outfile.write(str(len(frequent_itemsets)))
     outfile.write("\nAnzahl Association Rules: ")
     outfile.write(str(len(result)))
@@ -128,13 +138,14 @@ with io.open(r'StatisticsFirstRun.json', 'w', encoding='utf-8') as outfile:
     outfile.write(str(association_rules_threshold))
     outfile.write("\nmin_sup_threshold: ")
     outfile.write(str(min_sup_threshold))
+    outfile.write("\nmetric: ")
+    outfile.write(metric)
 
-print()
-print("#################################################")
-print("Für die Webseite abspeichern...", time.time() - start_time)
+
+# =============================================================================
+step_log("save files for the website")
 frequent_itemsets.to_json(r"website\src\assets\json\frequent_itemsets.json", orient='records')
 result.to_json(r"website\src\assets\json\association_rules.json", orient='records')
+# =============================================================================
+step_log("finish")
 
-print()
-print("#################################################")
-print("Finished", time.time() - start_time)

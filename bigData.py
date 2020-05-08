@@ -3,7 +3,7 @@
 """
 Created on Thu Apr  9 18:17:59 2020
 
-@author: philip & robin
+@author: robi & phili
 """ 
 
 import pandas as pd
@@ -11,30 +11,38 @@ from datetime import datetime, timedelta
 import time
 import re
 
+def step_log(message, *args, **kwargs):
+    timeee = (time.time() - start_time)/60
+    print("Step %d" % step_log.counter + "/%d: " % step_log.stepCount + message + " | time(m): ", "%.2f" % round(timeee, 2), *args, **kwargs)
+    step_log.counter += 1
+    step_log.stepCount = 12
+step_log.counter = 1
+step_log.stepCount = 12
+
 start_time = time.time()
 
 pd.set_option('display.max_rows', 500)
 pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
     
-print('(1/9) start importing the csv')
+step_log("importing the csv")
 df = pd.read_csv("Crimes_-_2001_to_present_19042020.csv", low_memory=False)
 
 #Filtere für die passenden Spalten
-print('(2/9) filter Columns | Time previous Step: ', time.time() - start_time)
+step_log("filter Columns")
 columns = ['Date', 'District', 'Primary Type', 'Location Description', 'Year','IUCR','Block', 'Description']
 df = pd.DataFrame(df, columns=columns)
 
 #Teile das Datum in eigene Spalten ein
-print("(3/9) split date | Time in Secounds: ", time.time() - start_time)
+step_log("split date")
 df[['Date','time', 't']] = df['Date'].str.split(' ',expand=True)
 
 #Passe die Blockspalte an
-print("(4/9) customize the block column | Time in Secounds: ", time.time() - start_time)
+step_log("customize the block column")
 df['Block'].replace(r'^\d\d\d\w\w\s\w\s', ' ', inplace=True, regex=True)
 
 #Passe die Datumspalte an
-print("(5/9) customize the date | in Secounds: ", time.time() - start_time)
+step_log("customize the date")
 day_name= ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag','Sonntag']
 month_name= ['Januar', 'Februar', 'Maerz', 'April', 'Mai','Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
 df["weekday"] = df["Date"].apply(lambda x: day_name[datetime.strptime(x, '%m/%d/%Y').weekday()])
@@ -42,23 +50,22 @@ df[['month', 'day', 'year']] = df['Date'].str.split('/',expand=True)
 df["month"] = df["month"].apply(lambda x: month_name[int(x)-1])
 
 #Entferne Komma in der Location Spalte
-print("(6/9) customize the location | Time in Secounds: ", time.time() - start_time)
+step_log("customize the location")
 df['Location Description'].replace(r', ', ' - ', inplace=True, regex=True)
 
 #Passe die Zeit zu deutschem Format an
-print("(7/9) some more date things | Time in Secounds: ", time.time() - start_time)
+step_log("adjust the time to the german format")
 df["time"] = df.apply((lambda x: format(datetime.strptime(x.time, '%H:%M:%S') + timedelta(hours=12),'%H') if "PM" in x.t else format(datetime.strptime(x.time, '%H:%M:%S'), '%H')), axis=1)
 
-print("--------------Adding Prefixes--------------- | Time in Secounds: ", time.time() - start_time)
+step_log("adding prefixes")
 df["Block"] = df["Block"].replace(to_replace=r'^\s', value='bl_', regex=True) #hier ist das \s dabei, weil es mit nem Leerzeichen noch anfängt
 df["Location Description"] = df["Location Description"].replace(to_replace=r'^', value='lo_', regex=True)
 #df["IUCR"] = df["IUCR"].replace(to_replace=r'^', value='IUCR_', regex=True)
 df["Primary Type"] = df["Primary Type"].replace(to_replace=r'^', value='pr_', regex=True)
-
 df["Primary Type"] = df["Primary Type"].replace("pr_CRIM SEXUAL ASSAULT", "pr_CRIMINAL SEXUAL ASSAULT") #geprüft3004
 df["Primary Type"] = df["Primary Type"].replace(["pr_NON - CRIMINAL", "pr_NON-CRIMINAL (SUBJECT SPECIFIED)" ], "pr_NON-CRIMINAL") #geprüft3004
 
-print("--------------Encode IUCR--------------- | Time in Secounds: ", time.time() - start_time)
+step_log("encode IUCR")
 df['IUCR'] = df['IUCR'].astype(str)
 df_iucr = pd.read_csv(r'IUCR\IUCR_CODES.csv', low_memory=False)
 df_iucr["IUCR_ENCODED"] = df_iucr['PRIMARY DESCRIPTION'] + " " + df_iucr['SECONDARY DESCRIPTION']
@@ -78,7 +85,7 @@ df["IUCR"] = df["IUCR"].apply(lambda x: encodeIUCR(x))
 
 #Entferne Ähnlichkeiten
 #Stand 3004 von 213 auf 144 bei Location Description
-print("--------------Remove Similarities------------- | Time in Secounds: ", time.time() - start_time)
+step_log("remove similarities")
 df["Location Description"] = df["Location Description"].replace(to_replace=r'^lo_AIRPORT.+', value='lo_AIRPORT', regex=True) #geprüft3004 von 213 auf 201 
 df["Location Description"] = df["Location Description"].replace(to_replace=r'\s*/\s*', value=' ', regex=True) ##geprüft3004 von 213 auf 198  
 df["Location Description"] = df["Location Description"].replace("lo_BAR OR TAVERN", "lo_TAVERN") ##geprüft3004 von 213 auf 212
@@ -115,9 +122,6 @@ df["Location Description"] = df["Location Description"].replace("lo_TAVERN LIQUO
 df["Location Description"] = df["Location Description"].replace("lo_TRUCKING TERMINAL", "lo_TRUCK") 
 df["Location Description"] = df["Location Description"].replace("lo_VACANT LOT LAND", "lo_VACANT LOT LAND") 
 df["Location Description"] = df["Location Description"].replace("lo_CLEANERS LAUNDROMAT", "lo_CLEANING STORE") 
-print("--------------Location Description Done------------- | Time in Secounds: ", time.time() - start_time)
-
-#von 4208 auf -3260 mit upper allein
 df["Block"] = df["Block"].str.upper()
 df["Block"] = df["Block"].replace(to_replace=r'BL_\s.', value='', regex=True) 
 df["Block"] = df["Block"].replace(to_replace=r'\s+', value=' ', regex=True)
@@ -149,11 +153,7 @@ df["Block"] = df["Block"].replace(to_replace=r'\s\bPL\b\s\w.+', value=' PL', reg
 df["Block"] = df["Block"].replace(to_replace=r'\s\bRD\b\s\w.+', value=' PL', regex=True) 
 df["Block"] = df["Block"].replace(to_replace=r'\s\bPW\b', value=' PKWY', regex=True)
 df["Block"] = df["Block"].replace(to_replace=r'\s\bPZ\b', value=' PLZ', regex=True)
-
 df["Block"] = df["Block"].replace(to_replace=r'\.', value='', regex=True)
-
-
-print("--------------Block Done------------- | Time in Secounds: ", time.time() - start_time)
 
 columns = ['time', 'District', 'year', 'Primary Type','IUCR','Block', 'Location Description', 'month', 'weekday', 't', 'Description']
 df = pd.DataFrame(df, columns=columns)
@@ -165,11 +165,13 @@ df["District"] = df["District"].replace(to_replace=r'^', value='ds_', regex=True
 
 df["LocationDescription"] = df["Location Description"]
 
-print("(8/9) start preparing for printing | Time in Secounds: ", time.time() - start_time)
-print(df)
+# =============================================================================
+# print("(8/9) start preparing for printing | Time in Seconds: ", time.time() - start_time)
+# step_log("remove similarities")
+# print(df)
+# =============================================================================
 
-print('(9/9) start saving as csv | Time previous Step: ', time.time() - start_time)
+step_log("saving as csv")
 df.to_csv('7mioCrimes.csv', index=False)
 
-laufzeit = time.time() - start_time
-print("Finished, Time: ", laufzeit)
+step_log("finished")
