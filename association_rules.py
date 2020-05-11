@@ -89,6 +89,7 @@ def association_rules(df, metric="confidence",
         "cs": lambda _, __, sC: sC,
         "support": lambda sAC, _, __: sAC,
         "confidence": lambda sAC, sA, _: sAC/sA,
+        "cB": lambda sAC, sA, _: sAC/sC,
         "lift": lambda sAC, sA, sC: metric_dict["confidence"](sAC, sA, sC)/sC,
         "leverage": lambda sAC, sA, sC: metric_dict["support"](
              sAC, sA, sC) - sA*sC,
@@ -99,12 +100,12 @@ def association_rules(df, metric="confidence",
     '''
     columns_ordered = ["antecedent support", "consequent support",
                        "support",
-                       "confidence", "lift",
+                       "confidence","cB", "lift",
                        "leverage", "conviction", "kluc", "imbratio"]
     '''    
     
     columns_ordered = [ "as", "cs",
-                       "confidence", "support",
+                       "confidence","cB", "support",
                         "kluc", "imbratio"]
 
     # check for metric compliance
