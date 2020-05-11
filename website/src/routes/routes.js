@@ -4,6 +4,7 @@ import Dashboard from "@/pages/Dashboard.vue";
 import Itemsets from "@/pages/FrequentItemsets.vue";
 import AssoTable from "@/pages/AssociationRulesTable.vue";
 import Graph from "@/pages/NetworkGraph.vue";
+import Test from "@/pages/RobinTest.vue";
 
 const routes = [
     {
@@ -30,6 +31,11 @@ const routes = [
                 path: "graph",
                 name: "Association Rules - Network",
                 component: Graph
+            },
+            {
+                path: "test",
+                name: "Test Area",
+                component: Test
             }
         ]
     }

@@ -23,6 +23,10 @@
                 <md-icon>content_paste</md-icon>
                 <p>Association Rules - Network</p>
             </sidebar-link>
+            <sidebar-link to="/test">
+                <md-icon>content_paste</md-icon>
+                <p>Test Area</p>
+            </sidebar-link>
         </side-bar>
 
         <div class="main-panel">
