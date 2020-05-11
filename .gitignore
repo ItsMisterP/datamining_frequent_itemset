@@ -11,5 +11,5 @@ Crimes_-_2001_to_present_19042020.csv
 Crimes_-_One_year_prior_to_present_19042020.csv
 ._pyache_
 .vscode
-StatisticsFirstRun/Vergleiche_FQ_Metric/*
-website/node_modules/.cached/*
+StatisticsFirstRun/Vergleiche_FQ_Metric/
+website/node_modules/.cached/
