@@ -2,13 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5ada68f-74c7-4c83-a7c2-65b947b23d91" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FirstRun.py" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstRun.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../bigData.py" beforeDir="false" afterPath="$PROJECT_DIR$/../bigData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../imb.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../imb.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kluc.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../kluc.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../out.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../statistics.py" beforeDir="false" afterPath="$PROJECT_DIR$/../statistics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../association_rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/../association_rules.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frequent_itemsets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frequent_itemsets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/3f7135ff9841ec50816e096e0c56a322.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/3f7135ff9841ec50816e096e0c56a322.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/84bf05ed3db41f3faf6e4bda5ec33a1a.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/84bf05ed3db41f3faf6e4bda5ec33a1a.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/1052d87d6c42f3158eb9a6dc0b9200ae.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/1052d87d6c42f3158eb9a6dc0b9200ae.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/20fb7bf0ae00b5f1fe6889acc5a1192c.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/20fb7bf0ae00b5f1fe6889acc5a1192c.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/3578310024c271fb5db44877b2340f69.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/3578310024c271fb5db44877b2340f69.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/5f697f273df77b5d8988bfeabcdf9087.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/5f697f273df77b5d8988bfeabcdf9087.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/80c21652a2220dc45f6bb0ce5a663d3a.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/80c21652a2220dc45f6bb0ce5a663d3a.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a4f55c574496826823e55519930f390b.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a4f55c574496826823e55519930f390b.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a7fd367e791b0a1a1a988d738335c33f.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a7fd367e791b0a1a1a988d738335c33f.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/b4aafc3b78a292188ac3ba6b21720818.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/b4aafc3b78a292188ac3ba6b21720818.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/cf7edd4eba7fec40ed97b6884f2eddfc.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/cf7edd4eba7fec40ed97b6884f2eddfc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/json/association_rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/json/association_rules.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/json/frequent_itemsets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/json/frequent_itemsets.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +58,8 @@
       <option name="presentableId" value="Default" />
       <updated>1587034065076</updated>
       <workItem from="1587034069310" duration="144000" />
+      <workItem from="1589448922637" duration="117000" />
+      <workItem from="1589449120065" duration="374000" />
     </task>
     <servers />
   </component>
@@ -55,9 +67,9 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1587034069336">
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1589449119331">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587034069336" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589449119331" />
   </component>
 </project>

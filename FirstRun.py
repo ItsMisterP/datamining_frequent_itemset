@@ -44,7 +44,7 @@ kluc_range_min = 0.5
 kluc_range_max = 1.0
 imb_ratio_threshold = 0.0
 association_rules_threshold = 0.0
-min_sup_threshold = 0.0001
+min_sup_threshold = 0.00001
 metric = "confidence"
 choose = "PrimaryType"
 # =============================================================================
@@ -68,6 +68,7 @@ df = df.drop(["Location Description"], axis=1)
 df = df.drop(["Primary Type"], axis=1)
 # =============================================================================
 #drop IMMER
+#df = df.drop(["time"], axis=1)
 df = df.drop(["t"], axis=1)
 df = df.drop(["year"], axis=1)
 df = df.drop(["Block"], axis=1)
@@ -84,10 +85,10 @@ if(choose == "IUCR"):
 print(df.columns)
 # =============================================================================
 
-#df["time"] = df["time"].replace(["1","2","3","4","5", "6"], "Time: 1-6")
-#df["time"] = df["time"].replace(["7","8","9","10","11","12"], "Time: 7-12")
-#df["time"] = df["time"].replace(["13","14","15","16","17","18"], "Time: 13-18")
-#df["time"] = df["time"].replace(["19","20","21","22","23","24"], "Time: 19-24")
+df["time"] = df["time"].replace(["1","2","3","4","5", "6"], "Time: 1-6")
+df["time"] = df["time"].replace(["7","8","9","10","11","12"], "Time: 7-12")
+df["time"] = df["time"].replace(["13","14","15","16","17","18"], "Time: 13-18")
+df["time"] = df["time"].replace(["19","20","21","22","23","24"], "Time: 19-24")
   
 
 
