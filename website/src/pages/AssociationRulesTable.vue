@@ -171,6 +171,12 @@
                                     {{ item.confidence }}
                                 </md-table-cell>
                                 <md-table-cell
+                                    md-label="cB"
+                                    md-sort-by="cB"
+                                >
+                                    {{ item.cB }}
+                                </md-table-cell>
+                                <md-table-cell
                                     md-label="Kluc"
                                     md-sort-by="kluc"
                                 >
@@ -248,7 +254,7 @@ export default {
             numberOfEntries: 500,
             numberOfCosequents: 1,
             numberOfAntecedents: 2,
-            minsup: 0.001,
+            minsup: 0.0001,
             minconf: 0.6,
             minkluc: 0.1,
             minimb: 0.5,

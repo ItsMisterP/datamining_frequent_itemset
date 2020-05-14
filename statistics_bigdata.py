@@ -29,6 +29,6 @@ def statistics(df):
         resultObject[column] = columnset.value_counts().to_dict()
     
     print("Safe as json")
-    with open(r'website\src\assets\json\CountsAll.json', "w") as outfile: 
+    with open('website/src/assets/json/CountsAll.json', "w") as outfile: 
         outfile.write(json.dumps(resultObject))
 

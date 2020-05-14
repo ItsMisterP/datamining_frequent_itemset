@@ -19,7 +19,6 @@ import io
 import time
 import statistics_bigdata as statistics
 import logging
-
 #um die FirstRunStatistics zu speichern
 timestr = time.strftime("%Y%m%d-%H%M%S")
 def step_log(message, *args, **kwargs):
@@ -40,12 +39,12 @@ start_time = time.time()
 
 # =============================================================================
 #Variables
-show_rules = 3
-kluc_range_min = 0.0
+show_rules = 0
+kluc_range_min = 0.5
 kluc_range_max = 1.0
-imb_ratio_threshold = 0.25
-association_rules_threshold = 0.6
-min_sup_threshold = 0.001
+imb_ratio_threshold = 0.0
+association_rules_threshold = 0.5
+min_sup_threshold = 0.0001
 metric = "confidence"
 # =============================================================================
 
@@ -62,25 +61,31 @@ step_log("apply temporary filter")
 # ['time', 'District', 'year', 'Primary Type','IUCR','Block', 'Location Description', 'month', 'weekday', 't', 'Description']
 df["time"] = df["time"].astype(str)
 df["year"] = df["year"].astype(str)
+df['IUCR'] = df['IUCR'].astype(str)
 df["District"] = df["District"].astype(str)
-#df = df.drop(["Primary Type"], axis=1)
-df = df.drop(["t"], axis=1)
-#df = df.drop(["time"], axis=1)
+
+df = df.drop(["Primary Type"], axis=1)
+df = df.drop(["Location Description"], axis=1)
+#df = df.drop(["t"], axis=1)
+df = df.drop(["time"], axis=1)
 df = df.drop(["year"], axis=1)
 df = df.drop(["Block"], axis=1)
-
-df = df.drop(["IUCR"], axis=1)
-#df["IUCR"] = df["IUCR"].replace(to_replace=r'\,', value=' ', regex=True) 
-
+#df = df.drop(["District"], axis=1)
 df = df.drop(["Description"], axis=1)
+df = df.drop(["IUCR"], axis=1)
+df = df.drop(["month"], axis=1)
+df = df.drop(["weekday"], axis=1)
+#df = df.drop(["PrimaryType"], axis=1)
+#df = df.drop(["LocationDescription"], axis=1)
 
-df["time"] = df["time"].replace(["1","2","3","4","5", "6"], "Time: 1-6")
-df["time"] = df["time"].replace(["7","8","9","10","11","12"], "Time: 7-12")
-df["time"] = df["time"].replace(["13","14","15","16","17","18"], "Time: 13-18")
-df["time"] = df["time"].replace(["19","20","21","22","23","24"], "Time: 19-24")
+#df["IUCR"] = df["IUCR"].replace(to_replace=r'\,', value=' ', regex=True) 
+#df["time"] = df["time"].replace(["1","2","3","4","5", "6"], "Time: 1-6")
+#df["time"] = df["time"].replace(["7","8","9","10","11","12"], "Time: 7-12")
+#df["time"] = df["time"].replace(["13","14","15","16","17","18"], "Time: 13-18")
+#df["time"] = df["time"].replace(["19","20","21","22","23","24"], "Time: 19-24")
   
 
-#df['IUCR'] = df['IUCR'].astype(str)
+
 
 #extrahiert die monate! 
 #df['DATE'] = df ['DATE'].str.extract("(\w*)/")
@@ -90,6 +95,7 @@ df = df.dropna()
 
 #Speiche die Columns, damit sie später in der Statistik auftauchen
 usedColums = str(df.columns)
+print(usedColums)
 
 df = df.to_numpy()
 #print(df)
@@ -111,12 +117,11 @@ result = own.association_rules(frequent_itemsets, min_threshold=association_rule
 # =============================================================================
 step_log("save Association Rules")
 
-result[(result['kluc'] >= kluc_range_min) & 
-        (result['kluc'] >= kluc_range_max)].to_json("association_rules.json", orient='records')
+result[(result['kluc'] >= kluc_range_min)].to_json("association_rules.json", orient='records')
 
 # =============================================================================
 step_log("save statistics for this Run")
-with io.open(r'StatisticsFirstRun\StatisticsFirstRun'+timestr+'.json', 'w', encoding='utf-8') as outfile:
+with io.open('StatisticsFirstRun/StatisticsFirstRun'+timestr+'.json', 'w', encoding='utf-8') as outfile:
     outfile.write("Benutzte Spalten:")
     outfile.write(usedColums)
     outfile.write("\nAnzahl Frequent Itemsets: ")
@@ -144,8 +149,8 @@ with io.open(r'StatisticsFirstRun\StatisticsFirstRun'+timestr+'.json', 'w', enco
 
 # =============================================================================
 step_log("save files for the website")
-frequent_itemsets.to_json(r"website\src\assets\json\frequent_itemsets.json", orient='records')
-result.to_json(r"website\src\assets\json\association_rules.json", orient='records')
+frequent_itemsets.to_json("website/src/assets/json/frequent_itemsets.json", orient='records')
+result[(result['kluc'] >= kluc_range_min)].to_json("website/src/assets/json/association_rules.json", orient='records')
 # =============================================================================
 step_log("finish")
 

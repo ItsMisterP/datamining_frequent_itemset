@@ -21,9 +21,9 @@
                             @change="update"
                             type="range"
                             v-model.number="minsup"
-                            min="0.001"
+                            min="0.00001"
                             max="0.3"
-                            step="0.001"
+                            step="0.00001"
                         />
                         {{ minsup }}
                         <br />
@@ -175,10 +175,10 @@ export default {
                 links: []
             },
             radius: 10,
-            minsup: 0.001,
+            minsup: 0.00001,
             klucMin: 0.0,
-            klucMax: 0.4,
-            imb: 0.1,
+            klucMax: 1,
+            imb: 0,
             gravity: -10000,
             showItemsets: false,
             filteredRules: [],
@@ -494,8 +494,8 @@ export default {
         getURL: function(url) {
             return globalStore.prefix + url;
         },
-        containerclicked(d){
-            console.log("tick")
+        containerclicked(d) {
+            console.log("tick");
             this.tableRules = this.filteredRules;
         },
         nodeclicked(d) {
