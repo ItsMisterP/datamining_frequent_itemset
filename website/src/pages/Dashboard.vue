@@ -1,9 +1,8 @@
 <template>
     <div class="content">
-        <div class="md-layout">
+        <div class="md-layout" layout="row">
             <div
                 class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"
-                layout="row"
             >
                 <md-card>
                     <md-card-header data-background-color="gray">
@@ -20,6 +19,8 @@
                         ></heatmap>
                     </md-card-content>
                 </md-card>
+            </div>
+            <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-49" >
                 <md-card>
                     <md-card-header data-background-color="gray">
                         <h4 class="title">Crime by District Heatmap</h4>
@@ -29,9 +30,9 @@
                     </md-card-header>
                     <md-card-content>
                         <piechart
-                            id="2"
-                            :selectedDistrict="this.selectedDistrict"
-                            @update-selectedDistrict="changeSelectedDistrict"
+                                id="2"
+                                :selectedDistrict="this.selectedDistrict"
+                                @update-selectedDistrict="changeSelectedDistrict"
                         ></piechart>
                     </md-card-content>
                 </md-card>
