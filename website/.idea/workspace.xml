@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c5ada68f-74c7-4c83-a7c2-65b947b23d91" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/diagrams/HeatMap.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/diagrams/HeatMap.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/RobinTest.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RobinTest.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +79,7 @@
       <workItem from="1589783360102" duration="2403000" />
       <workItem from="1590055052021" duration="1123000" />
       <workItem from="1590056770736" duration="74000" />
-      <workItem from="1590135495155" duration="2666000" />
+      <workItem from="1590135495155" duration="3282000" />
     </task>
     <servers />
   </component>

@@ -7,8 +7,7 @@
 <script>
 import * as d3 from "d3";
 //import * as geoJson from "@/assets/json/boundaries_neighborhoods.json";
-import * as d3geo from "vue-d3-geo";
-import "vue-d3-geo/dist/vue-d3-geo.css";
+
 
 export default {
     name: "Test-Chart",
@@ -267,4 +266,6 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

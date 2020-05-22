@@ -61,28 +61,10 @@
                             >
                                 {{ item.imbratio }}
                             </md-table-cell>
-                            <md-table-cell
-                                    md-label="cs"
-                                    md-sort-by="cs"
-                            >
-                                {{ item.cs }}
-                            </md-table-cell>
                         </md-table-row>
                     </md-table>
-
-
-
                 </md-card-content>
-
-
-
-
-
             </md-card>
-
-
-
-
         </div>
     </div>
 </template>
@@ -228,8 +210,9 @@
     };
 </script>
 <style scoped>
-    @import 'parallelcoords/style.css';
     @import 'parallelcoords/parcoordsPage.css';
+    @import 'parallelcoords/style.css';
+
 
     .edge {
         stroke: white;
