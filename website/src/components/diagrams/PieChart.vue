@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Grouped Bar Chart</h1>
+        <h1>Pie Chart</h1>
         <svg class="linechart" :id="id"></svg>
     </div>
 </template>
