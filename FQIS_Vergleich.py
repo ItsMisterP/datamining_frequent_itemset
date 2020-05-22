@@ -11,6 +11,7 @@ from mlxtend.preprocessing import TransactionEncoder
 #from mlxtend.frequent_patterns import association_rules
 from mlxtend.frequent_patterns import apriori
 from mlxtend.frequent_patterns import fpgrowth
+from mlxtend.frequent_patterns import fpmax
 import numpy as np
 import csv
 import re
@@ -25,7 +26,7 @@ def run(min_sup_threshold, choose):
     #um die FirstRunStatistics zu speichern
     timestr = time.strftime("%Y%m%d-%H%M%S")
     def step_log(message, *args, **kwargs):
-        timeee = (time.time() - start_time)/60
+        timeee = (time.time() - start_time)
         #print("Step %d" % step_log.counter + "/%d: " % step_log.stepCount + message + " | time(m): ", "%.2f" % round(timeee, 2), *args, **kwargs)
         step_log.counter += 1
         step_log.stepCount = 6
@@ -92,8 +93,10 @@ def run(min_sup_threshold, choose):
     te = TransactionEncoder()
     te_ary = te.fit(df).transform(df)
     df2 = pd.DataFrame(te_ary, columns=te.columns_)
-    #frequent_itemsets = apriori(df1, min_support=0.0001, use_colnames=True, low_memory=True)
-    frequent_itemsets = fpgrowth(df2, min_support=min_sup_threshold, use_colnames=True)
+    #frequent_itemsets = apriori(df2, min_support=min_sup_threshold, use_colnames=True, low_memory=True)
+    frequent_itemsets = apriori(df2, min_support=min_sup_threshold, use_colnames=True)
+    #frequent_itemsets = fpgrowth(df2, min_support=min_sup_threshold, use_colnames=True)
+    #frequent_itemsets = fpmax(df2, min_support=min_sup_threshold, use_colnames=True)
     # =============================================================================
     step_log("save Frequent Itemsets")
     frequent_itemsets.to_json("frequent_itemsets.json", orient='records')
@@ -118,5 +121,5 @@ def run(min_sup_threshold, choose):
     print("Min-Sup:", min_sup_threshold)
     print("Column:", choose)
     print(len(frequent_itemsets))
-    timeee = (time.time() - start_time)/60
-    print("finish time(m): ", "%.2f" % round(timeee, 2))
+    timeee = (time.time() - start_time)
+    print("finish time(s): ", "%.2f" % round(timeee, 2))

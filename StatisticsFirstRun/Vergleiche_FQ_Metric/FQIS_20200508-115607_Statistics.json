@@ -1,4 +1,0 @@
-Benutzte Spalten:['time' 'District' 'IUCR' 'month' 'weekday' 'LocationDescription']
-Anzahl Frequent Itemsets: 47
-Zeit: 142.02394700050354
-min_sup_threshold: 0.05

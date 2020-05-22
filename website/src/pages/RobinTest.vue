@@ -123,7 +123,7 @@
                     console.log(data);
                     parcoords
                         .data(data)
-                        .dimensions(dimensions) 
+                        .dimensions(dimensions)
                         .bundlingStrength(.5) // set bundling strength
                         .smoothness(0)
                         .showControlPoints(false)

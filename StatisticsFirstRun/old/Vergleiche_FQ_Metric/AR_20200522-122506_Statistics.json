@@ -1,0 +1,8 @@
+Benutzte Spalten:['time' 'District' 'IUCR' 'month' 'weekday' 'LocationDescription']
+Anzahl Frequent Itemsets: 463
+Anzahl Association Rules: 814
+Zeit: 164.4262092113495
+Parameter: 
+association_rules_threshold: 0.0
+min_sup_threshold: 0.01
+metric: confidence
