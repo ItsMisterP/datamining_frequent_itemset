@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5ada68f-74c7-4c83-a7c2-65b947b23d91" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../DashboardCounts.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirstRun.py" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstRun.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../association_rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/../association_rules.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backup/crimes_e_columns_ficken.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backup/crimes_e_columns_ficken_datumUmwandlungHighend.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../backup/crimes_e_columns_ficken_primUSecZusammen.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frequent_itemsets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frequent_itemsets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../statistics_bigdata.py" beforeDir="false" afterPath="$PROJECT_DIR$/../statistics_bigdata.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/json/association_rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/json/association_rules.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/json/frequent_itemsets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/json/frequent_itemsets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/RobinTest.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RobinTest.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,15 +51,6 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\robi\Desktop\datamining_frequent_itemset\website\src\pages" />
-      <recent name="C:\Users\robi\Desktop\datamining_frequent_itemset\website\src" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\robi\Desktop\datamining_frequent_itemset\website\src\pages\parallelcoords" />
-    </key>
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
       <recent name="S:\cygwin64\home\janni\repo\datamining_frequent_itemset\website\src\components\diagrams" />
       <recent name="S:\cygwin64\home\janni\repo\datamining_frequent_itemset\website\src\pages" />
     </key>
@@ -96,7 +79,7 @@
       <workItem from="1589783360102" duration="2403000" />
       <workItem from="1590055052021" duration="1123000" />
       <workItem from="1590056770736" duration="74000" />
-      <workItem from="1590135495155" duration="260000" />
+      <workItem from="1590135495155" duration="2666000" />
     </task>
     <servers />
   </component>

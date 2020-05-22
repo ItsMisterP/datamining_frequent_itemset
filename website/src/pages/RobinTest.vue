@@ -62,22 +62,10 @@
                                 {{ item.imbratio }}
                             </md-table-cell>
                             <md-table-cell
-                                    md-label="Imbalance Ratio"
-                                    md-sort-by="imbratio"
+                                    md-label="cs"
+                                    md-sort-by="cs"
                             >
-                                {{ item.imbratio }}
-                            </md-table-cell>
-                            <md-table-cell
-                                md-label="cs"
-                                md-sort-by="cs"
-                            >
-                            {{ item.cs }}
-                            </md-table-cell>
-                            <md-table-cell
-                                    md-label="support"
-                                    md-sort-by="support"
-                            >
-                                {{ item.support }}
+                                {{ item.cs }}
                             </md-table-cell>
                         </md-table-row>
                     </md-table>
@@ -99,176 +87,174 @@
     </div>
 </template>
 <script>
-import * as d3 from "d3";
-import { scaleLinear, scaleBand } from "d3-scale";
-import { max, min } from "d3-array";
-import { selectAll } from "d3-selection";
-import { globalStore } from "../main";
-import ParCoords from 'parcoord-es';
+    import * as d3 from "d3";
+    import { scaleLinear, scaleBand } from "d3-scale";
+    import { max, min } from "d3-array";
+    import { selectAll } from "d3-selection";
+    import { globalStore } from "../main";
+    import ParCoords from 'parcoord-es';
 
 
-export default {
-    watch: {
-        showItemsets: function() {
-            this.update();
-        }
-    },
-
-    data() {
-        return {
-            tableRules: [],
-        };
-    },
-    mounted() {
-        this.init();
-    },
-    methods: {
-        getURL: function(url) {
-            return globalStore.prefix + url;
-        },
-        update() {
-            init();
+    export default {
+        watch: {
+            showItemsets: function() {
+                this.update();
+            }
         },
 
-        init() {
-            var blue_to_brown = d3.scaleLinear()
-                .domain([0.3, 0.5])
-                .range(["steelblue", "brown"])
-                .interpolate(d3.interpolateLab);
+        data() {
+            return {
+                tableRules: [],
+            };
+        },
+        mounted() {
+            this.init();
+        },
+        methods: {
+            getURL: function(url) {
+                return globalStore.prefix + url;
+            },
+            update() {
+                init();
+            },
 
-            var color = function(d) { return blue_to_brown(d["kluc"]) };
+            init() {
+                var blue_to_brown = d3.scaleLinear()
+                    .domain([0.3, 0.5])
+                    .range(["steelblue", "brown"])
+                    .interpolate(d3.interpolateLab);
 
-            var parcoords = ParCoords()("#example")
-                .color(color)
-                .alpha(0.4);
+                var color = function(d) { return blue_to_brown(d["kluc"]) };
 
-            var dimensions = ["cs", "confidence", "imbratio", "kluc", "support"];
+                var parcoords = ParCoords()("#example")
+                    .color(color)
+                    .alpha(0.4);
 
-            let graph = this;
-            // load csv file and create the chart
+                var dimensions = ["cs", "confidence", "imbratio", "kluc", "support"];
 
-
-            d3.json(this.getURL("json/association_rules.json")).then(function(data) {
-                graph.tableRules = data;
-                console.log(data);
-                parcoords
-                    .data(data)
-                    .dimensions(dimensions)
-                    .bundlingStrength(.5) // set bundling strength
-                    .smoothness(0)
-                    .showControlPoints(false)
-                    .render()
-                    .brushMode("1D-axes")
-                    .reorderable()
-                    .interactive();
-
-                // create data table, row hover highlighting
+                let graph = this;
+                // load csv file and create the chart
 
 
-                // smoothness
-                d3.select("#smoothness").on("change", function() {
-                    d3.select("#smooth").text(this.value);
-                    parcoords .smoothness(this.value).render();
+                d3.json(this.getURL("json/association_rules.json")).then(function(data) {
+                    graph.tableRules = data;
+                    console.log(data);
+                    parcoords
+                        .data(data)
+                        .dimensions(dimensions)
+                        .bundlingStrength(.5) // set bundling strength
+                        .smoothness(0)
+                        .showControlPoints(false)
+                        .render()
+                        .brushMode("1D-axes")
+                        .reorderable()
+                        .interactive();
+
+                    // create data table, row hover highlighting
+
+
+                    // smoothness
+                    d3.select("#smoothness").on("change", function() {
+                        d3.select("#smooth").text(this.value);
+                        parcoords .smoothness(this.value).render();
+                    });
+
+                    // bundling strength slider
+                    d3.select("#bundling").on("change", function() {
+                        d3.select("#strength").text(this.value);
+                        parcoords .bundlingStrength(this.value).render();
+                    });
+
+                    var select = d3.select("#bundleDimension").append("select").on("change", changeBundle);
+
+                    var options = select.selectAll('option')
+                        .data(d3.keys(parcoords .dimensions()));
+
+                    options
+                        .enter()
+                        .append("option")
+                        .attr("value", function(d) {return d;})
+                        .text(function(d) {return d;});
+
+                    function changeBundle() {
+                        parcoords .bundleDimension(this.value);
+                    }
+
+
+                    parcoords .on("brush", function(d) {
+                        graph.tableRules = d
+                    });
                 });
 
-                // bundling strength slider
-                d3.select("#bundling").on("change", function() {
-                    d3.select("#strength").text(this.value);
-                    parcoords .bundlingStrength(this.value).render();
-                });
+                //Neue funktionalität
 
-                var select = d3.select("#bundleDimension").append("select").on("change", changeBundle);
-
-                var options = select.selectAll('option')
-                    .data(d3.keys(parcoords .dimensions()));
-
-                options
+                var sltBrushMode = d3.select('#sltBrushMode')
+                sltBrushMode.selectAll('option')
+                    .data(parcoords.brushModes())
                     .enter()
-                    .append("option")
-                    .attr("value", function(d) {return d;})
-                    .text(function(d) {return d;});
+                    .append('option')
+                    .text(function(d) { return d; });
 
-                function changeBundle() {
-                    parcoords .bundleDimension(this.value);
-                }
-
-
-                parcoords .on("brush", function(d) {
-                    graph.tableRules = d
+                sltBrushMode.on('change', function() {
+                    parcoords.brushMode(this.value);
+                    switch(this.value) {
+                        case 'None':
+                            d3.select("#pStrums").style("visibility", "hidden");
+                            d3.select("#lblPredicate").style("visibility", "hidden");
+                            d3.select("#sltPredicate").style("visibility", "hidden");
+                            d3.select("#btnReset").style("visibility", "hidden");
+                            break;
+                        case '2D-strums':
+                            d3.select("#pStrums").style("visibility", "visible");
+                            break;
+                        default:
+                            d3.select("#pStrums").style("visibility", "hidden");
+                            d3.select("#lblPredicate").style("visibility", "visible");
+                            d3.select("#sltPredicate").style("visibility", "visible");
+                            d3.select("#btnReset").style("visibility", "visible");
+                            break;
+                    }
                 });
-            });
 
-            //Neue funktionalität
+                sltBrushMode.property('value', '1D-axes');
 
-            var sltBrushMode = d3.select('#sltBrushMode')
-            sltBrushMode.selectAll('option')
-                .data(parcoords.brushModes())
-                .enter()
-                .append('option')
-                .text(function(d) { return d; });
+                d3.select('#btnReset').on('click', function() {parcoords.brushReset();})
+                d3.select('#sltPredicate').on('change', function() {
+                    parcoords.brushPredicate(this.value);
+                });
 
-            sltBrushMode.on('change', function() {
-                parcoords.brushMode(this.value);
-                switch(this.value) {
-                    case 'None':
-                        d3.select("#pStrums").style("visibility", "hidden");
-                        d3.select("#lblPredicate").style("visibility", "hidden");
-                        d3.select("#sltPredicate").style("visibility", "hidden");
-                        d3.select("#btnReset").style("visibility", "hidden");
-                        break;
-                    case '2D-strums':
-                        d3.select("#pStrums").style("visibility", "visible");
-                        break;
-                    default:
-                        d3.select("#pStrums").style("visibility", "hidden");
-                        d3.select("#lblPredicate").style("visibility", "visible");
-                        d3.select("#sltPredicate").style("visibility", "visible");
-                        d3.select("#btnReset").style("visibility", "visible");
-                        break;
-                }
-            });
-
-            sltBrushMode.property('value', '1D-axes');
-
-            d3.select('#btnReset').on('click', function() {parcoords.brushReset();})
-            d3.select('#sltPredicate').on('change', function() {
-                parcoords.brushPredicate(this.value);
-            });
-
+            }
         }
-    }
-};
+    };
 </script>
 <style scoped>
-
     @import 'parallelcoords/style.css';
     @import 'parallelcoords/parcoordsPage.css';
 
+    .edge {
+        stroke: white;
+        stroke-width: 1;
+    }
+    .graphSVG {
+        background-color: black;
+    }
 
-.edge {
-    stroke: white;
-    stroke-width: 1;
-}
-.graphSVG {
-    background-color: black;
-}
-
-div.container {
-    width: 100%;
-    border: 1px solid gray;
-}
-div.tooltip {
-    position: absolute;
-    text-align: center;
-    width: 180px;
-    padding: 2px;
-    font: 12px sans-serif;
-    background: lightsteelblue;
-    border: 0px;
-    border-radius: 8px;
-    pointer-events: none;
-}
-input {
-    width: 50%;
-}
+    div.container {
+        width: 100%;
+        border: 1px solid gray;
+    }
+    div.tooltip {
+        position: absolute;
+        text-align: center;
+        width: 180px;
+        padding: 2px;
+        font: 12px sans-serif;
+        background: lightsteelblue;
+        border: 0px;
+        border-radius: 8px;
+        pointer-events: none;
+    }
+    input {
+        width: 50%;
+    }
 </style>
