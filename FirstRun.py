@@ -40,11 +40,11 @@ start_time = time.time()
 # =============================================================================
 #Variables
 show_rules = 0
-kluc_range_min = 0.5
+kluc_range_min = 0.0
 kluc_range_max = 1.0
 imb_ratio_threshold = 0.0
-association_rules_threshold = 0.0
-min_sup_threshold = 0.00001
+association_rules_threshold = 0.6
+min_sup_threshold = 0.001
 metric = "confidence"
 choose = "PrimaryType"
 # =============================================================================

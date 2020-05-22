@@ -2,23 +2,671 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5ada68f-74c7-4c83-a7c2-65b947b23d91" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/csv/cars.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/csv/planet.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/diagrams/ParallelCoordinates.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/parallelcoords/parcoordsPage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/parallelcoords/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FirstRun.py" beforeDir="false" afterPath="$PROJECT_DIR$/../FirstRun.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../association_rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/../association_rules.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frequent_itemsets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frequent_itemsets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/3f7135ff9841ec50816e096e0c56a322.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/3f7135ff9841ec50816e096e0c56a322.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/84bf05ed3db41f3faf6e4bda5ec33a1a.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/84bf05ed3db41f3faf6e4bda5ec33a1a.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/1052d87d6c42f3158eb9a6dc0b9200ae.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/1052d87d6c42f3158eb9a6dc0b9200ae.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/20fb7bf0ae00b5f1fe6889acc5a1192c.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/20fb7bf0ae00b5f1fe6889acc5a1192c.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/3578310024c271fb5db44877b2340f69.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/3578310024c271fb5db44877b2340f69.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/5f697f273df77b5d8988bfeabcdf9087.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/5f697f273df77b5d8988bfeabcdf9087.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/80c21652a2220dc45f6bb0ce5a663d3a.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/80c21652a2220dc45f6bb0ce5a663d3a.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a4f55c574496826823e55519930f390b.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a4f55c574496826823e55519930f390b.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a7fd367e791b0a1a1a988d738335c33f.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a7fd367e791b0a1a1a988d738335c33f.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/b4aafc3b78a292188ac3ba6b21720818.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/b4aafc3b78a292188ac3ba6b21720818.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/cf7edd4eba7fec40ed97b6884f2eddfc.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/cf7edd4eba7fec40ed97b6884f2eddfc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.bin/webpack-dev-server.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/webpack-dev-server.ps1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/017d8bc97353396ad0fc0b250aeb948c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/05f597232e89a8456ba4aef4d9e5196d.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/0b227d0a4b6f3049650fe0164aa18d88.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/0d56b43d75221334af2866e374456e10.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/0f8f64b5ae0a580134e922e5792af669.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/101525aacb57b63ac6a0ff45d409369b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/13ed20bd25db05bf678a7abbff9d50db.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/151fe333cc73aada92513137ba9370d9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/16d01e1a75792a088bb11e6925eb16db.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/1b6cf3dfd7ad35f4da4bf04007144bda.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/1c64e664151b210897a64cc3a89a9d58.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/2bd844e3a8c53a9abc339097fa1b3810.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/34a0fe702b3f7ecb92c96d73839c78f8.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/378c532bfdc1b0f1512e5bee7a15e473.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/390aca619bae8adacbe272c25eb32602.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/3c1a3858d40a16dd87a322091c6b82b4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/423b5ce368b5c0d326a902ea008ba0a4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/44f4d6c6af24623a99c0b13490d25f71.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/babel-loader/44f4d6c6af24623a99c0b13490d25f71.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/47c717947bb0e5ebfabb1ab95b7ef8c1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/52644da2dbdc726a4b6e50d10fa320d9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/5db8ad0af94f2e568ad588061aa923ad.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/61698a6871ca788991b6ccd9c9434145.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/66c5b14a350d8446c584e1a4b1cee646.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/68858be8dc95625ed2d07ace6091b216.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/6d2d2c6ce3d0cb73711444653fbe5e5d.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/6df2e7850bb7d9e8beb82241c6e9fc96.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/724319436d8e7686957e09236bbcd1f7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/74d4386c226812dbe45c1cc2a292cb10.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/75e03e0394b853e5bf4277011947298e.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/7823d2b4fbfb807c7ec179e53069b6b8.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/7b3d3a76b2f50aaef9b0d0561d0fd740.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/82720b2ef3728bfe3f5d6cbd233567bc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/8c84ceef8446bda9534b32d694a72257.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/900bd7e97a4ee8dc6e88787b404dd57a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/928853b3517a74144bc80ab23e1c6942.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/98ed30ddb4af75f64cf91059599147ec.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/99a0fe3af211ba1a8e801bae0e30527f.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/9aa460c52cfc118177dbe0d3b205cc71.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/a472c790cd846c0a810e19ca9f5dbd1d.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/a62e0c51ceab316730d3e7e8e8a84229.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/a791bcceeec464c5767ec54325db6a55.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/af3c30f9800017200494102f40044907.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/afb9a56f1beda15405cca10f10475818.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/b12a49eaaa7881d150db5906e887d7b0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/b1ef34bde34374c35900af7991bf2237.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/b74b8ba28d78f32bb6f0eea4f0bd8172.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/b7f357c76614103d0a9c6c726d6a96e2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/b8130ede17cd7dbbb4417f4fa95e33d3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/c003f3bf579c2a09e4e9043f1bbb0637.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/c1f35e9da4ab4432fea8329d8eb7cca6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/c4e4ec6dfec4c4391b91bdb7d7b16f17.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/c7f6631cc1cc30122e0c04ca0334e833.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/c900f5d2180a537cf26c3688f6269f4a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/cc2a1d1d10f8140f04e1245ed46f8523.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/d37187da9f0116ec62695e3dadd9ed10.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/d8fce3416f623c8aa0136ff667d00920.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/e2f0ae97e24c3af3e41b3b134da9a8ee.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/e758bfcbbc9dc63cb991d4a63716dfc0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/eb3a3e1789e8f7db2695f8a3a36a3f85.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/eda6b8a340255b70da0113ef21f93b23.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/babel-loader/fd26977c534a7cbbe0e91b8d4ed9e093.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/0621e77630b9d67e1e6ac513a1a32c6ab9d6124b.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/07f9f573e5c26da8354f5627748692b0c9cac081.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/0a9eee8701b3fbd22ca39a9e4d8272ffd66ecb54.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/0bbd4e3be616b0132a9d0fec5f316fe928446d0a.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/0dc865e4797a6e44fd782d893ef8bb63e235354c.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/0e78896de601abacbafdd8995ac59a052443bb01.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/111f1874a34c1453a2ea6aa6304e2a866021c0ae.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/18ca56b0fd53f958a0d2680b7f370017b319f48e.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/18d3f7fe57c983a276f0f375014999a41fa997a6.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/1b9058429e44dbe87bf7bcd4aded73531ae345ea.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/1c0e148e88a2b9c8f8788b1778bd06fc1a16e0f1.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/1f8be0241a90909fc2fbc6b84bf89e683e179f81.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/22937f4be63c7464d86281cdd2467357616c0273.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/248233c8fd7e96ce860c3bbea896712c93a85d4d.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/25636f755eca815c16c35625a08b4819693e66ae.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/25fdc91bde7f5657987acc25d27dcaa5a21aade8.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/268f9b1b7af78066396af61fc9f3e5001e2e9648.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/27cc3a95e2c012536d5980361c8608d90f192845.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/2a8feee878411bdc18730b440f1c727b47be436a.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/2dd1d65e64ea023f5961366ba9e287b651eca8c6.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/2e4c87a511b58f11947f15c43de630fc18c52a14.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/335b9fc812d363e954e9eedca8ecd672f7db3765.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/3501003030a2bd5ed780f4522a24610fa01daf4f.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/3870c47b8da5450a68b725181358bca2f8ed8b8b.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/39fc602db1e8e0916aef59adece18ae1ac87a8fc.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/3b491103450928ad4a6403009d10de6104931940.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/419254294dd458e2b2626668fda4b239a458589d.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/42fa2f7c040f9363eac03801dcc93d10dd37daa3.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/443f06b7013938b3d8d78750195936fa3fb321c1.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/44d6b4f3f95ecb5af2f75f611af2ee6f99d11427.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/4ab25763d5957ed25be5ed1217b290fc31fe7cc9.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/53fcd7c5a195da83d11faf6c28dfa44c9e90e5e5.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/546f2a341bbac4a5e69eb09cc73260f808caba87.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/576c21514ef908d295fc9a05619d12aeceebb16f.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/5a9732cce288ed31650872afa1ed304d0c6fc716.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/5b7743554327d8be5df9dfc79d6ac786cd54a1fc.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/6d62591cb33be105dac554807745a7f809989484.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/6e9bb26892c4a81d0318e8841f3222d6443a3c9b.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/6fc7554aa215a89d56702207af7a5ec30bdd4824.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/71098551b12ccc16af8daf995e7c25dfd5e956c1.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/7451d38fc818affa5ebd68f8b4475c6ce019ff9d.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/77935e14da81b7407cbaaa66f849a52f5c07d93d.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/7cc3c88f6c22a92af178492849193c606bb62313.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/7e2362b9417e5cd86b42c21c3459b8fda57be218.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/7f0009618a384db3225744192740a7a9f1040fe5.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/81056ef1b266dcc93671f1fad9ea318d9e9f64ed.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/861334f2a16fac7d49725c2204b11f624f1b561c.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/866d83d64997b019cb5a30b1d18cd1fc1982c780.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/880b401ca446971baeb51e57716ebbdf847dbee6.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/8b49b743aa182686f61acd67686f02b04a1e20cd.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/8db37184fd0f84b98b7a0513a335e3bb63a18e96.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/915e40b0e34010c022fa3503ffc35b0e4136f8ed.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/91bf33bbb0a76b2be801dcadd268bb02179f17c3.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/93dfee191761d752172c0a02b19aab6271586b52.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/949cdee9079bac474bed0de5b52d1ed98e965535.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/94dc9280bf1f8a407312b9fbee7484e72e7b40b2.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/9613ce954ae874ff9c8d57d86c32f0a210d3b973.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/9ffa9555694ca2e29d2a71e4610a1a6c6ebc2514.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/a2afc7de51efbcadf195799fc5471a44c47c6dd4.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/a331ceac8084bb01dbf003e4e15afcfee5747e92.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/aca3acd6691fbc2d785e7e13df49d766d2e6076c.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/b1bf81c31a6b308b246d4c92714797883d6681bb.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/b5c56a98cad9d41e6290df1e075022ae38aad6d4.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/b6f59f803a0933ba1fbe9b81cfa7d0f7996422c1.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/beabc8d7c2c28139e9ee071911d533f82427d404.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/c1cb723d45b6e7953280545184e243f00291ed33.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/c25549b9f3cde7ada32321aa0be0e48f72ba1afc.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/c3809c3cc7b1df71d7b6850b3ee8583915d5e02a.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/c634722f09f4f7136a5bc8b87cbfce842cb2b42d.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/c644f25f14ddf4b3c7b5c02414abcf625af91183.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/c8c56f292aeb237af03b20a69a6fd11987472bcd.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/c9d682f3f7b18c91ea955354b20c588b35b03fc9.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/d052ed6fdd6873769b6c69f41c71b6d2d2a3eab5.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/d18a73b39a60c1ebdc70b3a07debdc8f096c2815.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/d4f74fc5af286e2bf21d82bc97848a2c2fcd547a.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/d57086431de596829b9f213017bce3c9423d7400.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/d5bd391a1d5e3b5534b749d90eec12ef2627e7f8.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/e1f6cbb8db64fa548f75704b159215b11e5fc2f4.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/e5413ce548ede413f57b9de19fcac68269c80491.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/e7ca248a7da9e33aa8d491884d233c93e1a055ed.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/ee772d0969ac11a34aaf49812f99aa4825fa4374.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/ee84ed979e988352c1b192582618114e98c88a2e.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/f0f34a1736d15924fca82236568c1d42f05f1cef.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/f8729464819bd565151d95e1c11c1c03646e9c2e.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/fa52da3354b693c1d089e602bf61cdc50f0b1e8b.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/fbe0e62e99a8cfe08dca3564857a172745976417.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/eslint-loader/fc84195a86b9860c286cd69edde1c89afad0b198.json.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/005ea7c61d1d506f7af3e1901a760034.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/0268195595c9646102de0d787bc1e6f3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/02a1f8e446faf3190cb90d1f28701210.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/02f2c272138a20871d26d1c216d09e80.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/0414f615483a5b703b9c4fbcaabf4ede.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/0497b48224361560f87c8d4d14f76a70.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/04c7e4c32f9fc8d5502dbeb88b678323.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/06f49739ead318a3520ad47203f370cd.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/097a0ccddbf922bcf3b0b1a31e64877c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/0ad57793146d133479113b142ebed88c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/0b0dbdb38b84edfde581fe78eadeec33.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/0bc38fec128a98fee08b67fd523e5267.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/0f210edef4bc5428d16ddbaff2785a1b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/104eccac6610f4d78e751bfc9bc547f6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/10fe14d38cc15c1e5582d4b0dd2d6af3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/111b8071c26d88231af08e2ab3b07e53.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/126b6e6103e902c4bbd701f49c1aef33.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/12e84dfc64317dc6039ccbb93b449c86.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/13408d1e8c97ce418b7653282855d37a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/15af5baa2bf470224b5c0eec887c6f13.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/161ae8536ffcb3eebb7421f09d32f1b1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/1640981484589e022d1d8b887421a674.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/1640981484589e022d1d8b887421a674.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/183827e1b9596ae199264691ef724a9a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/1996b9e9d304bbdf3946e1c25db258a8.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/1a711012afa423a59f1604704e3c4342.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/1c9418f0b762c0e9daabe43e14d9417d.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/1f691ed9d71185bf775b4d68e47b6aba.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/20d211f599ed6f769ba97449337262b7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/23062a6d04b22187ca229af19f40db8e.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/23130fb5c49a8cd03cd9a9f96199fabd.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/2489a131251930e01d4857855eb2c338.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/248d8007a24d0a6f2ef6fe53f13c907a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/2557a57066fdabb5690031dae37e1084.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/25c63bf72851efd7f129c942e39b4f55.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/298183a3ef34140f77b00b15942dc96f.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/2beaea841d8693f4cbf4028c0ae9e1dc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/2c5cddd7423bccbb3dcfe1fe8e43d7dc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/2c77422a2499de38648d8f524e11d654.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/2dc772eecf3b3ba7fffe9e5a1030942f.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/2f35f51f99d2e537b6b1b473feb7e119.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/30f2a46e2db83504fbd08beb0a497a6a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/318d5766b595ef5793dd49ccca5bf2c7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/323bded4ef62b838081587614e3cfb5a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/32c50765747d08238de95e157f33f195.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/33437bf63554ca28aeb0115eca6d6215.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/34459e9d9a2d9f547352cf458f28681d.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/345ab49d387d1cd799ee68df79414793.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/35f3e848e4767c79faf4486345048cb9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/37092a97f4d74d9a142e7f57a91c3937.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/384a0c86f0083ef2cda6def73afd71a4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/3a45fa052e9206ace852993fc437c672.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/3b6412154b327bd25f0f0aaff3fa1ae3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/3f13ca23b3e0996dd3a8f0faa2cd816a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/3fa3253ebb75b6de6051cd9bf6076882.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/40468a5f70063b886379f2dc3c1f5a46.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/43538358f8e522fae8f92c0d2bf98574.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/4451f81de909dcade3d9e7cb47fbdbc6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/44a59d3b61b3772bb922ad225fc585f4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/44ec86324ad22c0afd0242c16bbe6ccb.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/476f43f08d755d991c1b96c9df150123.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/479b7e4501f134d8c24460a4e9a8522e.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/47a56b4cd33c7acc76189a6d9b293d87.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/47fab66a5c967033a06b6f54f7b3111b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/48445d9d432edd429077559108d8fafe.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/48cbc4e8d2fa2c4f2302a96cea8dd2be.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/492221a58210e7c56b708b315265e259.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/4aa13e53da4655e8578d7b5857cb58e9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/4d4add7a2e323b01943608b3091f5a25.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/4d732d92cfa6c3bb597eb3527fa80b28.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/4e00f329a307c682306e7613d5bf9f2d.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/4e32d33e6a5e5d39ebf1f616d1f05c16.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/4e37e715c86e0b13c4dc1710dd7bfe81.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/500f580637d5f35ee2edd5b7334ab896.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/5237a0a3544d6b6ba75d865aff771cf7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/529270e89da15d2abfb9f2b25cf60b32.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/5342474cb8de6046f1f3df2dcbedf96b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/55d4237be351d4c75d38128b402cc27a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/560bb681f7d9f94ac24eaba3d808f0e6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/56718425130c0a259e9fe85acfb13ca3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/58ff4fa25a8f364523abcd881324f233.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/59f8103af1ed5bbbf67bda5be2f8233b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/5bec36365de8a11e1494dcd269b7153e.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/5cc52ebc70ce2d0d9239f99169a1d107.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/5ea463af40e01857c9412bb60c832fbb.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/5f11c5d1c14a7c4b78565ddf60fb3449.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/5feef8fdf30d6c00f4f186e8842e044e.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/660232ecc219b99e5bd928080215b274.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/6d024d6402d2cc9d3bf40c3e2481be09.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/6d6c18ac5780b9826edc219a6619a198.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/6f4f8a8682e71a4329ac740218052d00.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/70d2da08dfd2365c86a016405970fe02.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/70f056908370bb2c210314c2f0a63036.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/7119ff7dd3d165efd65bdac0ae5cd74a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/73cca1fec998b780c815c2c525f92ba5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/743a6aa3af7c92350c4c73ab70701d27.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/743a9da1eb154e7e20269f4809e2ac6c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/76d4afe7ac19663493dd3bf4efa5b466.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/771934a58525a06955673af857a5c92e.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/771934a58525a06955673af857a5c92e.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/77bf88bce138d1384180aeeff71f221e.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/7b3795a6b326414b60d2e06d0376cb60.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/7bf65c7babb0c3f97b691fffcd5d330a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/803d83aefee66b85fa6ff0f6650c7c8a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/80f6ef8e758d89ac5120fc3c28efc486.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/818d707f40095c395aaa4ea6fdf1d86b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/82cdbfff92b702f0ad5cd0f878441932.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/8451e104eb7382f7b694a23757fd2a31.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/8581ac7443293cb56412eac2644fdfdb.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/874a93f7acea93f75cbe25163b90af59.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/892fa029b06e6ba9fefa0476ae407194.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/8997adf76d28fa8c693f9eae68b1f206.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/89ff5edf0899b76e05488e5f82825849.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/8ace1a5e4d50fb6cbd06409b2d770ce2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/8aed2bbd9d49b672c1fcfc32099d42ff.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/8cf4c4b87cce29fef2b71039e173301f.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/8d6ed8e7408857d6ddb695785c39c902.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/8dcf1ceab0ff3ad69a5196a9ddab54e4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/8f28224c80df73f996f10969111d051b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/8fa573df872f395c8fad25a7a89cd1c1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/927c0a0b23dea40a3298eac5805fba13.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/93a1117c10f758276f4a768a82045149.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/941a77a61ffe130b2fc3edfecd565c06.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/95008e20e3cf054b6bac5ae5785c6d1c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/98dc994ca91078167174cd490c7e0781.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/9a28d7604fe5d8af1fa23db417672dba.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/9aaa3e4698176b0648fb377571d07791.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/9bcaffc84488cac730311c16dd9afe1b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/9e9caacd97ff00a4dd1caf88612d9f1c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/9f78b305dda55ea8f01c502570ff03f2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a00d7bb02dc856f7054768e979ac0462.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a129e11e6d15f50bc12251daaf40a692.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a3e0a4b9e7d26705488a2d6abb07fffd.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a3e0a4b9e7d26705488a2d6abb07fffd.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a58d8eda52f80d1591ef4de437e7d4f4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a8432d679aeaab8f758078d5a0212e28.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a99edbc4e92297dca66611496df34176.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/a9fa07616b706bcc9f387773877ba141.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/abf54a9b601b0ca9bbc5dad9817e2aff.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/ae2a59ca0c7e28f59309214f1233dbad.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/afbadaad6c54e1b0e81f0aa72298ca23.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/b095c741434bc5a849f9e240f48504c2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/b13fd72950aa1be29ad2155b9770d924.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/b2291db24cf903bfc4da356d6798ffde.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/b294f162ea76481560488e8cef8f2c3a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/b2ca0a72af882c2fe4fb71040d3923ab.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/b3b9a5d7d6c7473831c82d86c095037c.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/b3c8639709e4e969661a94a5216ff756.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/b4a543df48eaa5a5f73c185d1550c37b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/b77ed49270c09db70ce39630ee8bb818.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/b9d70e7d7bb293a43646319f0b6f3cfa.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/ba2ca75fe95597f42f96fb5f7cf621f6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/bbc6c089774ca52d9d182cdd0f0d31c7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/bbf4c162b0de7b3d36fd566ff935e335.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/bcfd7d7e850bc98a1622e74363e892c7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/bfd1127e566820ac9d2b873406f128ce.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c0e2c3d4d68f6f3be0a927a29051603b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c136a829831565901c12f18f19a91d68.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c314399439fb176ede5229d2bf92abbd.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c314399439fb176ede5229d2bf92abbd.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c3effe3b7b675f30435367fa111344e8.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c58e42300510d3c0903b55cf01f76133.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c83a7125c3be065e6b59e57a00b2d3e5.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c83a7125c3be065e6b59e57a00b2d3e5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c9532ebad3e3211caef7fbe8b1dfecc9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/c9794f25f48ac743c6fc32526d6deaea.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/cddae4130635ceb503fecf11b21f0840.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/d195d6a1e0ac472a9e4008c7a5a4afe3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/d1a7efefff109a9d0ae72c1e1210aadb.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/d269a376fb926daf0cc8c0145f973240.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/d362379ee6a218053e45187efe9eb041.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/d37ea8cbddc29dd5b56245c5289ff38b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/d39e13146562000bb3bcdce41a379759.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/d3ebee3e543af9ab7dcdab1283738d75.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/d52581bb5260fe3380ce2361a2437d13.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/d6ea515e1c7f317d4403fb8f2d7d315b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/d87cb5e29860c99f228f5158676eeaa8.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/dc831599d91ee544f784336d0d23a479.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/dc831599d91ee544f784336d0d23a479.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/dcc2f38a708157b64bce860cb1c2cc8b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/ddd137f946d12f19602d2dfbf972366f.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/dde3e5404c2b1ea94f35eaa4fa60246a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/deb14aced7f2cc3ca3dbc78f0b1eb000.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/defc716b6d3509785e6a45ee5edbd5e1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/e1f52629daa822c76107b0ea52828b5a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/e321a1aad0352b089f19a17060018d56.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/e3cb3be9cdf8ea3e91b3c5c11fe1082e.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/e52862e44f847a062291854e54f5a3f6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/e63fd86ccdbc3eafeb515f218dc46c2e.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/eb9efd85ef26ce3e5e57d72bc76887ef.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/ebc61314499990e7c187e98156decff5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/ec3a7c54e1336855d58bac6c8ea78d5d.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/eca8977aef7d06e852be8bf4025f9350.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/ee494faa784b0c2c4a70f03105a6118f.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/ef2b57fcfc0b381931bbe098f8fd034d.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/ef344aaea5368990e0dc59830aa911b9.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/ef4dcbd303a4e855cb43d1cc901dcdbf.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/f0a95a93b549d409db9e1edef4f34132.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/vue-loader/f0a95a93b549d409db9e1edef4f34132.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/f235f967922ecf09889e2b1fad343a0b.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/f2388d2c7670c27ba774fc84818ba988.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/f26d8f9f0afd41ffe82af75f37abcd26.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/f50c820d6bd36ae7902cbe86d900cd52.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/f63daa4ab86b247757c1799bc6ee5339.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/f6e7f377b108213e64c20048486d7cd7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/f787d426e34a99c04469b5929a718918.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/f97e6d3ccdae0f471d6a37fc41cc707f.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/fa29b1c5ab1e61a39a7a7c1f2780cadc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/fa313c0baa4f44c22a7bc042f6709fa2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/fa96b2c9c9d8967b4ddd6bfd45df5cdc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/fd26cd75c894dbea4dca5de0f8ae261f.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/vue-loader/ffe13082e8edc126f77aefc385eca312.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/code-point-at/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/code-point-at/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/code-point-at/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/code-point-at/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eventemitter3/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eventemitter3/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eventemitter3/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eventemitter3/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eventemitter3/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eventemitter3/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eventemitter3/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eventemitter3/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eventemitter3/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eventemitter3/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eventemitter3/umd/eventemitter3.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eventemitter3/umd/eventemitter3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eventemitter3/umd/eventemitter3.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eventemitter3/umd/eventemitter3.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/eventemitter3/umd/eventemitter3.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/eventemitter3/umd/eventemitter3.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-parser-js/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-parser-js/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-parser-js/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-parser-js/http-parser.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/http-parser-js/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/invert-kv/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/invert-kv/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/invert-kv/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/invert-kv/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/lcid/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/lcid/lcid.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/lcid/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/lcid/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/lcid/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/.editorconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/.github/FUNDING.yml" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/.github/FUNDING.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/.jshintrc" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/.jshintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/CONTRIBUTING.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/CONTRIBUTING.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/Gruntfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/Gruntfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/bower.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/bower.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/dist/loglevel.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/dist/loglevel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/dist/loglevel.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/dist/loglevel.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/lib/.jshintrc" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/lib/.jshintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/lib/loglevel.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/lib/loglevel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/test/.jshintrc" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/test/.jshintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/test/default-level-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/test/default-level-test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/test/get-current-level-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/test/get-current-level-test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/test/global-integration-with-new-context.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/test/global-integration-with-new-context.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/test/global-integration.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/test/global-integration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/test/integration-smoke-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/test/integration-smoke-test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/test/level-setting-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/test/level-setting-test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/test/local-storage-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/test/local-storage-test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/test/method-factory-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/test/method-factory-test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/test/multiple-logger-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/test/multiple-logger-test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/test/node-integration.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/test/node-integration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/test/test-context-using-apply.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/test/test-context-using-apply.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/test/test-helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/test/test-helpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/test/test-qunit.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/test/test-qunit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/loglevel/test/type-test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/loglevel/test/type-test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/map-age-cleaner/dist/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/map-age-cleaner/dist/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/map-age-cleaner/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/map-age-cleaner/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/map-age-cleaner/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mem/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mem/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mem/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mem/node_modules/mimic-fn/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mem/node_modules/mimic-fn/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mem/node_modules/mimic-fn/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mem/node_modules/mimic-fn/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mem/node_modules/mimic-fn/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mem/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/mem/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/number-is-nan/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/number-is-nan/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/number-is-nan/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/number-is-nan/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/object-is/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object-is/.eslintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/object-is/.github/workflows/rebase.yml" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object-is/.github/workflows/rebase.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/object-is/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object-is/.travis.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/object-is/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object-is/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/object-is/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object-is/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/object-is/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object-is/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/object-is/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object-is/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/object-is/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object-is/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/object-is/test/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/object-is/test/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/os-locale/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/os-locale/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/os-locale/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/os-locale/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/p-defer/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/p-defer/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/p-defer/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/p-defer/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/p-is-promise/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/p-is-promise/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/p-is-promise/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/p-is-promise/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/p-is-promise/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/COPYING" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/COPYING" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/Changelog" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/Changelog" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/echo/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/echo/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/echo/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/echo/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/express-3.x/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/express-3.x/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/express-3.x/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/express/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/express/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/express/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/hapi/html/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/hapi/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/hapi/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/haproxy.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/koa/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/koa/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/koa/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/multiplex/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/multiplex/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/multiplex/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/examples/multiplex/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/lib/chunking-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/lib/chunking-test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/lib/iframe.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/lib/iframe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/lib/sockjs.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/lib/sockjs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/lib/trans-eventsource.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/lib/trans-eventsource.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/lib/trans-htmlfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/lib/trans-htmlfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/lib/trans-jsonp.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/lib/trans-jsonp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/lib/trans-websocket.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/lib/trans-websocket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/lib/trans-xhr.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/lib/trans-xhr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/lib/transport.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/lib/transport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/lib/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/lib/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/lib/webjs.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/lib/webjs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/sockjs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/sockjs/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/bin/cli-flags.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/bin/cli-flags.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/bin/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/bin/options.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/bin/webpack-dev-server.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/bin/webpack-dev-server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/clients/BaseClient.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/clients/BaseClient.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/clients/SockJSClient.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/clients/SockJSClient.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/clients/WebsocketClient.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/clients/WebsocketClient.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/index.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/index.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/live.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/live.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/live.html" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/live.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/overlay.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/overlay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/socket.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/socket.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/sockjs.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/sockjs.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/utils/createSocketUrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/utils/createSocketUrl.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/utils/getCurrentScriptSource.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/utils/getCurrentScriptSource.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/utils/log.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/utils/log.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/utils/reloadApp.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/utils/reloadApp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/utils/sendMessage.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/client/utils/sendMessage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/Server.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/Server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/options.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/options.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/servers/BaseServer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/servers/BaseServer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/servers/SockJSServer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/servers/SockJSServer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/servers/WebsocketServer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/servers/WebsocketServer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/addEntries.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/addEntries.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/colors.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/colors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/createCertificate.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/createCertificate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/createConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/createConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/createDomain.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/createDomain.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/createLogger.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/createLogger.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/defaultPort.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/defaultPort.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/defaultTo.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/defaultTo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/findPort.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/findPort.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/getCertificate.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/getCertificate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/getSocketClientPath.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/getSocketClientPath.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/getSocketServerImplementation.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/getSocketServerImplementation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/getVersions.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/getVersions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/normalizeOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/normalizeOptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/processOptions.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/processOptions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/runBonjour.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/runBonjour.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/runOpen.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/runOpen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/setupExitSignals.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/setupExitSignals.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/status.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/status.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/tryParseInt.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/tryParseInt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/updateCompiler.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/lib/utils/updateCompiler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/node_modules/ansi-regex/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/node_modules/ansi-regex/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/node_modules/ansi-regex/license" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/node_modules/ansi-regex/license" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/node_modules/ansi-regex/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/node_modules/ansi-regex/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/node_modules/ansi-regex/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/node_modules/ansi-regex/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/node_modules/strip-ansi/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/node_modules/strip-ansi/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/node_modules/strip-ansi/license" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/node_modules/strip-ansi/license" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/node_modules/strip-ansi/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/node_modules/strip-ansi/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/node_modules/strip-ansi/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/node_modules/strip-ansi/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/cliui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/get-caller-file/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/get-caller-file/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/get-caller-file/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/get-caller-file/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/require-main-filename/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/require-main-filename/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/require-main-filename/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/require-main-filename/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/require-main-filename/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/require-main-filename/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/require-main-filename/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/license" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/license" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/node_modules/ansi-regex/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/node_modules/ansi-regex/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/node_modules/ansi-regex/license" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/node_modules/ansi-regex/license" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/node_modules/ansi-regex/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/node_modules/ansi-regex/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/node_modules/ansi-regex/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/node_modules/ansi-regex/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/node_modules/strip-ansi/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/node_modules/strip-ansi/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/node_modules/strip-ansi/license" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/node_modules/strip-ansi/license" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/node_modules/strip-ansi/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/node_modules/strip-ansi/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/node_modules/strip-ansi/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/node_modules/strip-ansi/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/string-width/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/wrap-ansi/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/wrap-ansi/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/wrap-ansi/license" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/wrap-ansi/license" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/wrap-ansi/node_modules/is-fullwidth-code-point/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/wrap-ansi/node_modules/is-fullwidth-code-point/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/wrap-ansi/node_modules/is-fullwidth-code-point/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/wrap-ansi/node_modules/is-fullwidth-code-point/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/wrap-ansi/node_modules/string-width/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/wrap-ansi/node_modules/string-width/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/wrap-ansi/node_modules/string-width/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/wrap-ansi/node_modules/string-width/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/wrap-ansi/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/wrap-ansi/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/wrap-ansi/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/wrap-ansi/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs-parser/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs-parser/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs-parser/LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs-parser/LICENSE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs-parser/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs-parser/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs-parser/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs-parser/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs-parser/lib/tokenize-arg-string.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs-parser/lib/tokenize-arg-string.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs-parser/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs-parser/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/completion.sh.hbs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/apply-extends.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/apply-extends.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/argsert.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/argsert.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/command.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/command.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/completion.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/completion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/levenshtein.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/levenshtein.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/obj-filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/obj-filter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/usage.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/usage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/validation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/yerror.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/lib/yerror.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/be.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/be.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/de.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/de.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/es.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/es.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/fr.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/fr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/hi.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/hi.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/hu.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/hu.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/id.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/id.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/it.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/it.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/ja.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/ja.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/ko.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/ko.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/nb.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/nb.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/nl.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/nl.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/nn.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/nn.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/pirate.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/pirate.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/pl.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/pl.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/pt.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/pt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/pt_BR.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/pt_BR.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/th.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/th.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/tr.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/tr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/zh_CN.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/zh_CN.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/zh_TW.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/locales/zh_TW.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/yargs.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/node_modules/yargs/yargs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/webpack-dev-server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/webpack-dev-server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/base.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/draft75.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/draft75.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/draft76.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/draft76.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/headers.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/headers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/hybi.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/hybi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/hybi/frame.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/hybi/frame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/hybi/message.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/hybi/message.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/stream_reader.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/driver/stream_reader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/http_parser.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/http_parser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/streams.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/lib/websocket/streams.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/websocket-driver/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/websocket-driver/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/json/association_rules.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/json/association_rules.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/json/frequent_itemsets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/json/frequent_itemsets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/RobinTest.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RobinTest.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +677,15 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -43,9 +700,25 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pages" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\robi\Desktop\datamining_frequent_itemset\website\src\pages" />
+      <recent name="C:\Users\robi\Desktop\datamining_frequent_itemset\website\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\robi\Desktop\datamining_frequent_itemset\website\src\pages\parallelcoords" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -60,6 +733,17 @@
       <workItem from="1587034069310" duration="144000" />
       <workItem from="1589448922637" duration="117000" />
       <workItem from="1589449120065" duration="374000" />
+      <workItem from="1589542762276" duration="4000" />
+      <workItem from="1589551959582" duration="4737000" />
+      <workItem from="1589699372972" duration="17861000" />
+      <workItem from="1589732805863" duration="4975000" />
+      <workItem from="1589737911260" duration="283000" />
+      <workItem from="1589738882435" duration="267000" />
+      <workItem from="1589743411537" duration="993000" />
+      <workItem from="1589744477027" duration="2782000" />
+      <workItem from="1589783360102" duration="2403000" />
+      <workItem from="1590055052021" duration="1123000" />
+      <workItem from="1590056770736" duration="74000" />
     </task>
     <servers />
   </component>
@@ -67,9 +751,36 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1589449119331">
+    <state x="552" y="190" key="#ESLint" timestamp="1589705518728">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589449119331" />
+    <state x="552" y="190" key="#ESLint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589705518728" />
+    <state x="690" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1589743955848">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="279" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589743955848" />
+    <state x="461" y="174" key="SettingsEditor" timestamp="1589708968138">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="174" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589708968138" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1590056770387">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590056770387" />
+    <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589556289242">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589556289242" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/NetworkGraph.vue</url>
+          <line>358</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
