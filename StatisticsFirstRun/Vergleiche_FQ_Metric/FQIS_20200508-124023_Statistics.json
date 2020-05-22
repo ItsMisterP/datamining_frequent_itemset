@@ -1,4 +1,0 @@
-Benutzte Spalten:['time' 'District' 'month' 'weekday' 'LocationDescription' 'PrimaryType']
-Anzahl Frequent Itemsets: 384605
-Zeit: 204.0986499786377
-min_sup_threshold: 1e-05

@@ -1,0 +1,14 @@
+Benutzte Spalten:Index(['time', 'IUCR', 'Block', 'Location Description', 'month', 'weekday',
+       't', 'LocationDescription', 'PrimaryType'],
+      dtype='object')
+Anzahl Frequent Itemsets: 212082
+Anzahl Association Rules: 3499382
+Zeit: 677.8317973613739
+Parameter: 
+show_rules: 0
+kluc_range_max: 1.0
+kluc_range_min: 0.5
+imb_ratio_threshold: 0.0
+association_rules_threshold: 0.0
+min_sup_threshold: 0.0001
+metric: confidence
