@@ -1,3 +1,4 @@
+
 <template>
     <div>
         <svg class="heatmap" :id="id"></svg>
@@ -234,9 +235,6 @@ export default {
                     let point = d3.mouse(this);
                     let x = point[0] + 70;
                     let y = point[1] - 10;
-
-                    console.log(x + " < " + (diagram.widthSVG / 2));
-                    console.log(y + " > " + (diagram.heightSVG / 2));
                     //prevent drawing out of the svg box
                     if (x > diagram.widthSVG / 2) {
                         x -= 90;
@@ -256,7 +254,7 @@ export default {
                         .attr("y", 30)
                         .text(diagram.districtCrimeCount['ds_' + d.properties.dist_num] + " crimes");
                     console.log(d.properties.dist_label + " district:\n" + diagram.districtCrimeCount['ds_' + d.properties.dist_num] + " crimes");
-                    diagram.changeSelectedDistrict(d);
+                    diagram.changeSelectedDistrict("ds_" + d.properties.dist_num);
                 });
         },
         changeSelectedDistrict(selectedDistrict){

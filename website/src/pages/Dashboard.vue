@@ -14,7 +14,7 @@
                     <md-card-content>
                         <heatmap
                             id="1"
-                            :districtCrimeCount="loadedData['District']"
+                            :districtCrimeCount="this.countsAll['District']"
                             @update-selectedDistrict="changeSelectedDistrict"
                         ></heatmap>
                     </md-card-content>
@@ -29,10 +29,17 @@
                         </p>
                     </md-card-header>
                     <md-card-content>
+                        <label> Displayed attribute:
+                            <select @change="attributeChange($event.target.value)">
+                                <option v-for="attribute in this.districtAttributes" :key="attribute" :value="attribute">
+                                    {{ attribute }}
+                                </option>
+                            </select>
+                        </label>
                         <piechart
                                 id="2"
-                                :selectedDistrict="this.selectedDistrict"
-                                @update-selectedDistrict="changeSelectedDistrict"
+                                :pieData="this.selectedDistrictData"
+                                :radius=200
                         ></piechart>
                     </md-card-content>
                 </md-card>
@@ -51,7 +58,7 @@ import MultiLineChart from "../components/diagrams/MultiLineChart";
 import PieChart from "../components/diagrams/PieChart";
 import test from "../components/diagrams/ZoomableBarChart";
 
-import { globalStore } from "../main";
+import { globalStore } from "@/main";
 import HeatMap from "@/components/diagrams/HeatMap";
 
 export default {
@@ -67,8 +74,12 @@ export default {
     },
     data() {
         return {
-            loadedData: {},
-            selectedDistrict: Object
+            countsAll: {},
+            selectedDistrict: Object,
+            countsPerDistrict: {},
+            selectedDistrictData: {},
+            districtAttributes: {},
+            currentAttribute: String
         };
     },
     methods: {
@@ -78,14 +89,24 @@ export default {
         fetchData() {
             let dashboard = this;
             d3.json(this.getURL("json/CountsAll.json")).then(function(data) {
-                dashboard.loadedData = data;
+                dashboard.countsAll = data;
                 dashboard.$emit("dataLoaded");
                 console.log("Dashboard event: CountsAll finished loading");
             });
+            d3.json(this.getURL("json/countsPerDistrict.json")).then(function(data) {
+                dashboard.countsPerDistrict = data;
+                console.log("Dashboard event: countsPerDistrict finished loading");
+                dashboard.districtAttributes = Object.keys(dashboard.countsPerDistrict[Object.keys(dashboard.countsPerDistrict)[0]]);
+                dashboard.currentAttribute = dashboard.districtAttributes[0];
+            });
         },
         changeSelectedDistrict(selectedDistrict) {
-            console.log("dashboard data update");
-            console.log(selectedDistrict);
+            this.selectedDistrict = selectedDistrict;
+            this.selectedDistrictData = this.countsPerDistrict[this.selectedDistrict][this.currentAttribute];
+        },
+        attributeChange(attribute) {
+            this.currentAttribute = attribute;
+            this.selectedDistrictData = this.countsPerDistrict[this.selectedDistrict][this.currentAttribute];
         }
     }
 };

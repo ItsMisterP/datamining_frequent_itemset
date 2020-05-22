@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>Pie Chart</h1>
         <svg class="linechart" :id="id"></svg>
     </div>
 </template>
@@ -14,8 +13,11 @@ import { selectAll } from "d3-selection";
 export default {
     name: "Test-Chart",
     props: {
-        data: Object
+        data: Object,
+        pieData: Object,
+        radius: Number
     },
+
     data() {
         return {
             testdata: {
@@ -34,11 +36,18 @@ export default {
             keys: Array,
             values: Array,
             color: Object,
-            radius: 0,
             arc: Object,
             pie: Object,
             arcs: Object
         };
+    },
+    watch: {
+        pieData: function() {
+            console.log("pieData updated:");
+            console.log(this.pieData)
+            this.init();
+            this.draw();
+        }
     },
     computed: {},
     mounted() {
@@ -54,11 +63,15 @@ export default {
 
             this.widthSVG = this.width - this.margin.left - this.margin.right;
             this.heightSVG = this.height - this.margin.top - this.margin.bottom;
+            if (this.pieData === undefined) {
+                this.keys = Object.keys(this.testdata);
+                this.values = Object.values(this.testdata);
+            }else {
+                this.keys = Object.keys(this.pieData);
+                this.values = Object.values(this.pieData);
+            }
 
-            this.keys = Object.keys(this.testdata);
-            this.values = Object.values(this.testdata);
-
-            this.radius = Math.min(this.width, this.height) / 2 - 20;
+            // this.radius = Math.min(this.width, this.height) / 2 - 20;
 
             this.color = d3.scaleOrdinal(d3.schemeCategory10);
 
