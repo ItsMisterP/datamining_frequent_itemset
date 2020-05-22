@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c5ada68f-74c7-4c83-a7c2-65b947b23d91" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/diagrams/HeatMap.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/diagrams/HeatMap.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/RobinTest.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RobinTest.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/parallelcoords/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/parallelcoords/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +80,7 @@
       <workItem from="1590055052021" duration="1123000" />
       <workItem from="1590056770736" duration="74000" />
       <workItem from="1590135495155" duration="3282000" />
+      <workItem from="1590139930408" duration="530000" />
     </task>
     <servers />
   </component>
@@ -99,10 +100,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="174" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1589708968138" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1590135494442">
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1590139929477">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590135494442" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1590139929477" />
     <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589556289242">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

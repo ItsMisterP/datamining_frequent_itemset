@@ -112,7 +112,7 @@
                     .color(color)
                     .alpha(0.4);
 
-                var dimensions = ["cs", "confidence", "imbratio", "kluc", "support"];
+                var dimensions = ["confidence", "imbratio", "kluc", "support"];
 
                 let graph = this;
                 // load csv file and create the chart
@@ -123,7 +123,7 @@
                     console.log(data);
                     parcoords
                         .data(data)
-                        .dimensions(dimensions)
+                        .dimensions(dimensions) 
                         .bundlingStrength(.5) // set bundling strength
                         .smoothness(0)
                         .showControlPoints(false)
