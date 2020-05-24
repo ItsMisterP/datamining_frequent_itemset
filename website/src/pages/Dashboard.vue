@@ -6,9 +6,9 @@
             >
                 <md-card>
                     <md-card-header data-background-color="gray">
-                        <h4 class="title">Crime by District Heatmap</h4>
+                        <h4 class="title">Total crimes per district</h4>
                         <p class="category">
-                            Total crime count per district.
+                            Shows the total number of crimes in each district as a heatmap.
                         </p>
                     </md-card-header>
                     <md-card-content>
@@ -20,12 +20,12 @@
                     </md-card-content>
                 </md-card>
             </div>
-            <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-49" >
+            <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50" >
                 <md-card>
                     <md-card-header data-background-color="gray">
-                        <h4 class="title">Crime by District Heatmap</h4>
+                        <h4 class="title">Crimes per {{currentAttribute}} in {{selectedDistrictLabel}}</h4>
                         <p class="category">
-                            Zeigt die absolute Anzahl nach Wochentag an.
+                            Shows the distribution of the total crime count for the selected attribute in the selected district.
                         </p>
                     </md-card-header>
                     <md-card-content>
@@ -37,10 +37,34 @@
                             </select>
                         </label>
                         <piechart
-                                id="2"
+                                :id="2"
                                 :pieData="this.selectedDistrictData"
-                                :radius=200
+                                :radius=280
                         ></piechart>
+                    </md-card-content>
+                </md-card>
+                <md-card v-if="dataLoaded">
+                    <md-card-header data-background-color="gray">
+                        <h4 class="title">Crimes per {{currentAttribute}} in {{selectedDistrictLabel}}</h4>
+                        <p class="category">
+                            Shows the detailed data for the selected attribute in the selected district.
+                        </p>
+                    </md-card-header>
+                    <md-card-content>
+                        <md-table
+                                v-model="this.countsPerDistrict[this.selectedDistrict]"
+                                md-card
+                                md-fixed-header>
+                            <md-table-row
+                                slot="md-table-row"
+                                slot-scope="{ item }">
+                                <md-table-cell
+                                        md-numeric
+                                        >
+                                    {{ item.value }}
+                                </md-table-cell>
+                            </md-table-row>
+                        </md-table>
                     </md-card-content>
                 </md-card>
             </div>
@@ -63,10 +87,7 @@ import HeatMap from "@/components/diagrams/HeatMap";
 
 export default {
     components: {
-        //chart: Chart,
         heatmap: HeatMap,
-        //column: ColumnChart,
-        //linechart: LineChart
         piechart: PieChart
     },
     created() {
@@ -75,11 +96,13 @@ export default {
     data() {
         return {
             countsAll: {},
-            selectedDistrict: Object,
+            selectedDistrict: String,
+            selectedDistrictLabel: String,
             countsPerDistrict: {},
             selectedDistrictData: {},
             districtAttributes: {},
-            currentAttribute: String
+            currentAttribute: String,
+            dataLoaded: false,
         };
     },
     methods: {
@@ -96,12 +119,19 @@ export default {
             d3.json(this.getURL("json/countsPerDistrict.json")).then(function(data) {
                 dashboard.countsPerDistrict = data;
                 console.log("Dashboard event: countsPerDistrict finished loading");
-                dashboard.districtAttributes = Object.keys(dashboard.countsPerDistrict[Object.keys(dashboard.countsPerDistrict)[0]]);
-                dashboard.currentAttribute = dashboard.districtAttributes[0];
+                let defaultDistrict = Object.keys(dashboard.countsPerDistrict)[0];
+                dashboard.districtAttributes = Object.keys(dashboard.countsPerDistrict[defaultDistrict]);
+                dashboard.changeSelectedDistrict(defaultDistrict);
+                dashboard.attributeChange(dashboard.districtAttributes[0]);
+                // dashboard.attributeChange('t'); // for testing
+                console.log("####################################################");
+                console.log(dashboard.countsPerDistrict[dashboard.selectedDistrict]);
             });
+            // this.dataLoaded = true;
         },
         changeSelectedDistrict(selectedDistrict) {
             this.selectedDistrict = selectedDistrict;
+            this.selectedDistrictLabel = "district " + selectedDistrict.substr(3, selectedDistrict.length);
             this.selectedDistrictData = this.countsPerDistrict[this.selectedDistrict][this.currentAttribute];
         },
         attributeChange(attribute) {

@@ -38,8 +38,7 @@ export default {
     watch: {
         districtCrimeCount: function() {
             console.log("watch districtCrimeCount updated:");
-            console.log(this.districtCrimeCount);
-            //can't test the preinitialized vue object "disrictsGeoJson" for === undefined, this is the alternative
+            //can't test the pre-initialized vue object "disrictsGeoJson" for === undefined, this is the alternative
             if (Object.keys(this.disrictsGeoJson).length === 0) {
                 this.fetchGeoData();
             } else {
@@ -73,8 +72,8 @@ export default {
                 .attr("viewBox", "0 0 " + this.widthSVG + " " + this.heightSVG);
         },
         draw() {
-            //clean the svg slate (https://stackoverflow.com/questions/22452112/nvd3-clear-svg-before-loading-new-chart/22453174)
-            d3.selectAll("svg > *").remove();
+            //clean the svg slate (https://medium.com/front-end-weekly/remove-all-children-of-the-node-in-javascript-968ad8f120eb)
+            while (this.svg.firstChild) { this.svg.removeChild(this.svg.firstChild);}
             let diagram = this;
             let colorMin = "#FFF";
             let colorMax = "#F00";
@@ -191,8 +190,8 @@ export default {
 
             tooltip
                 .append("rect")
-                .attr("width", 90)
-                .attr("height", 40)
+                .attr("width", 80)
+                .attr("height", 37)
                 .attr("rx",10)
                 .attr("ry",10)
                 .attr("fill", "#FFF")
@@ -237,10 +236,10 @@ export default {
                     let y = point[1] - 10;
                     //prevent drawing out of the svg box
                     if (x > diagram.widthSVG / 2) {
-                        x -= 90;
+                        x -= 80;
                     }
                     if (y < diagram.heightSVG / 2) {
-                        y += 40;
+                        y += 35;
                     }
                     tooltip
                         .attr("opacity", 1)
@@ -253,7 +252,6 @@ export default {
                         .attr("x", 7)
                         .attr("y", 30)
                         .text(diagram.districtCrimeCount['ds_' + d.properties.dist_num] + " crimes");
-                    console.log(d.properties.dist_label + " district:\n" + diagram.districtCrimeCount['ds_' + d.properties.dist_num] + " crimes");
                     diagram.changeSelectedDistrict("ds_" + d.properties.dist_num);
                 });
         },

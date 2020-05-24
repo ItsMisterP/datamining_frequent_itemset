@@ -15,7 +15,8 @@ export default {
     props: {
         data: Object,
         pieData: Object,
-        radius: Number
+        radius: Number,
+        id: Number
     },
 
     data() {
@@ -25,7 +26,6 @@ export default {
                 PHS: 300,
                 PLA: 350
             },
-            id: 10000,
             height: 600,
             heightSVG: 0,
             widthSVG: 0,
@@ -38,15 +38,23 @@ export default {
             color: Object,
             arc: Object,
             pie: Object,
-            arcs: Object
+            arcs: Object,
+            // cleanChart: true
         };
     },
     watch: {
         pieData: function() {
             console.log("pieData updated:");
-            console.log(this.pieData)
-            this.init();
-            this.draw();
+            console.log(this.pieData);
+
+            // if(this.cleanChart){
+                this.init();
+                this.draw();
+            //     this.cleanChart = false;
+            // }else{
+            //     this.update();
+            // }
+
         }
     },
     computed: {},
@@ -81,6 +89,9 @@ export default {
                 .innerRadius(0);
         },
         draw() {
+            //clean the svg slate (https://stackoverflow.com/questions/14422198/how-do-i-remove-all-children-elements-from-a-node-and-then-apply-them-again-with/43661877#43661877)
+            this.svg.selectAll("*").remove();
+            let diagram = this; //done for function expressions
             this.container = this.svg
                 .append("g")
                 .attr("class", "svgcontainer")
@@ -111,6 +122,27 @@ export default {
                 .attrTween("d", arcTween);
 
             var size = this.keys.length;
+
+            let tooltip = diagram.svg
+                .append("g")
+                .attr("class", "tooltip")
+                .attr("opacity", 0);
+
+            tooltip
+                .append("rect")
+                .attr("width", 40)
+                .attr("height", 20)
+                .attr("rx",7)
+                .attr("ry",7)
+                .attr("fill", "#FFF")
+                .style("stroke-width", 1)
+                .style("stroke", "#000");
+            let tooltext = tooltip.append("text").attr("class", "tooltext");
+
+            var arcOver = d3.arc()
+                .outerRadius(radius+10)
+                .innerRadius(0);
+
             this.arcs
                 .enter()
                 .append("path")
@@ -119,6 +151,45 @@ export default {
                     return color(keys[i]);
                 })
                 .attr("d", this.arc)
+                .on("mouseover", function(d, i) {
+                    d3.select(this)
+                        .attr("d", arcOver);
+                })
+                .on("mouseout", function(d, i) {
+                    tooltip.attr("opacity", 0);
+                    d3.select(this)
+                        .attr("d", diagram.arc);
+                })
+                .on("click", function(d, i) {
+                    let point = d3.mouse(this);
+                    let x = point[0] + 300; // i dont know why but the d3 mouse xy position is WAY of
+                    let y = point[1] + 280;
+                    let text = diagram.keys[i] + ": " + d.value;
+                    let width = 6 * text.length + 1;
+
+                    // prevent drawing out of the svg box
+                    // if (x > diagram.widthSVG / 2) {
+                    //     x -= width;
+                    // }
+                    // if (y < diagram.heightSVG / 2) {
+                    //     y += 20;
+                    //     if (x < diagram.widthSVG / 2) {
+                    //         x += 10; //move the tooltip out from under the mouse courser
+                    //     }
+                    // }
+
+                    tooltip
+                        .selectAll('rect')
+                        .attr("width", width);
+
+                    tooltip
+                        .attr("transform", "translate(" + x + ", " + y + ")")
+                        .attr("opacity", 1);
+                    tooltext
+                        .attr("x", 6)
+                        .attr("y", 14)
+                        .text(diagram.keys[i] + ": " + d.value);
+                })
                 .each(function(d) {
                     this._current = d;
                 });
@@ -131,7 +202,9 @@ export default {
                 };
             }
         },
-        update() {}
+        update() {
+
+        }
     }
 };
 </script>
