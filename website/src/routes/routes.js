@@ -34,7 +34,7 @@ const routes = [
             },
             {
                 path: "table",
-                name: "parcoords table",
+                name: "Parcoords Table",
                 component: Parcoords
             }
         ]
