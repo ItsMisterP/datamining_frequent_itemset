@@ -4,7 +4,7 @@ import Dashboard from "@/pages/Dashboard.vue";
 import Itemsets from "@/pages/FrequentItemsets.vue";
 import AssoTable from "@/pages/AssociationRulesTable.vue";
 import Graph from "@/pages/NetworkGraph.vue";
-import Test from "@/pages/ParcoordsTable.vue";
+import Parcoords from "@/pages/ParcoordsTable.vue";
 
 const routes = [
     {
@@ -33,9 +33,9 @@ const routes = [
                 component: Graph
             },
             {
-                path: "test",
-                name: "Test Area",
-                component: Test
+                path: "table",
+                name: "parcoords table",
+                component: Parcoords
             }
         ]
     }

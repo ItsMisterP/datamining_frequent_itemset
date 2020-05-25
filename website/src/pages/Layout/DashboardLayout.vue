@@ -23,9 +23,9 @@
                 <md-icon>content_paste</md-icon>
                 <p>Association Rules - Network</p>
             </sidebar-link>
-            <sidebar-link to="/test">
+            <sidebar-link to="/table">
                 <md-icon>content_paste</md-icon>
-                <p>Test Area</p>
+                <p>parcoords table</p>
             </sidebar-link>
         </side-bar>
 
