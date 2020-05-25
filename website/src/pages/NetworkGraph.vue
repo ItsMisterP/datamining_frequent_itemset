@@ -1,20 +1,25 @@
 <template>
     <div>
         <div class="md-layout">
-            <div
+<div
                 class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100"
-            >
-                <svg id="network"></svg>
-            </div>
-            <div
-                class="md-layout-item md-medium-size-100 md-xsmall-size-50 md-size-50"
             >
                 <md-card>
                     <md-card-header data-background-color="gray">
                         <h4 class="title">Filter</h4>
                     </md-card-header>
-                    <md-card-content>
-                        <label for="networkminsup">Min-Sup for Rules:</label
+
+                    <md-card-expand>
+                        <md-card-actions md-alignment="right" id="expandableFilter">
+                            <md-card-expand-trigger>
+                                <md-button class="md-icon-button">
+                                    <md-icon>keyboard_arrow_down</md-icon>
+                                </md-button>
+                            </md-card-expand-trigger>
+                        </md-card-actions>
+                        <md-card-expand-content>
+                            <md-card-content>
+                                <label for="networkminsup">Min-Sup for Rules:</label
                         ><br />
                         <input
                             id="networkminsup"
@@ -82,11 +87,20 @@
                         <md-checkbox :change="update" v-model="showItemsets"
                             >Show Itemsets</md-checkbox
                         >
-                    </md-card-content>
+                            </md-card-content>
+                        </md-card-expand-content>
+                    </md-card-expand>
                 </md-card>
             </div>
+
             <div
-                class="md-layout-item md-medium-size-100 md-xsmall-size-50 md-size-50"
+                class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100"
+            >
+                <svg id="network"></svg>
+            </div>
+            
+            <div
+                class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100"
             >
                 <md-card>
                     <md-card-header data-background-color="gray">
@@ -519,6 +533,11 @@ export default {
 };
 </script>
 <style scoped>
+.md-card-actions{
+    margin: 1.75rem 1rem 0.75rem !important;
+    background-color: #fff !important;
+    border-top: 0 !important;
+}
 .edge {
     stroke: white;
     stroke-width: 1;
