@@ -4,7 +4,7 @@ import Dashboard from "@/pages/Dashboard.vue";
 import Itemsets from "@/pages/FrequentItemsets.vue";
 import AssoTable from "@/pages/AssociationRulesTable.vue";
 import Graph from "@/pages/NetworkGraph.vue";
-import Test from "@/pages/RobinTest.vue";
+import Test from "@/pages/ParcoordsTable.vue";
 
 const routes = [
     {

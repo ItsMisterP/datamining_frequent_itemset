@@ -112,11 +112,19 @@
                     .color(color)
                     .alpha(0.4);
 
-                var dimensions = ["confidence", "imbratio", "kluc", "support"];
+                //var dimensions = ["confidence", "imbratio", "kluc", "support"];
+
+                var dimensions = {
+                    "confidence": {title: "confidence"},
+                    "imbratio": {title:"imbalance ratio"},
+                    "kluc": {title:"kulczynski"},
+                    "support": {title:"support"},
+                    "cB": {title:"¬confidence"}
+                };
+
 
                 let graph = this;
                 // load csv file and create the chart
-
 
                 d3.json(this.getURL("json/association_rules.json")).then(function(data) {
                     graph.tableRules = data;
