@@ -37,7 +37,6 @@ export default {
     },
     watch: {
         districtCrimeCount: function() {
-            console.log("watch districtCrimeCount updated:");
             //can't test the pre-initialized vue object "disrictsGeoJson" for === undefined, this is the alternative
             if (Object.keys(this.disrictsGeoJson).length === 0) {
                 this.fetchGeoData();
@@ -48,7 +47,6 @@ export default {
         }
     },
     mounted() {
-        console.log("heatmap mounted");
         this.fetchGeoData();
     },
     methods: {
@@ -73,7 +71,7 @@ export default {
         },
         draw() {
             //clean the svg slate (https://medium.com/front-end-weekly/remove-all-children-of-the-node-in-javascript-968ad8f120eb)
-            while (this.svg.firstChild) { this.svg.removeChild(this.svg.firstChild);}
+            this.svg.selectAll("*").remove();
             let diagram = this;
             let colorMin = "#FFF";
             let colorMax = "#F00";
@@ -209,7 +207,6 @@ export default {
                     return d.properties.sec_neigh;
                 })
                 .style("fill", function(d, i) {
-                    // console.log(color(diagram.districtCrimeCount['ds_' + d.properties.dist_num]));
                     return color(
                         diagram.districtCrimeCount[
                             "ds_" + d.properties.dist_num

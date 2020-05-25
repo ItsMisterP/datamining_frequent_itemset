@@ -39,22 +39,12 @@ export default {
             arc: Object,
             pie: Object,
             arcs: Object,
-            // cleanChart: true
         };
     },
     watch: {
         pieData: function() {
-            console.log("pieData updated:");
-            console.log(this.pieData);
-
-            // if(this.cleanChart){
                 this.init();
                 this.draw();
-            //     this.cleanChart = false;
-            // }else{
-            //     this.update();
-            // }
-
         }
     },
     computed: {},

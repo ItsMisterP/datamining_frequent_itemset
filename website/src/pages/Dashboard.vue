@@ -1,9 +1,7 @@
 <template>
     <div class="content">
-        <div class="md-layout" layout="row">
-            <div
-                class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50"
-            >
+        <div class="md-layout" layout="column">
+            <div class="md-layout-item md-medium-size-100 md-xsmall-size-50 md-size-50">
                 <md-card>
                     <md-card-header data-background-color="gray">
                         <h4 class="title">Total crimes per district</h4>
@@ -20,53 +18,64 @@
                     </md-card-content>
                 </md-card>
             </div>
-            <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50" >
-                <md-card>
-                    <md-card-header data-background-color="gray">
-                        <h4 class="title">Crimes per {{currentAttribute}} in {{selectedDistrictLabel}}</h4>
-                        <p class="category">
-                            Shows the distribution of the total crime count for the selected attribute in the selected district.
-                        </p>
-                    </md-card-header>
-                    <md-card-content>
-                        <label> Displayed attribute:
-                            <select @change="attributeChange($event.target.value)">
-                                <option v-for="attribute in this.districtAttributes" :key="attribute" :value="attribute">
-                                    {{ attribute }}
-                                </option>
-                            </select>
-                        </label>
-                        <piechart
-                                :id="2"
-                                :pieData="this.selectedDistrictData"
-                                :radius=280
-                        ></piechart>
-                    </md-card-content>
-                </md-card>
-                <md-card v-if="dataLoaded">
-                    <md-card-header data-background-color="gray">
-                        <h4 class="title">Crimes per {{currentAttribute}} in {{selectedDistrictLabel}}</h4>
-                        <p class="category">
-                            Shows the detailed data for the selected attribute in the selected district.
-                        </p>
-                    </md-card-header>
-                    <md-card-content>
-                        <md-table
-                                v-model="this.countsPerDistrict[this.selectedDistrict]"
-                                md-card
-                                md-fixed-header>
-                            <md-table-row
-                                slot="md-table-row"
-                                slot-scope="{ item }">
-                                <md-table-cell
-                                        md-numeric
-                                        >
-                                    {{ item.value }}
-                                </md-table-cell>
-                            </md-table-row>
-                        </md-table>
-                    </md-card-content>
-                </md-card>
+            <div class="md-layout" layout="column">
+                <div class="md-layout" layout="row">
+                    <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50" >
+                        <md-card>
+                            <md-card-header data-background-color="gray">
+                                <h4 class="title">Crimes per {{currentAttribute}} in {{selectedDistrictLabel}}</h4>
+                                <p class="category">
+                                    Shows the distribution of the total crime count for the selected attribute in the selected district.
+                                </p>
+                            </md-card-header>
+                            <md-card-content>
+                                <label> Displayed attribute:
+                                    <select @change="attributeChange($event.target.value)">
+                                        <option v-for="attribute in this.districtAttributes" :key="attribute" :value="attribute">
+                                            {{ attribute }}
+                                        </option>
+                                    </select>
+                                </label>
+                                <piechart
+                                        :id="2"
+                                        :pieData="this.selectedDistrictData"
+                                        :radius=280
+                                ></piechart>
+                            </md-card-content>
+                        </md-card>
+                    </div>
+                </div>
+                <div class="md-layout" layout="row">
+                    <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50" >
+                        <md-card v-if="dataLoaded">
+                        <md-card-header data-background-color="gray">
+                            <h4 class="title">Crimes per {{currentAttribute}} in {{selectedDistrictLabel}}</h4>
+                            <p class="category">
+                                Shows the detailed data for the selected attribute in the selected district.
+                            </p>
+                        </md-card-header>
+                        <md-card-content>
+                            <md-table
+                                    v-model="this.tableData"
+                                    md-card
+                                    md-fixed-header>
+                                <md-table-row
+                                    slot="md-table-row"
+                                    slot-scope="{ item }">
+                                    <md-table-cell
+                                            md-label="Key">
+                                        {{ item[0] }}
+                                    </md-table-cell>
+                                    <md-table-cell
+                                            md-label="Value">
+                                        {{ item[1] }}
+                                    </md-table-cell>
+                                </md-table-row>
+                            </md-table>
+                        </md-card-content>
+                    </md-card>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -114,29 +123,32 @@ export default {
             d3.json(this.getURL("json/CountsAll.json")).then(function(data) {
                 dashboard.countsAll = data;
                 dashboard.$emit("dataLoaded");
-                console.log("Dashboard event: CountsAll finished loading");
             });
             d3.json(this.getURL("json/countsPerDistrict.json")).then(function(data) {
                 dashboard.countsPerDistrict = data;
-                console.log("Dashboard event: countsPerDistrict finished loading");
                 let defaultDistrict = Object.keys(dashboard.countsPerDistrict)[0];
                 dashboard.districtAttributes = Object.keys(dashboard.countsPerDistrict[defaultDistrict]);
+                console.log("####################################################");
                 dashboard.changeSelectedDistrict(defaultDistrict);
                 dashboard.attributeChange(dashboard.districtAttributes[0]);
                 // dashboard.attributeChange('t'); // for testing
-                console.log("####################################################");
-                console.log(dashboard.countsPerDistrict[dashboard.selectedDistrict]);
+                dashboard.dataLoaded = true;
+                console.log(dashboard.tableData);
             });
-            // this.dataLoaded = true;
         },
         changeSelectedDistrict(selectedDistrict) {
             this.selectedDistrict = selectedDistrict;
             this.selectedDistrictLabel = "district " + selectedDistrict.substr(3, selectedDistrict.length);
-            this.selectedDistrictData = this.countsPerDistrict[this.selectedDistrict][this.currentAttribute];
+            this.selectedDistrictData = new Array(this.countsPerDistrict[this.selectedDistrict][this.currentAttribute]);
         },
         attributeChange(attribute) {
             this.currentAttribute = attribute;
             this.selectedDistrictData = this.countsPerDistrict[this.selectedDistrict][this.currentAttribute];
+        }
+    },
+    computed: {
+        tableData: function () {
+            return Object.entries(this.selectedDistrictData);
         }
     }
 };
