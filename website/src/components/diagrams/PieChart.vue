@@ -26,10 +26,10 @@ export default {
                 PHS: 300,
                 PLA: 350
             },
-            height: 600,
+            height: 250,
             heightSVG: 0,
             widthSVG: 0,
-            width: 600,
+            width: 400,
             margin: { top: 30, right: 30, bottom: 30, left: 70 },
             margin_top: 20,
             margin_left: 50,

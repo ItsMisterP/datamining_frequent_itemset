@@ -1,7 +1,7 @@
 <template>
     <div class="content">
         <div class="md-layout" layout="column">
-            <div class="md-layout-item md-medium-size-100 md-xsmall-size-50 md-size-50">
+            <div class="md-layout-item">
                 <md-card>
                     <md-card-header data-background-color="gray">
                         <h4 class="title">Total crimes per district</h4>
@@ -19,49 +19,36 @@
                 </md-card>
             </div>
             <div class="md-layout" layout="column">
-                <div class="md-layout" layout="row">
-                    <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50" >
-                        <md-card>
-                            <md-card-header data-background-color="gray">
-                                <h4 class="title">Crimes per {{currentAttribute}} in {{selectedDistrictLabel}}</h4>
-                                <p class="category">
-                                    Shows the distribution of the total crime count for the selected attribute in the selected district.
-                                </p>
-                            </md-card-header>
-                            <md-card-content>
-                                <label> Displayed attribute:
-                                    <select @change="attributeChange($event.target.value)">
-                                        <option v-for="attribute in this.districtAttributes" :key="attribute" :value="attribute">
-                                            {{ attribute }}
-                                        </option>
-                                    </select>
-                                </label>
-                                <piechart
-                                        :id="2"
-                                        :pieData="this.selectedDistrictData"
-                                        :radius=280
-                                ></piechart>
-                            </md-card-content>
-                        </md-card>
-                    </div>
-                </div>
-                <div class="md-layout" layout="row">
-                    <div class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-50" >
-                        <md-card v-if="dataLoaded">
+                <div class="md-layout-item" >
+                    <md-card>
                         <md-card-header data-background-color="gray">
                             <h4 class="title">Crimes per {{currentAttribute}} in {{selectedDistrictLabel}}</h4>
                             <p class="category">
-                                Shows the detailed data for the selected attribute in the selected district.
+                                Shows the distribution of the total crime count for the selected attribute in the selected district.
                             </p>
                         </md-card-header>
                         <md-card-content>
+                            <label> Displayed attribute:
+                                <select @change="attributeChange($event.target.value)">
+                                    <option v-for="attribute in this.districtAttributes" :key="attribute" :value="attribute">
+                                        {{ attribute }}
+                                    </option>
+                                </select>
+                            </label>
+                            <piechart
+                                    :id="2"
+                                    :pieData="this.selectedDistrictData"
+                                    :radius=100
+                            ></piechart>
                             <md-table
                                     v-model="this.tableData"
                                     md-card
-                                    md-fixed-header>
+                                    md-fixed-header
+                                    md-height="235px"
+                                    >
                                 <md-table-row
-                                    slot="md-table-row"
-                                    slot-scope="{ item }">
+                                        slot="md-table-row"
+                                        slot-scope="{ item }">
                                     <md-table-cell
                                             md-label="Key">
                                         {{ item[0] }}
@@ -74,7 +61,6 @@
                             </md-table>
                         </md-card-content>
                     </md-card>
-                    </div>
                 </div>
             </div>
         </div>
@@ -131,7 +117,6 @@ export default {
                 console.log("####################################################");
                 dashboard.changeSelectedDistrict(defaultDistrict);
                 dashboard.attributeChange(dashboard.districtAttributes[0]);
-                // dashboard.attributeChange('t'); // for testing
                 dashboard.dataLoaded = true;
                 console.log(dashboard.tableData);
             });
@@ -153,3 +138,11 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+    [class1=layout-row]{
+        display: flex;
+        align-items: stretch;
+    }
+
+</style>
