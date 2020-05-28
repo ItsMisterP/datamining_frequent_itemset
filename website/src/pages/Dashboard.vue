@@ -39,6 +39,7 @@
                                     :id="2"
                                     :pieData="this.selectedDistrictData"
                                     :radius=100
+                                    @update-pieColor="updatePieColor"
                             ></piechart>
                             <md-table
                                     v-model="this.tableData"
@@ -56,6 +57,10 @@
                                     <md-table-cell
                                             md-label="Value">
                                         {{ item[1] }}
+                                    </md-table-cell>
+                                    <md-table-cell
+                                            md-label="Color"
+                                            :style="{ background: getCellColor(item[0])}">
                                     </md-table-cell>
                                 </md-table-row>
                             </md-table>
@@ -98,6 +103,8 @@ export default {
             districtAttributes: {},
             currentAttribute: String,
             dataLoaded: false,
+            pieColor: Array,
+            tmpColor: String
         };
     },
     methods: {
@@ -105,6 +112,7 @@ export default {
             return globalStore.prefix + url;
         },
         fetchData() {
+            this.tmpColor = "#1f77b4" ;
             let dashboard = this;
             d3.json(this.getURL("json/CountsAll.json")).then(function(data) {
                 dashboard.countsAll = data;
@@ -114,21 +122,27 @@ export default {
                 dashboard.countsPerDistrict = data;
                 let defaultDistrict = Object.keys(dashboard.countsPerDistrict)[0];
                 dashboard.districtAttributes = Object.keys(dashboard.countsPerDistrict[defaultDistrict]);
-                console.log("####################################################");
                 dashboard.changeSelectedDistrict(defaultDistrict);
                 dashboard.attributeChange(dashboard.districtAttributes[0]);
                 dashboard.dataLoaded = true;
-                console.log(dashboard.tableData);
             });
         },
         changeSelectedDistrict(selectedDistrict) {
             this.selectedDistrict = selectedDistrict;
             this.selectedDistrictLabel = "district " + selectedDistrict.substr(3, selectedDistrict.length);
-            this.selectedDistrictData = new Array(this.countsPerDistrict[this.selectedDistrict][this.currentAttribute]);
+            this.selectedDistrictData = this.countsPerDistrict[this.selectedDistrict][this.currentAttribute];
         },
         attributeChange(attribute) {
             this.currentAttribute = attribute;
             this.selectedDistrictData = this.countsPerDistrict[this.selectedDistrict][this.currentAttribute];
+        },
+        updatePieColor(color) {
+            this.pieColor = color;
+            console.log("test:")
+            console.log(color(0));
+        },
+        getCellColor(index) {
+            return this.pieColor(index);
         }
     },
     computed: {

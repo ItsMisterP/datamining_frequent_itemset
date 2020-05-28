@@ -72,6 +72,7 @@ export default {
             // this.radius = Math.min(this.width, this.height) / 2 - 20;
 
             this.color = d3.scaleOrdinal(d3.schemeCategory10);
+            this.$emit("update-pieColor", this.color);
 
             this.arc = d3
                 .arc()
@@ -152,8 +153,8 @@ export default {
                 })
                 .on("click", function(d, i) {
                     let point = d3.mouse(this);
-                    let x = point[0] + 300; // i dont know why but the d3 mouse xy position is WAY of
-                    let y = point[1] + 280;
+                    let x = point[0] + 200; // i dont know why but the d3 mouse xy position is WAY of
+                    let y = point[1] + 105;
                     let text = diagram.keys[i] + ": " + d.value;
                     let width = 6 * text.length + 1;
 
