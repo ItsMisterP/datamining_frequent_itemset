@@ -5,6 +5,7 @@ import Itemsets from "@/pages/FrequentItemsets.vue";
 import AssoTable from "@/pages/AssociationRulesTable.vue";
 import Graph from "@/pages/NetworkGraph.vue";
 import Parcoords from "@/pages/ParcoordsTable.vue";
+import Information from "@/pages/Information.vue";
 
 const routes = [
     {
@@ -18,24 +19,19 @@ const routes = [
                 component: Dashboard
             },
             {
-                path: "itemsets",
-                name: "Frequent-Itemsets",
-                component: Itemsets
-            },
-            {
-                path: "rules",
-                name: "Association Rules - Table",
-                component: AssoTable
-            },
-            {
                 path: "graph",
                 name: "Association Rules - Network",
                 component: Graph
             },
             {
                 path: "table",
-                name: "Parcoords Table",
+                name: "Association Rules - Table",
                 component: Parcoords
+            },
+            {
+                path: "info",
+                name: "Information",
+                component: Information
             }
         ]
     }

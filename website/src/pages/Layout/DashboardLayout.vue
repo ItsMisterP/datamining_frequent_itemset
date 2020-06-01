@@ -11,21 +11,17 @@
                 <md-icon>dashboard</md-icon>
                 <p>Dashboard</p>
             </sidebar-link>
-            <sidebar-link to="/itemsets">
-                <md-icon>library_books</md-icon>
-                <p>Frequent Itemsets</p>
-            </sidebar-link>
-            <sidebar-link to="/rules">
-                <md-icon>person</md-icon>
-                <p>Association Rules - Table</p>
-            </sidebar-link>
             <sidebar-link to="/graph">
-                <md-icon>content_paste</md-icon>
+                <md-icon>track_changes</md-icon>
                 <p>Association Rules - Network</p>
             </sidebar-link>
             <sidebar-link to="/table">
                 <md-icon>content_paste</md-icon>
-                <p>parcoords table</p>
+                <p>Association Rules - Table</p>
+            </sidebar-link>
+            <sidebar-link to="/info">
+                <md-icon>info</md-icon>
+                <p>Information</p>
             </sidebar-link>
         </side-bar>
 
