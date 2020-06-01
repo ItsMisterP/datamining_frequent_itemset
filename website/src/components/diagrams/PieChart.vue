@@ -15,21 +15,13 @@ export default {
     props: {
         data: Object,
         pieData: Object,
-        radius: Number,
         id: Number
     },
 
     data() {
         return {
-            testdata: {
-                PBS: 500,
-                PHS: 300,
-                PLA: 350
-            },
-            height: 250,
-            heightSVG: 0,
-            widthSVG: 0,
-            width: 400,
+            heightSVG: 1000,
+            widthSVG: 600,
             margin: { top: 30, right: 30, bottom: 30, left: 70 },
             margin_top: 20,
             margin_left: 50,
@@ -39,6 +31,7 @@ export default {
             arc: Object,
             pie: Object,
             arcs: Object,
+            radius: Number
         };
     },
     watch: {
@@ -55,12 +48,11 @@ export default {
     methods: {
         init() {
             this.svg = d3.select(document.getElementById(this.id));
+            this.radius = this.widthSVG / 2 - 20;
+
             this.svg
                 .attr("preserveAspectRatio", "xMinYMin meet")
-                .attr("viewBox", "0 0 " + this.width + " " + this.height);
-
-            this.widthSVG = this.width - this.margin.left - this.margin.right;
-            this.heightSVG = this.height - this.margin.top - this.margin.bottom;
+                .attr("viewBox", "0 0 " + this.widthSVG + " " + this.widthSVG);
             if (this.pieData === undefined) {
                 this.keys = Object.keys(this.testdata);
                 this.values = Object.values(this.testdata);
@@ -68,9 +60,6 @@ export default {
                 this.keys = Object.keys(this.pieData);
                 this.values = Object.values(this.pieData);
             }
-
-            // this.radius = Math.min(this.width, this.height) / 2 - 20;
-
             this.color = d3.scaleOrdinal(d3.schemeCategory10);
             this.$emit("update-pieColor", this.color);
 
@@ -89,7 +78,7 @@ export default {
                 .attr("id", "c")
                 .attr(
                     "transform",
-                    "translate(" + this.width / 2 + "," + this.height / 2 + ")"
+                    "translate(" + this.widthSVG / 2 + "," + this.widthSVG / 2 + ")"
                 );
 
             this.pie = d3
@@ -200,4 +189,6 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

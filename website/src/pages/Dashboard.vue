@@ -1,7 +1,7 @@
 <template>
     <div class="content">
-        <div class="md-layout" layout="column">
-            <div class="md-layout-item">
+        <div class="md-layout">
+            <div class="md-layout-item md-size-large-50 md-size-small-100 md-size-xsmall-100 md-size-medium-100 ">
                 <md-card>
                     <md-card-header data-background-color="gray">
                         <h4 class="title">Total crimes per district</h4>
@@ -18,7 +18,8 @@
                     </md-card-content>
                 </md-card>
             </div>
-            <div class="md-layout" layout="column">
+
+            <div class="md-layout-item md-size-large-50 md-size-small-100 md-size-xsmall-100 md-size-medium-100 " >
                 <div class="md-layout-item" >
                     <md-card>
                         <md-card-header data-background-color="gray">
@@ -27,7 +28,7 @@
                                 Shows the distribution of the total crime count for the selected attribute in the selected district.
                             </p>
                         </md-card-header>
-                        <md-card-content>
+                        <md-card-content >
                             <label> Displayed attribute:
                                 <select @change="attributeChange($event.target.value)">
                                     <option v-for="attribute in this.districtAttributes" :key="attribute" :value="attribute">
@@ -38,7 +39,6 @@
                             <piechart
                                     :id="2"
                                     :pieData="this.selectedDistrictData"
-                                    :radius=100
                                     @update-pieColor="updatePieColor"
                             ></piechart>
                             <md-table
@@ -138,8 +138,6 @@ export default {
         },
         updatePieColor(color) {
             this.pieColor = color;
-            console.log("test:")
-            console.log(color(0));
         },
         getCellColor(index) {
             return this.pieColor(index);
@@ -154,9 +152,6 @@ export default {
 </script>
 
 <style scoped>
-    [class1=layout-row]{
-        display: flex;
-        align-items: stretch;
-    }
+
 
 </style>
