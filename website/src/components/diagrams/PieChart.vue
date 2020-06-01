@@ -20,7 +20,6 @@ export default {
 
     data() {
         return {
-            heightSVG: 1000,
             widthSVG: 600,
             margin: { top: 30, right: 30, bottom: 30, left: 70 },
             margin_top: 20,

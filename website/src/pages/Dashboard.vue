@@ -2,15 +2,18 @@
     <div class="content">
         <div class="md-layout md-alignment-center">
             <div
-                class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100"
+                class="md-layout-item md-size-60 md-medium-size-33 md-small-size-50 md-xsmall-size-100"
             >
                 <md-card>
                     <md-card-header data-background-color="gray">
-                        <h4 class="title">Total crimes per district</h4>
-                        <p class="category">
-                            Shows the total number of crimes in each district as
-                            a heatmap.
-                        </p>
+                        <div>
+                            <h4 class="title">Total crimes per district</h4>
+                            <p class="category">
+                                Shows the total number of crimes in each district as
+                                a heatmap.
+                            </p>
+                        </div>
+
                     </md-card-header>
                     <md-card-content>
                         <heatmap
@@ -23,18 +26,21 @@
             </div>
 
             <div
-                class="md-layout-item md-medium-size-33 md-small-size-50 md-xsmall-size-100"
+                class="md-layout-item md-size-40 md-medium-size-33 md-small-size-50 md-xsmall-size-100"
             >
                 <md-card>
                     <md-card-header data-background-color="gray">
-                        <h4 class="title">
-                            Crimes per {{ currentAttribute }} in
-                            {{ selectedDistrictLabel }}
-                        </h4>
-                        <p class="category">
-                            Shows the distribution of the total crime count for
-                            the selected attribute in the selected district.
-                        </p>
+                        <div>
+                            <h4 class="title">
+                                Crimes per {{ currentAttribute }} in
+                                {{ selectedDistrictLabel }}
+                            </h4>
+                            <p class="category">
+                                Shows the distribution of the total crime count for
+                                the selected attribute in the selected district.
+                            </p>
+                        </div>
+
                     </md-card-header>
                     <md-card-content>
                         <label>
@@ -180,4 +186,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>
