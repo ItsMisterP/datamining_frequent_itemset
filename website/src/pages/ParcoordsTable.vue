@@ -6,7 +6,10 @@
         >
             <md-card>
                 <md-card-header data-background-color="gray">
-                    <h4 class="title">Filter</h4>
+                    <h4 class="title">Association Rules</h4>
+                    <p class="category">
+                        Parallel Coordinates to filter the interesting rules.
+                    </p>
                 </md-card-header>
                 <md-card-content>
                     <!-- http://bl.ocks.org/sc28/afa69162dc61833dc19fec7f0094f01a -->
