@@ -37,7 +37,7 @@
                                 {{ minsup }}
                                 <br />
                                 <label for="klucmin"
-                                    >Minimum Kluc for Rules:</label
+                                    >Minimum Kulc for Rules:</label
                                 ><br />
                                 <input
                                     id="klucmin"
@@ -51,7 +51,7 @@
                                 {{ klucMin }}
                                 <br />
                                 <label for="klucmax"
-                                    >Maximum Kluc for Rules:</label
+                                    >Maximum Kulc for Rules:</label
                                 ><br />
                                 <input
                                     id="klucmax"
@@ -151,7 +151,7 @@
                                     {{ item.confidence }}
                                 </md-table-cell>
                                 <md-table-cell
-                                    md-label="Kluc"
+                                    md-label="Kulczynski"
                                     md-sort-by="kluc"
                                 >
                                     {{ item.kluc }}
