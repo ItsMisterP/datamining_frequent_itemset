@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { globalStore } from "@/main";
 import * as d3 from "d3";
 //import * as geoJson from "@/assets/json/boundaries_neighborhoods.json";
 
@@ -50,11 +51,14 @@ export default {
         this.fetchGeoData();
     },
     methods: {
+        getURL: function(url) {
+            return globalStore.prefix + url;
+        },
         fetchGeoData() {
             let diagram = this;
 
             d3.json(
-                "http://localhost:8000/json/boundaries_neighborhoods.geo.json"
+                this.getURL("json/boundaries_neighborhoods.geo.json")
             ).then(function(data) {
                 diagram.disrictsGeoJson = data;
                 diagram.init();
