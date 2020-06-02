@@ -7,6 +7,9 @@
                 <md-card>
                     <md-card-header data-background-color="gray">
                         <h4 class="title">Filter</h4>
+                        <p class="category">
+                            Filter the shown rules
+                        </p>
                     </md-card-header>
 
                     <md-card-expand>
@@ -106,6 +109,11 @@
                 <md-card>
                     <md-card-header data-background-color="gray">
                         <h4 class="title">Association Rules</h4>
+                        <p class="category">
+                            Shows all selected rules. Click on a node to show
+                            all related Rules. If none is selected table shows
+                            all rules.
+                        </p>
                     </md-card-header>
                     <md-card-content>
                         <md-table
@@ -208,20 +216,24 @@ export default {
     methods: {
         nodeclicked($event) {
             let d = $event;
-            this.tableRules = this.filteredRules;
-            this.tableRules = this.filteredRules.filter(item => {
-                return (
-                    item.antecedents.includes(d.id) ||
-                    item.consequents.includes(d.id) ||
-                    (
-                        "{" +
-                        item.antecedents.join(",") +
-                        "}->{" +
-                        item.consequents.join(",") +
-                        "}"
-                    ).includes(d.id)
-                );
-            });
+            if (d === null) {
+                this.tableRules = this.filteredRules;
+            } else {
+                this.tableRules = this.filteredRules;
+                this.tableRules = this.filteredRules.filter(item => {
+                    return (
+                        item.antecedents.includes(d.id) ||
+                        item.consequents.includes(d.id) ||
+                        (
+                            "{" +
+                            item.antecedents.join(",") +
+                            "}->{" +
+                            item.consequents.join(",") +
+                            "}"
+                        ).includes(d.id)
+                    );
+                });
+            }
         },
         fetchData() {
             let graph = this;
