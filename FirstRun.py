@@ -11,6 +11,7 @@ from mlxtend.preprocessing import TransactionEncoder
 #from mlxtend.frequent_patterns import association_rules
 from mlxtend.frequent_patterns import apriori
 from mlxtend.frequent_patterns import fpgrowth
+
 import numpy as np
 import csv
 import re
@@ -46,7 +47,7 @@ imb_ratio_threshold = 0.0
 association_rules_threshold = 0.4
 min_sup_threshold = 0.001
 metric = "confidence"
-choose = "PrimaryType"
+choose = "Primary Type"
 # =============================================================================
 
 
@@ -85,6 +86,8 @@ if(choose == "IUCR"):
 print(df.columns)
 # =============================================================================
 
+df["time"] = df["time"].replace("0", "24")
+
 df["time"] = df["time"].replace(["1","2","3","4","5", "6"], "Time: 1-6")
 df["time"] = df["time"].replace(["7","8","9","10","11","12"], "Time: 7-12")
 df["time"] = df["time"].replace(["13","14","15","16","17","18"], "Time: 13-18")
@@ -113,6 +116,7 @@ te_ary = te.fit(df_num).transform(df_num)
 df2 = pd.DataFrame(te_ary, columns=te.columns_)
 #frequent_itemsets = apriori(df1, min_support=0.0001, use_colnames=True, low_memory=True)
 frequent_itemsets = fpgrowth(df2, min_support=min_sup_threshold, use_colnames=True)
+
 # =============================================================================
 step_log("save Frequent Itemsets")
 frequent_itemsets.to_json("frequent_itemsets.json", orient='records')
