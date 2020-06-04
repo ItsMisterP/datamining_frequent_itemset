@@ -61,16 +61,20 @@
                                     :id="2"
                                     :pieData="this.selectedDistrictData"
                                     @update-pieColor="updatePieColor"
+                                    @update-selectedTableRow="updateSelectedTableRow"
                             ></piechart>
                         <md-table
                             v-model="this.tableData"
                             md-card
                             md-fixed-header
-                            md-height="235px"
+                            md-height="267px"
+                            id="pieDataTable"
                         >
                             <md-table-row
                                 slot="md-table-row"
                                 slot-scope="{ item }"
+                                md-selectable="single"
+                                :id="item[0]"
                             >
                                 <md-table-cell md-label="Key">
                                     {{ item[0] }}
@@ -81,7 +85,7 @@
                                 <md-table-cell
                                     md-label="Color"
                                     :style="{
-                                        background: getCellColor(item[0])
+                                        background: getCellColor(item[0]) + '!important'
                                     }"
                                 >
                                 </md-table-cell>
@@ -114,6 +118,7 @@ export default {
     },
     created() {
         this.fetchData();
+        this.currentSelectedRowIndex = -1;
     },
     data() {
         return {
@@ -126,7 +131,8 @@ export default {
             currentAttribute: String,
             dataLoaded: false,
             pieColor: Array,
-            tmpColor: String
+            tmpColor: String,
+            currentSelectedRowIndex: Number
         };
     },
     methods: {
@@ -175,6 +181,16 @@ export default {
         },
         getCellColor(index) {
             return this.pieColor(index);
+        },
+        updateSelectedTableRow(index) {
+            if(this.currentSelectedRowIndex > 0) {
+                d3.select(document.getElementById(""+this.currentSelectedRowIndex)).classed("md-selected-single", false);
+            }
+            this.currentSelectedRowIndex = index;
+            let row = document.getElementById(""+this.currentSelectedRowIndex);
+            d3.select(row).classed("md-selected-single", true);
+            document.getElementsByClassName("md-table-content")[0].scrollTop = row.offsetTop;
+
         }
     },
     computed: {

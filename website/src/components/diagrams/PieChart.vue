@@ -141,21 +141,15 @@ export default {
                 })
                 .on("click", function(d, i) {
                     let point = d3.mouse(this);
-                    let x = point[0] + 200; // i dont know why but the d3 mouse xy position is WAY of
-                    let y = point[1] + 105;
+                    let x = point[0] + 310; // i dont know why but the d3 mouse xy position is WAY of, maybe because svg shrinks with md-card
+                    let y = point[1] + 280;
                     let text = diagram.keys[i] + ": " + d.value;
-                    let width = 6 * text.length + 1;
+                    let width = 8 * text.length + 1;
 
                     // prevent drawing out of the svg box
-                    // if (x > diagram.widthSVG / 2) {
-                    //     x -= width;
-                    // }
-                    // if (y < diagram.heightSVG / 2) {
-                    //     y += 20;
-                    //     if (x < diagram.widthSVG / 2) {
-                    //         x += 10; //move the tooltip out from under the mouse courser
-                    //     }
-                    // }
+                    if (x > diagram.widthSVG / 2) {
+                        x -= width + 15;
+                    }
 
                     tooltip
                         .selectAll('rect')
@@ -168,6 +162,8 @@ export default {
                         .attr("x", 6)
                         .attr("y", 14)
                         .text(diagram.keys[i] + ": " + d.value);
+
+                    diagram.$emit("update-selectedTableRow", i);
                 })
                 .each(function(d) {
                     this._current = d;
