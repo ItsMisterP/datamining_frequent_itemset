@@ -47,7 +47,7 @@ imb_ratio_threshold = 0.0
 association_rules_threshold = 0.4
 min_sup_threshold = 0.001
 metric = "confidence"
-choose = "Primary Type"
+choose = "PrimaryType"
 # =============================================================================
 
 

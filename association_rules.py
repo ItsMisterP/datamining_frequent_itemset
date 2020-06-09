@@ -106,7 +106,7 @@ def association_rules(df, metric="confidence",
     
     columns_ordered = [ "as", "cs",
                        "confidence","cB", "support",
-                        "kluc", "imbratio"]
+                        "kluc", "imbratio", "lift"]
 
     # check for metric compliance
     if support_only:

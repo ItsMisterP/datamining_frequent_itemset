@@ -64,6 +64,18 @@
                             >
                                 {{ item.imbratio }}
                             </md-table-cell>
+                            <md-table-cell
+                                    md-label="¬confidence"
+                                    md-sort-by="¬confidence"
+                            >
+                                {{ item.cB }}
+                            </md-table-cell>
+                            <md-table-cell
+                                    md-label="Lift"
+                                    md-sort-by="Lift"
+                            >
+                                {{ item.lift }}
+                            </md-table-cell>
                         </md-table-row>
                     </md-table>
                 </md-card-content>
@@ -122,7 +134,8 @@
                     "imbratio": {title:"imbalance ratio"},
                     "kluc": {title:"kulczynski"},
                     "support": {title:"support"},
-                    "cB": {title:"¬confidence"}
+                    "cB": {title:"¬confidence"},
+                    "lift": {title:"lift"}
                 };
 
 
@@ -131,7 +144,6 @@
 
                 d3.json(this.getURL("json/association_rules.json")).then(function(data) {
                     graph.tableRules = data;
-                    console.log(data);
                     parcoords
                         .data(data)
                         .dimensions(dimensions)
