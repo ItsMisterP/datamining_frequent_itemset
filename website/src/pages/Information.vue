@@ -50,19 +50,22 @@
                         <h5 class="title">References</h5>
                     </md-card-header>
                     <md-card-content class="md-card-content">
-                        Data mining / Association Pattern Mining: <br>
+                        Data mining / Association Pattern Mining:<br>
+                        Master Seminar by Robin Buchta &amp; Philip Ohm<br>
                         <br>
-                        Vue JS: <br>
-                        Vue Material Dashboard <br>
-                        Components <br>
+                        <a href="https://vuejs.org/">Vue JS</a><br>
+                        <a href="https://www.creative-tim.com/product/vue-material-dashboard">Vue Material Dashboard</a><br>
+                        <a href="https://vuematerial.io/components/">Components</a><br>
                         <br>
-                        Heatmap: <br>
-                        District geo data: <br>
-                        Pie chart: <br>
-                        Force directed graph: <br>
-                        Parallel Coordinates: <br>
-                        adapted for v5: <br>
-                        extensions(Reset Button)<br>
+                        <a href="http://bl.ocks.org/cjhin/27e01c636dcc0bfa256c7a225971354d">Heatmap</a><br>
+                        <a href="https://www.npmjs.com/package/vue-d3-geo">Geojson processing</a><br>
+                        <a href="https://data.cityofchicago.org/Public-Safety/Boundaries-Police-Districts-current-/fthy-xz3r">District geo data</a><br>
+                        <a href="https://www.visualcinnamon.com/2016/05/smooth-color-legend-d3-svg-gradient">Heatmap gradient legend</a><br>
+                        Pie chart: Bachelor Thesis by Philip Ohm<br>
+                        <a href="https://bl.ocks.org/puzzler10/4438752bb93f45dc5ad5214efaa12e4a">Force directed graph</a><br>
+                        <a href="https://syntagmatic.github.io/parallel-coordinates/">Parallel Coordinates</a><br>
+                        <a href="https://github.com/BigFatDog/parcoords-es">adapted for v5</a><br>
+                        <a href="http://bl.ocks.org/sc28/afa69162dc61833dc19fec7f0094f01a">Reset Button</a><br>
                     </md-card-content>
                 </md-card>
             </div>
