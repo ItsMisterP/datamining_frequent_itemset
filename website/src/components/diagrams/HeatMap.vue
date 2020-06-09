@@ -33,7 +33,9 @@ export default {
             container: Object,
             line: Object,
             disrictsGeoJson: Object,
-            usaGeoJson: Object
+            usaGeoJson: Object,
+            selectedId: Number,
+            selectedPath: Object
         };
     },
     watch: {
@@ -231,6 +233,20 @@ export default {
                         .style("transform-origin", "50% 50%");
                 })
                 .on("click", function(d, i) {
+                    if(i !== diagram.selectedId) {
+                        d3.select(diagram.selectedDistrict)
+                            .style("transform", "scale(1,1)")
+                            .style("transform-origin", "50% 50%")
+                            .style("stroke-width", 1)
+                            .style("stroke", "#FFF");
+                    }
+                    diagram.selectedId = i;
+                    diagram.selectedDistrict = this;
+                    d3.select(diagram.selectedDistrict)
+                        .style("stroke-width", 2)
+                        .style("stroke", "#000")
+                        .style("stroke-linecap", "round");
+
                     //d.properties.dist_label + " district: " + diagram.districtCrimeCount['ds_' + d.properties.dist_num]
                     let point = d3.mouse(this);
                     let x = point[0] + 70;
