@@ -14,25 +14,25 @@
                     </md-card-header>
                     <md-card-content>
                         <p>
-                            - The green nodes are the items which where used by the rules.
+                            - Green nodes are the items which were used in the rules.
                         </p>
                         <p>
-                            - The red nodes are the generated rules. A -> B means that when A accures than B accures with the probability of the confidence.
+                            - Red nodes are the generated rules. A -> B means that when A occurs then B occurs with a probability of the confidence.
                         </p>
                         <p>
-                            - Blue Edges are the antecedents items.
+                            - Blue Edges are items belonging to the antecedent (premise).
                         </p>
                         <p>
-                            - Black lines are the consequents items.
+                            - Black lines are items belonging to the consequent (conclusion).
                         </p>
                         <p>
-                            - Click on a node to see all related items and rules.
+                            - Clicking a node will highlight all related items and rules.
                         </p>
                         <p>
-                            - Click on something that is not a node to deselect the selected item.
+                            - Click on anything that is not a node to deselect the selected item.
                         </p>
                         <p>
-                            - You can see information about the selected items in the table below.
+                            - Information about the currently selected items are available in the table below.
                         </p>
                     </md-card-content>
                     </md-card>
