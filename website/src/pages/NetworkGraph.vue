@@ -4,6 +4,38 @@
             <div
                 class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100"
             >
+
+                <md-card>
+                    <md-card-header data-background-color="gray">
+                        <h4 class="title">Explanation</h4>
+                        <p class="category">
+                            All informations you need to understand the force directed graph
+                        </p>
+                    </md-card-header>
+                    <md-card-content>
+                        <p>
+                            - The green nodes are the items which where used by the rules.
+                        </p>
+                        <p>
+                            - The red nodes are the generated rules. A -> B means that when A accures than B accures with the probability of the confidence.
+                        </p>
+                        <p>
+                            - Blue Edges are the antecedents items.
+                        </p>
+                        <p>
+                            - Black lines are the consequents items.
+                        </p>
+                        <p>
+                            - Click on a node to see all related items and rules.
+                        </p>
+                        <p>
+                            - Click on something that is not a node to deselect the selected item.
+                        </p>
+                        <p>
+                            - You can see information about the selected items in the table below.
+                        </p>
+                    </md-card-content>
+                    </md-card>
                 <md-card>
                     <md-card-header data-background-color="gray">
                         <h4 class="title">Filter</h4>
