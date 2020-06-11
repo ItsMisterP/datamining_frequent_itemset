@@ -18,7 +18,7 @@
                             <li>District</li>
                             <li>month</li>
                             <li>weekday</li>
-                            <li>IUCR</li>
+                            <li>Primary Type</li>
                         </ul>
                     </md-card-content>
                 </md-card>
@@ -66,8 +66,8 @@
                          <a href="https://stackoverflow.com/questions/16178366/d3-js-set-initial-zoom-level">Initial zoom level</a><br>
                          <a href="https://medium.com/ninjaconcept/interactive-dynamic-force-directed-graphs-with-d3-da720c6d7811">Clickable nodes</a><br>
                         <a href="https://syntagmatic.github.io/parallel-coordinates/">Parallel Coordinates</a><br>
-                        <a href="https://github.com/BigFatDog/parcoords-es">adapted for v5</a><br>
-                        <a href="http://bl.ocks.org/sc28/afa69162dc61833dc19fec7f0094f01a">Reset Button</a><br>
+                        <a href="https://github.com/BigFatDog/parcoords-es">Parallel Coordinates adapted for v5</a><br>
+                        <a href="http://bl.ocks.org/sc28/afa69162dc61833dc19fec7f0094f01a">Parallel Coordinates Reset Button</a><br>
                     </md-card-content>
                 </md-card>
             </div>
