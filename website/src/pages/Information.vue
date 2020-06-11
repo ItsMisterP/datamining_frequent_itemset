@@ -63,8 +63,8 @@
                         <a href="https://www.visualcinnamon.com/2016/05/smooth-color-legend-d3-svg-gradient">Heatmap gradient legend</a><br>
                         Pie chart: Bachelor Thesis by Philip Ohm<br>
                         <a href="https://bl.ocks.org/puzzler10/4438752bb93f45dc5ad5214efaa12e4a">Force directed graph</a><br>
-                         <a href="https://stackoverflow.com/questions/16178366/d3-js-set-initial-zoom-level">Initial zoom level</a><br>
-                         <a href="https://medium.com/ninjaconcept/interactive-dynamic-force-directed-graphs-with-d3-da720c6d7811">Clickable nodes</a><br>
+                         <a href="https://stackoverflow.com/questions/16178366/d3-js-set-initial-zoom-level">Force directed graph Initial zoom level</a><br>
+                         <a href="https://medium.com/ninjaconcept/interactive-dynamic-force-directed-graphs-with-d3-da720c6d7811">Force directed graph Clickable nodes</a><br>
                         <a href="https://syntagmatic.github.io/parallel-coordinates/">Parallel Coordinates</a><br>
                         <a href="https://github.com/BigFatDog/parcoords-es">Parallel Coordinates adapted for v5</a><br>
                         <a href="http://bl.ocks.org/sc28/afa69162dc61833dc19fec7f0094f01a">Parallel Coordinates Reset Button</a><br>
