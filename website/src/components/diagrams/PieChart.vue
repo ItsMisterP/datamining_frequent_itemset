@@ -35,8 +35,8 @@ export default {
     },
     watch: {
         pieData: function() {
-                this.init();
-                this.draw();
+            this.init();
+            this.draw();
         }
     },
     computed: {},
@@ -55,7 +55,7 @@ export default {
             if (this.pieData === undefined) {
                 this.keys = Object.keys(this.testdata);
                 this.values = Object.values(this.testdata);
-            }else {
+            } else {
                 this.keys = Object.keys(this.pieData);
                 this.values = Object.values(this.pieData);
             }
@@ -77,7 +77,11 @@ export default {
                 .attr("id", "c")
                 .attr(
                     "transform",
-                    "translate(" + this.widthSVG / 2 + "," + this.widthSVG / 2 + ")"
+                    "translate(" +
+                        this.widthSVG / 2 +
+                        "," +
+                        this.widthSVG / 2 +
+                        ")"
                 );
 
             this.pie = d3
@@ -111,15 +115,16 @@ export default {
                 .append("rect")
                 .attr("width", 40)
                 .attr("height", 20)
-                .attr("rx",7)
-                .attr("ry",7)
+                .attr("rx", 7)
+                .attr("ry", 7)
                 .attr("fill", "#FFF")
                 .style("stroke-width", 1)
                 .style("stroke", "#000");
             let tooltext = tooltip.append("text").attr("class", "tooltext");
 
-            var arcOver = d3.arc()
-                .outerRadius(radius+10)
+            var arcOver = d3
+                .arc()
+                .outerRadius(radius + 10)
                 .innerRadius(0);
 
             this.arcs
@@ -131,13 +136,11 @@ export default {
                 })
                 .attr("d", this.arc)
                 .on("mouseover", function(d, i) {
-                    d3.select(this)
-                        .attr("d", arcOver);
+                    d3.select(this).attr("d", arcOver);
                 })
                 .on("mouseout", function(d, i) {
                     tooltip.attr("opacity", 0);
-                    d3.select(this)
-                        .attr("d", diagram.arc);
+                    d3.select(this).attr("d", diagram.arc);
                 })
                 .on("click", function(d, i) {
                     let point = d3.mouse(this);
@@ -151,9 +154,7 @@ export default {
                         x -= width + 15;
                     }
 
-                    tooltip
-                        .selectAll('rect')
-                        .attr("width", width);
+                    tooltip.selectAll("rect").attr("width", width);
 
                     tooltip
                         .attr("transform", "translate(" + x + ", " + y + ")")
@@ -177,13 +178,10 @@ export default {
                 };
             }
         },
-        update() {
-
-        }
+        update() {}
     }
 };
 </script>
 
 <style scoped>
-
 </style>

@@ -9,11 +9,10 @@
                         <div>
                             <h4 class="title">Total crimes per district</h4>
                             <p class="category">
-                                Shows the total number of crimes in each district as
-                                a heatmap.
+                                Shows the total number of crimes in each
+                                district as a heatmap.
                             </p>
                         </div>
-
                     </md-card-header>
                     <md-card-content>
                         <heatmap
@@ -36,11 +35,11 @@
                                 {{ selectedDistrictLabel }}
                             </h4>
                             <p class="category">
-                                Shows the distribution of the total crime count for
-                                the selected attribute in the selected district.
+                                Shows the distribution of the total crime count
+                                for the selected attribute in the selected
+                                district.
                             </p>
                         </div>
-
                     </md-card-header>
                     <md-card-content>
                         <label>
@@ -58,11 +57,11 @@
                             </select>
                         </label>
                         <piechart
-                                    :id="2"
-                                    :pieData="this.selectedDistrictData"
-                                    @update-pieColor="updatePieColor"
-                                    @update-selectedTableRow="updateSelectedTableRow"
-                            ></piechart>
+                            :id="2"
+                            :pieData="this.selectedDistrictData"
+                            @update-pieColor="updatePieColor"
+                            @update-selectedTableRow="updateSelectedTableRow"
+                        ></piechart>
                         <md-table
                             v-model="this.tableData"
                             md-card
@@ -85,7 +84,8 @@
                                 <md-table-cell
                                     md-label="Color"
                                     :style="{
-                                        background: getCellColor(item[0]) + '!important'
+                                        background:
+                                            getCellColor(item[0]) + '!important'
                                     }"
                                 >
                                 </md-table-cell>
@@ -100,14 +100,7 @@
 
 <script>
 import * as d3 from "d3";
-import Chart from "../components/diagrams/Chart";
-import ColumnChart from "../components/diagrams/ColumnChart";
-import LineChart from "../components/diagrams/LineChart";
-import GroupedBarChart from "../components/diagrams/GroupedBarChart";
-import MultiLineChart from "../components/diagrams/MultiLineChart";
 import PieChart from "../components/diagrams/PieChart";
-import test from "../components/diagrams/ZoomableBarChart";
-
 import { globalStore } from "@/main";
 import HeatMap from "@/components/diagrams/HeatMap";
 
@@ -183,14 +176,18 @@ export default {
             return this.pieColor(index);
         },
         updateSelectedTableRow(index) {
-            if(this.currentSelectedRowIndex > 0) {
-                d3.select(document.getElementById(""+this.currentSelectedRowIndex)).classed("md-selected-single", false);
+            if (this.currentSelectedRowIndex > 0) {
+                d3.select(
+                    document.getElementById("" + this.currentSelectedRowIndex)
+                ).classed("md-selected-single", false);
             }
             this.currentSelectedRowIndex = index;
-            let row = document.getElementById(""+this.currentSelectedRowIndex);
+            let row = document.getElementById(
+                "" + this.currentSelectedRowIndex
+            );
             d3.select(row).classed("md-selected-single", true);
-            document.getElementsByClassName("md-table-content")[0].scrollTop = row.offsetTop;
-
+            document.getElementsByClassName("md-table-content")[0].scrollTop =
+                row.offsetTop;
         }
     },
     computed: {
@@ -202,5 +199,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

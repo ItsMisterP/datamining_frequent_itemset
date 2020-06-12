@@ -10,7 +10,6 @@ import { globalStore } from "@/main";
 import * as d3 from "d3";
 //import * as geoJson from "@/assets/json/boundaries_neighborhoods.json";
 
-
 export default {
     name: "Test-Chart",
     props: {
@@ -59,13 +58,13 @@ export default {
         fetchGeoData() {
             let diagram = this;
 
-            d3.json(
-                this.getURL("json/boundaries_neighborhoods.geo.json")
-            ).then(function(data) {
-                diagram.disrictsGeoJson = data;
-                diagram.init();
-                diagram.draw();
-            });
+            d3.json(this.getURL("json/boundaries_neighborhoods.geo.json")).then(
+                function(data) {
+                    diagram.disrictsGeoJson = data;
+                    diagram.init();
+                    diagram.draw();
+                }
+            );
         },
         init() {
             this.svg = d3.select(document.getElementById(this.id));
@@ -190,14 +189,14 @@ export default {
             let tooltip = diagram.svg
                 .append("g")
                 .attr("class", "tooltip")
-                .attr("opacity", 0)
+                .attr("opacity", 0);
 
             tooltip
                 .append("rect")
                 .attr("width", 80)
                 .attr("height", 37)
-                .attr("rx",10)
-                .attr("ry",10)
+                .attr("rx", 10)
+                .attr("ry", 10)
                 .attr("fill", "#FFF")
                 .style("stroke-width", 1)
                 .style("stroke", "#000");
@@ -233,7 +232,7 @@ export default {
                         .style("transform-origin", "50% 50%");
                 })
                 .on("click", function(d, i) {
-                    if(i !== diagram.selectedId) {
+                    if (i !== diagram.selectedId) {
                         d3.select(diagram.selectedDistrict)
                             .style("transform", "scale(1,1)")
                             .style("transform-origin", "50% 50%")
@@ -268,11 +267,17 @@ export default {
                     tooltext2
                         .attr("x", 7)
                         .attr("y", 30)
-                        .text(diagram.districtCrimeCount['ds_' + d.properties.dist_num] + " crimes");
-                    diagram.changeSelectedDistrict("ds_" + d.properties.dist_num);
+                        .text(
+                            diagram.districtCrimeCount[
+                                "ds_" + d.properties.dist_num
+                            ] + " crimes"
+                        );
+                    diagram.changeSelectedDistrict(
+                        "ds_" + d.properties.dist_num
+                    );
                 });
         },
-        changeSelectedDistrict(selectedDistrict){
+        changeSelectedDistrict(selectedDistrict) {
             this.$emit("update-selectedDistrict", selectedDistrict);
         }
     }
@@ -280,5 +285,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

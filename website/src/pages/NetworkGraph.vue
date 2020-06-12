@@ -4,38 +4,46 @@
             <div
                 class="md-layout-item md-medium-size-100 md-xsmall-size-100 md-size-100"
             >
-
                 <md-card>
                     <md-card-header data-background-color="gray">
                         <h4 class="title">Explanation</h4>
                         <p class="category">
-                            All informations you need to understand the force directed graph
+                            All informations you need to understand the force
+                            directed graph
                         </p>
                     </md-card-header>
                     <md-card-content>
                         <p>
-                            - Green nodes are the items which were used in the rules.
+                            - Green nodes are the items which were used in the
+                            rules.
                         </p>
                         <p>
-                            - Red nodes are the generated rules. A -> B means that when A occurs then B occurs with a probability of the confidence.
+                            - Red nodes are the generated rules. A -> B means
+                            that when A occurs then B occurs with a probability
+                            of the confidence.
                         </p>
                         <p>
-                            - Blue Edges are items belonging to the antecedent (premise).
+                            - Blue Edges are items belonging to the antecedent
+                            (premise).
                         </p>
                         <p>
-                            - Black lines are items belonging to the consequent (conclusion).
+                            - Black lines are items belonging to the consequent
+                            (conclusion).
                         </p>
                         <p>
-                            - Clicking a node will highlight all related items and rules.
+                            - Clicking a node will highlight all related items
+                            and rules.
                         </p>
                         <p>
-                            - Click on anything that is not a node to deselect the selected item.
+                            - Click on anything that is not a node to deselect
+                            the selected item.
                         </p>
                         <p>
-                            - Information about the currently selected items are available in the table below.
+                            - Information about the currently selected items are
+                            available in the table below.
                         </p>
                     </md-card-content>
-                    </md-card>
+                </md-card>
                 <md-card>
                     <md-card-header data-background-color="gray">
                         <h4 class="title">Filter</h4>
@@ -65,8 +73,8 @@
                                     @change="update"
                                     type="range"
                                     v-model.number="minsup"
-                                    min="0.00001"
-                                    max="0.3"
+                                    min="0.001"
+                                    max="0.04"
                                     step="0.00001"
                                 />
                                 {{ minsup }}
