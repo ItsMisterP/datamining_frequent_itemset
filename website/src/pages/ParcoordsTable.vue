@@ -23,6 +23,12 @@
                             md-card
                             md-fixed-header
                     >
+                        <md-table-empty-state
+                                md-label="No Rules found"
+                                :md-description="`No rules for the parameters`"
+                        >
+                        </md-table-empty-state>
+
                         <md-table-row
                                 slot="md-table-row"
                                 slot-scope="{ item }"
@@ -49,35 +55,30 @@
                             <md-table-cell
                                     md-label="Confidence"
                                     md-sort-by="confidence"
-                                    md-numeric
                             >
                                 {{ item.confidence }}
                             </md-table-cell>
                             <md-table-cell
                                     md-label="Kluc"
                                     md-sort-by="kluc"
-                                    md-numeric
                             >
                                 {{ item.kluc }}
                             </md-table-cell>
                             <md-table-cell
                                     md-label="Imbalance Ratio"
                                     md-sort-by="imbratio"
-                                    md-numeric
                             >
                                 {{ item.imbratio }}
                             </md-table-cell>
                             <md-table-cell
                                     md-label="¬confidence"
                                     md-sort-by="¬confidence"
-                                    md-numeric
                             >
                                 {{ item.cB }}
                             </md-table-cell>
                             <md-table-cell
-                                    md-label="Lift"
-                                    md-sort-by="Lift"
-                                    md-numeric
+                                    md-label="lift"
+                                    md-sort-by="lift"
                             >
                                 {{ item.lift }}
                             </md-table-cell>
