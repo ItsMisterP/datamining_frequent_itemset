@@ -72,7 +72,6 @@
                             <md-table-row
                                 slot="md-table-row"
                                 slot-scope="{ item }"
-                                md-selectable="single"
                                 :id="item[0]"
                             >
                                 <md-table-cell md-label="Key">
