@@ -9,7 +9,7 @@
                         <h4 class="title">Explanation</h4>
                         <p class="category">
                             All informations you need to understand the force
-                            directed graph
+                            directed graph.
                         </p>
                     </md-card-header>
                     <md-card-content>
@@ -36,7 +36,7 @@
                     <md-card-header data-background-color="gray">
                         <h4 class="title">Filter</h4>
                         <p class="category">
-                            Filter the shown rules
+                            Filter the shown rules.
                         </p>
                     </md-card-header>
 
