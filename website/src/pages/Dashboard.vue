@@ -72,7 +72,7 @@
                             <md-table-row
                                 slot="md-table-row"
                                 slot-scope="{ item }"
-                                :id="item[0]"
+st                                :id="item[0]"
                             >
                                 <md-table-cell md-label="Key">
                                     {{ item[0] }}
@@ -175,7 +175,8 @@ export default {
             return this.pieColor(index);
         },
         updateSelectedTableRow(index) {
-            if (this.currentSelectedRowIndex > 0) {
+            if (this.currentSelectedRowIndex >= 0) {
+
                 let oldrow = document.getElementById(
                     "" +
                         Object.keys(this.selectedDistrictData)[
