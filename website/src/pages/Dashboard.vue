@@ -16,7 +16,7 @@
                     </md-card-header>
                     <md-card-content>
                         <heatmap
-                            id="1"
+                            id="99998"
                             :districtCrimeCount="this.countsAll['District']"
                             @update-selectedDistrict="changeSelectedDistrict"
                         ></heatmap>
@@ -57,7 +57,7 @@
                             </select>
                         </label>
                         <piechart
-                            :id="2"
+                            :id="99999"
                             :pieData="this.selectedDistrictData"
                             @update-pieColor="updatePieColor"
                             @update-selectedTableRow="updateSelectedTableRow"
@@ -177,9 +177,13 @@ export default {
         },
         updateSelectedTableRow(index) {
             if (this.currentSelectedRowIndex > 0) {
-                d3.select(
-                    document.getElementById("" + this.currentSelectedRowIndex)
-                ).classed("md-selected-single", false);
+                let oldrow = document.getElementById(
+                    "" + Object.keys(this.selectedDistrictData)[
+                        this.currentSelectedRowIndex
+                        ]
+                );
+                console.log("in")
+                d3.select(oldrow).classed("md-selected-single", false);
             }
             this.currentSelectedRowIndex = index;
             let row = document.getElementById(

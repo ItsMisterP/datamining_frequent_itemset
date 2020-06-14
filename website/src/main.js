@@ -48,7 +48,7 @@ Vue.use(Notifications);
 //Globale Variablen
 export const globalStore = new Vue({
     data: {
-        prefix: "http://94.130.204.236:12000/"
+        prefix: "http://localhost:8000/"
     },
     methods: {
         getURL: function(url) {
