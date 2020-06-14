@@ -178,11 +178,12 @@ export default {
         updateSelectedTableRow(index) {
             if (this.currentSelectedRowIndex > 0) {
                 let oldrow = document.getElementById(
-                    "" + Object.keys(this.selectedDistrictData)[
-                        this.currentSelectedRowIndex
+                    "" +
+                        Object.keys(this.selectedDistrictData)[
+                            this.currentSelectedRowIndex
                         ]
                 );
-                console.log("in")
+
                 d3.select(oldrow).classed("md-selected-single", false);
             }
             this.currentSelectedRowIndex = index;
