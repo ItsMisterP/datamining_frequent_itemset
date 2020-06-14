@@ -14,21 +14,35 @@
                     </md-card-header>
                     <md-card-content>
                         <ul>
-                            <li>Green nodes are the items which were used in the
-                                rules.</li>
-                            <li>Red nodes are the generated rules. A -> B means
-                                that when A occurs then B occurs with a probability
-                                of the confidence.</li>
-                            <li>Blue Edges are items belonging to the antecedent
-                                (premise).</li>
-                            <li>Black lines are items belonging to the consequent
-                                (conclusion).</li>
-                            <li>Clicking a node will highlight all related items
-                                and rules.</li>
-                            <li>Click on anything that is not a node to deselect
-                                the selected item.</li>
-                            <li>Information about the currently selected items are
-                                available in the table below.</li>
+                            <li>
+                                Green nodes are the items which were used in the
+                                rules.
+                            </li>
+                            <li>
+                                Red nodes are the generated rules. A -> B means
+                                that when A occurs then B occurs with a
+                                probability of the confidence.
+                            </li>
+                            <li>
+                                Blue Edges are items belonging to the antecedent
+                                (premise).
+                            </li>
+                            <li>
+                                Black lines are items belonging to the
+                                consequent (conclusion).
+                            </li>
+                            <li>
+                                Clicking a node will highlight all related items
+                                and rules.
+                            </li>
+                            <li>
+                                Click on anything that is not a node to deselect
+                                the selected item.
+                            </li>
+                            <li>
+                                Information about the currently selected items
+                                are available in the table below.
+                            </li>
                         </ul>
                     </md-card-content>
                 </md-card>
@@ -168,14 +182,10 @@
                                 >
                                     {{ item.support }}
                                 </md-table-cell>
-                                <md-table-cell
-                                    md-label="Antecedents"
-                                >
+                                <md-table-cell md-label="Antecedents">
                                     {{ item.antecedents }}
                                 </md-table-cell>
-                                <md-table-cell
-                                    md-label="Consequents"
-                                >
+                                <md-table-cell md-label="Consequents">
                                     {{ item.consequents }}
                                 </md-table-cell>
                                 <md-table-cell
