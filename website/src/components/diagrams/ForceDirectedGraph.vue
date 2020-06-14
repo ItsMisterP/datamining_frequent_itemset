@@ -279,7 +279,7 @@ export default {
                     circles.attr("r", comp.graphSetting.radius);
                     node.select("text").attr(
                         "dx",
-                        comp.graphSetting.textMargin
+                        10 + comp.graphSetting.textMargin
                     );
                     link.attr("stroke-width", comp.graphSetting.strokeWidth);
                     comp.$emit("nodeclicked", null);
