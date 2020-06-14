@@ -61,57 +61,75 @@
                         <h5 class="title">References</h5>
                     </md-card-header>
                     <md-card-content class="md-card-content">
-                        Data mining / Association Pattern Mining:<br />
-                        Master Seminar by Robin Buchta &amp; Philip Ohm<br />
-                        <br />
-                        <a href="https://vuejs.org/">Vue JS</a><br />
-                        <a
-                            href="https://www.creative-tim.com/product/vue-material-dashboard"
+
+
+                        <ul>
+                            <li>Data mining / Association Pattern Mining:<br />
+                                Master Seminar by Robin Buchta &amp; Philip Ohm</li>
+                            <li><a href="https://vuejs.org/">Vue JS</a></li>
+                            <li><a
+                                    href="https://www.creative-tim.com/product/vue-material-dashboard"
                             >Vue Material Dashboard</a
-                        ><br />
-                        <a href="https://vuematerial.io/components/"
+                            ></li>
+                            <li><a href="https://vuematerial.io/components/"
                             >Components</a
-                        ><br />
-                        <br />
-                        <a
-                            href="http://bl.ocks.org/cjhin/27e01c636dcc0bfa256c7a225971354d"
+                            ></li>
+                            <li><a
+                                    href="http://bl.ocks.org/cjhin/27e01c636dcc0bfa256c7a225971354d"
                             >Heatmap</a
-                        ><br />
-                        <a href="https://www.npmjs.com/package/vue-d3-geo"
+                            ></li>
+                            <li><a href="https://www.npmjs.com/package/vue-d3-geo"
                             >Geojson processing</a
-                        ><br />
-                        <a
-                            href="https://data.cityofchicago.org/Public-Safety/Boundaries-Police-Districts-current-/fthy-xz3r"
+                            ></li>
+                            <li><a
+                                    href="https://data.cityofchicago.org/Public-Safety/Boundaries-Police-Districts-current-/fthy-xz3r"
                             >District geo data</a
-                        ><br />
-                        <a
-                            href="https://www.visualcinnamon.com/2016/05/smooth-color-legend-d3-svg-gradient"
-                            >Heatmap gradient legend</a
-                        ><br />
-                        Pie chart: Bachelor Thesis by Philip Ohm<br />
-                        <a
-                            href="https://bl.ocks.org/puzzler10/4438752bb93f45dc5ad5214efaa12e4a"
-                            >Force directed graph</a
-                        ><br />
-                        <a
-                            href="https://stackoverflow.com/questions/16178366/d3-js-set-initial-zoom-level"
-                            >Force directed graph Initial zoom level</a
-                        ><br />
-                        <a
-                            href="https://medium.com/ninjaconcept/interactive-dynamic-force-directed-graphs-with-d3-da720c6d7811"
-                            >Force directed graph Clickable nodes</a
-                        ><br />
-                        <a
-                            href="https://syntagmatic.github.io/parallel-coordinates/"
-                            >Parallel Coordinates</a
-                        ><br />
-                        <a href="https://github.com/BigFatDog/parcoords-es"
-                            >Parallel Coordinates adapted for v5</a
-                        ><br />
-                        <a
-                            href="http://bl.ocks.org/sc28/afa69162dc61833dc19fec7f0094f01a"
-                            >Parallel Coordinates Reset Button</a
-                        ><br />
+                            > </li>
+                            <li>
+                                <a
+                                        href="https://www.visualcinnamon.com/2016/05/smooth-color-legend-d3-svg-gradient"
+                                >Heatmap gradient legend</a
+                                >
+                            </li>
+                            <li>
+                                Pie chart: Bachelor Thesis by Philip Ohm
+                            </li>
+                            <li>
+                                <a
+                                        href="https://bl.ocks.org/puzzler10/4438752bb93f45dc5ad5214efaa12e4a"
+                                >Force directed graph</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                        href="https://stackoverflow.com/questions/16178366/d3-js-set-initial-zoom-level"
+                                >Force directed graph Initial zoom level</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                        href="https://medium.com/ninjaconcept/interactive-dynamic-force-directed-graphs-with-d3-da720c6d7811"
+                                >Force directed graph Clickable nodes</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                        href="https://syntagmatic.github.io/parallel-coordinates/"
+                                >Parallel Coordinates</a
+                                >
+                            </li>
+                            <li>
+                                <a href="https://github.com/BigFatDog/parcoords-es"
+                                >Parallel Coordinates adapted for v5</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                        href="http://bl.ocks.org/sc28/afa69162dc61833dc19fec7f0094f01a"
+                                >Parallel Coordinates Reset Button</a
+                                >
+                            </li>
+                        </ul>
                     </md-card-content>
                 </md-card>
             </div>

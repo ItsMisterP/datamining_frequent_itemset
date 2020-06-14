@@ -2,7 +2,7 @@
     <div class="sidebar" :data-color="sidebarItemColor" :style="sidebarStyle">
         <div class="logo">
             <a href="#" class="simple-text logo-mini">
-                <div class="logo-img">
+                <div class="logo-img" style="">
                     <img :src="imgLogo" alt="" />
                 </div>
             </a>
@@ -88,4 +88,11 @@ export default {
         display: none;
     }
 }
+    img{
+        display: inline-block;
+        align-content: center;
+        background-color: black;
+        width: 100%;
+        height:auto;
+    }
 </style>

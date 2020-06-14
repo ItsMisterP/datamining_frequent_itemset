@@ -42,13 +42,11 @@
                             </md-table-cell>
                             <md-table-cell
                                 md-label="Antecedents"
-                                md-sort-by="antecedents"
                             >
                                 {{ item.antecedents }}
                             </md-table-cell>
                             <md-table-cell
                                 md-label="Consequents"
-                                md-sort-by="consequents"
                             >
                                 {{ item.consequents }}
                             </md-table-cell>
@@ -58,7 +56,9 @@
                             >
                                 {{ item.confidence }}
                             </md-table-cell>
-                            <md-table-cell md-label="Kluc" md-sort-by="kluc">
+                            <md-table-cell
+                                    md-label="Kulczynski"
+                                    md-sort-by="kluc">
                                 {{ item.kluc }}
                             </md-table-cell>
                             <md-table-cell
@@ -68,12 +68,12 @@
                                 {{ item.imbratio }}
                             </md-table-cell>
                             <md-table-cell
-                                md-label="¬confidence"
+                                md-label="¬Confidence"
                                 md-sort-by="¬confidence"
                             >
                                 {{ item.cB }}
                             </md-table-cell>
-                            <md-table-cell md-label="lift" md-sort-by="lift">
+                            <md-table-cell md-label="Lift" md-sort-by="lift">
                                 {{ item.lift }}
                             </md-table-cell>
                         </md-table-row>
@@ -132,12 +132,12 @@ export default {
             //var dimensions = ["confidence", "imbratio", "kluc", "support"];
 
             var dimensions = {
-                confidence: { title: "confidence" },
-                imbratio: { title: "imbalance ratio" },
-                kluc: { title: "kulczynski" },
-                support: { title: "support" },
-                cB: { title: "¬confidence" },
-                lift: { title: "lift" }
+                confidence: { title: "Confidence" },
+                imbratio: { title: "Imbalance Ratio" },
+                kluc: { title: "Kulczynski" },
+                support: { title: "Support" },
+                cB: { title: "¬Confidence" },
+                lift: { title: "Lift" }
             };
 
             let graph = this;

@@ -183,7 +183,7 @@ export default {
             }
             this.currentSelectedRowIndex = index;
             let row = document.getElementById(
-                "" + this.currentSelectedRowIndex
+                "" + Object.keys(this.selectedDistrictData)[this.currentSelectedRowIndex]
             );
             d3.select(row).classed("md-selected-single", true);
             document.getElementsByClassName("md-table-content")[0].scrollTop =
