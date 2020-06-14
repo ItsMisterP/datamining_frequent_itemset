@@ -24,10 +24,9 @@ export default {
                 strokeWidth: 2,
                 clickedStrokeWidth: 10,
                 textMargin: 5,
-                gravity: -10000,
+                gravity: -10000
             },
-            
-            
+
             nodeClicked: false,
             containerClicked: false
         };
@@ -49,19 +48,18 @@ export default {
             var link_force = d3.forceLink(this.graph.links).id(function(d) {
                 return d.id;
             });
-            var charge_force = d3.forceManyBody().strength(this.graphSetting.gravity);
+            var charge_force = d3
+                .forceManyBody()
+                .strength(this.graphSetting.gravity);
             var center_force = d3.forceCenter(width / 2, height / 2);
             simulation
                 .force("charge_force", charge_force)
                 .force("center_force", center_force)
                 .force("links", link_force);
-            
+
             // Füge die Tick-Methode zur Simulation hinzu -> Wird bei jedem Tick aufgerufen
             simulation.on("tick", tickActions);
-            var g = svg
-                .append("g")
-                .attr("class", "everything");
-                
+            var g = svg.append("g").attr("class", "everything");
 
             // Erstelle die Linien
             var link = g
@@ -97,10 +95,13 @@ export default {
                 })
                 .on("click", nodeclicked);
 
-            // Füge den Text pro Container ein. Besitzt eine Farbe, einen Text, Größe usw. 
+            // Füge den Text pro Container ein. Besitzt eine Farbe, einen Text, Größe usw.
             // Wenn über den Text gehovered wird, wird der Mauszeiger nicht verändert
             node.append("text")
-                .attr("dx", this.graphSetting.radius + this.graphSetting.textMargin)
+                .attr(
+                    "dx",
+                    this.graphSetting.radius + this.graphSetting.textMargin
+                )
                 .attr("dy", ".35em")
                 .attr("font-weight", "bold")
                 .attr("fill", function(d) {
@@ -118,16 +119,21 @@ export default {
                 .on("drag", drag_drag)
                 .on("end", drag_end);
 
-
             // Ermöglicht das Zoomen im Diagramm
             var zoom_handler = d3.zoom().on("zoom", zoom_actions);
             zoom_handler(svg);
 
             // Setze Init-Zoom - https://stackoverflow.com/questions/16178366/d3-js-set-initial-zoom-level
-            svg.call(zoom_handler.transform, d3.zoomIdentity.translate(width/2, height/2).scale(0.1));
-            g.attr("transform","translate("+ width/2 +","+ height/2 +") scale(.1,.1)");
+            svg.call(
+                zoom_handler.transform,
+                d3.zoomIdentity.translate(width / 2, height / 2).scale(0.1)
+            );
+            g.attr(
+                "transform",
+                "translate(" + width / 2 + "," + height / 2 + ") scale(.1,.1)"
+            );
 
-            // Diese Methode wird pro Tick und auf jedem Element aufgerufen. Jeder Knoten enthält Attribute, 
+            // Diese Methode wird pro Tick und auf jedem Element aufgerufen. Jeder Knoten enthält Attribute,
             // welche bei der Simulation geändert werden und angeben wo das Element neu positioniert werden
             // müssen
             function tickActions() {
@@ -209,7 +215,7 @@ export default {
                 );
             }
 
-            // Eine Kante gehört zu einem Nachbarn, wenn beide Knoten teil der Nachbarn sind. Wird nur auf einen 
+            // Eine Kante gehört zu einem Nachbarn, wenn beide Knoten teil der Nachbarn sind. Wird nur auf einen
             // gerpüft, wird eine Kante zu viel innerhalb des Graphen als Nachbarkante markiert.
             function isNeighborLink(neighbors, link, selectedNode) {
                 if (
@@ -244,7 +250,7 @@ export default {
             function nodeclicked(selectedNode) {
                 comp.nodeClicked = true;
                 comp.containerClicked = false;
-                // Sendet Signal an Parent, dass ein Knoten angeklickt wurde -> Diese aktualisiert die 
+                // Sendet Signal an Parent, dass ein Knoten angeklickt wurde -> Diese aktualisiert die
                 // Tabelle, sodass nur die Regeln des Knotens angezeigt werden
                 comp.$emit("nodeclicked", selectedNode);
 
@@ -253,8 +259,12 @@ export default {
 
                 // Highlighte alles, was zur Nachbarschaft gehört.
                 circles.attr("r", node => getNodeRadius(node, neighbors));
-                node.select("text").attr("dx", node => getNodeRadius(node, neighbors) 
-                                                            + comp.graphSetting.textMargin);
+                node.select("text").attr(
+                    "dx",
+                    node =>
+                        getNodeRadius(node, neighbors) +
+                        comp.graphSetting.textMargin
+                );
                 link.attr("stroke-width", link =>
                     getStrokeWidth(neighbors, link, selectedNode)
                 );
@@ -264,10 +274,13 @@ export default {
             // Variablen stattfinden. Mit ihr ist es Möglich zu prüfen, ob vorher ein Knoten gedrückt wurde.
             // Das geht, da das Knotenevent immer als erstes gefeuert wird.
             function containerclicked(d) {
-                if(!comp.nodeClicked){
+                if (!comp.nodeClicked) {
                     comp.containerClicked = true;
                     circles.attr("r", comp.graphSetting.radius);
-                    node.select("text").attr("dx", comp.graphSetting.textMargin);
+                    node.select("text").attr(
+                        "dx",
+                        comp.graphSetting.textMargin
+                    );
                     link.attr("stroke-width", comp.graphSetting.strokeWidth);
                     comp.$emit("nodeclicked", null);
                 }
@@ -279,8 +292,7 @@ export default {
         update() {
             d3.select(".everything").remove();
             this.init();
-        },
-        
+        }
     }
 };
 </script>

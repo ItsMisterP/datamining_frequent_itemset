@@ -6,6 +6,7 @@ http://94.130.204.236:12000/#/dashboard
 
 Oder die Webseite wird mit einem NodeJS-Server und Python-Server deployed:
 - Dazu muss NodeJS, NPM  und Python3 installiert sein
+- Vue installieren mit " npm install -g @vue/cli "
 - Im Rootverzeichnis in einer Konsole: " npm install " ausführen
 - Danach mit: " npm run serve ", um die Webseite in einem NodeJS-Server zu starten
 - Neue Konsole öffnen und in das Verzeichnis /src/assets wechseln

@@ -61,34 +61,45 @@
                         <h5 class="title">References</h5>
                     </md-card-header>
                     <md-card-content class="md-card-content">
-
-
                         <ul>
-                            <li>Data mining / Association Pattern Mining:<br />
-                                Master Seminar by Robin Buchta &amp; Philip Ohm</li>
+                            <li>
+                                Data mining / Association Pattern Mining:<br />
+                                Master Seminar by Robin Buchta &amp; Philip Ohm
+                            </li>
                             <li><a href="https://vuejs.org/">Vue JS</a></li>
-                            <li><a
-                                    href="https://www.creative-tim.com/product/vue-material-dashboard"
-                            >Vue Material Dashboard</a
-                            ></li>
-                            <li><a href="https://vuematerial.io/components/"
-                            >Components</a
-                            ></li>
-                            <li><a
-                                    href="http://bl.ocks.org/cjhin/27e01c636dcc0bfa256c7a225971354d"
-                            >Heatmap</a
-                            ></li>
-                            <li><a href="https://www.npmjs.com/package/vue-d3-geo"
-                            >Geojson processing</a
-                            ></li>
-                            <li><a
-                                    href="https://data.cityofchicago.org/Public-Safety/Boundaries-Police-Districts-current-/fthy-xz3r"
-                            >District geo data</a
-                            > </li>
                             <li>
                                 <a
-                                        href="https://www.visualcinnamon.com/2016/05/smooth-color-legend-d3-svg-gradient"
-                                >Heatmap gradient legend</a
+                                    href="https://www.creative-tim.com/product/vue-material-dashboard"
+                                    >Vue Material Dashboard</a
+                                >
+                            </li>
+                            <li>
+                                <a href="https://vuematerial.io/components/"
+                                    >Components</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="http://bl.ocks.org/cjhin/27e01c636dcc0bfa256c7a225971354d"
+                                    >Heatmap</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.npmjs.com/package/vue-d3-geo"
+                                    >Geojson processing</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://data.cityofchicago.org/Public-Safety/Boundaries-Police-Districts-current-/fthy-xz3r"
+                                    >District geo data</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="https://www.visualcinnamon.com/2016/05/smooth-color-legend-d3-svg-gradient"
+                                    >Heatmap gradient legend</a
                                 >
                             </li>
                             <li>
@@ -96,37 +107,38 @@
                             </li>
                             <li>
                                 <a
-                                        href="https://bl.ocks.org/puzzler10/4438752bb93f45dc5ad5214efaa12e4a"
-                                >Force directed graph</a
+                                    href="https://bl.ocks.org/puzzler10/4438752bb93f45dc5ad5214efaa12e4a"
+                                    >Force directed graph</a
                                 >
                             </li>
                             <li>
                                 <a
-                                        href="https://stackoverflow.com/questions/16178366/d3-js-set-initial-zoom-level"
-                                >Force directed graph Initial zoom level</a
+                                    href="https://stackoverflow.com/questions/16178366/d3-js-set-initial-zoom-level"
+                                    >Force directed graph Initial zoom level</a
                                 >
                             </li>
                             <li>
                                 <a
-                                        href="https://medium.com/ninjaconcept/interactive-dynamic-force-directed-graphs-with-d3-da720c6d7811"
-                                >Force directed graph Clickable nodes</a
+                                    href="https://medium.com/ninjaconcept/interactive-dynamic-force-directed-graphs-with-d3-da720c6d7811"
+                                    >Force directed graph Clickable nodes</a
                                 >
                             </li>
                             <li>
                                 <a
-                                        href="https://syntagmatic.github.io/parallel-coordinates/"
-                                >Parallel Coordinates</a
-                                >
-                            </li>
-                            <li>
-                                <a href="https://github.com/BigFatDog/parcoords-es"
-                                >Parallel Coordinates adapted for v5</a
+                                    href="https://syntagmatic.github.io/parallel-coordinates/"
+                                    >Parallel Coordinates</a
                                 >
                             </li>
                             <li>
                                 <a
-                                        href="http://bl.ocks.org/sc28/afa69162dc61833dc19fec7f0094f01a"
-                                >Parallel Coordinates Reset Button</a
+                                    href="https://github.com/BigFatDog/parcoords-es"
+                                    >Parallel Coordinates adapted for v5</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="http://bl.ocks.org/sc28/afa69162dc61833dc19fec7f0094f01a"
+                                    >Parallel Coordinates Reset Button</a
                                 >
                             </li>
                         </ul>
