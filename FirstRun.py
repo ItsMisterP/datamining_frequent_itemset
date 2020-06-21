@@ -44,9 +44,9 @@ show_rules = 0
 kluc_range_min = 0.0
 kluc_range_max = 1.0
 imb_ratio_threshold = 0.0
-association_rules_threshold = 0.5
+association_rules_threshold = 5
 min_sup_threshold = 0.001
-metric = "confidence"
+metric = "lift"
 choose = "PrimaryType"
 # =============================================================================
 
